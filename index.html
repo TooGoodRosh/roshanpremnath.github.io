@@ -1,6 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roshan Premnath — Combat Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; letter-spacing: -0.5px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.nav-links a:hover { color: #F0F0F0; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px 64px; flex-direction: column; gap: 20px; z-index: 99; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* HERO */
+.hero { padding: 140px 64px 64px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+.hero-name { font-size: 72px; font-weight: 700; color: #F47A23; line-height: 1; letter-spacing: -1px; }
+.hero-title { font-size: 16px; font-weight: 400; color: rgba(240,240,240,0.4); margin-top: 12px; letter-spacing: 3px; text-transform: uppercase; }
+.hero-tagline { font-size: 22px; font-weight: 400; color: #F0F0F0; margin-top: 24px; max-width: 480px; line-height: 1.6; }
+.divider { width: 48px; height: 2px; background: #F47A23; margin: 40px 0; }
+
+/* PROJECTS */
+.projects-label { font-size: 11px; font-weight: 500; color: rgba(240,240,240,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; padding: 0 64px; }
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 0 64px 80px; }
+.project-card { padding: 40px; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; background: #111; text-decoration: none; display: block; }
+.project-card::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; }
+.project-card.apotheosis::before { background: #DC143C; }
+.project-card.survive::before { background: #B39DDB; }
+.project-card.zoneout::before { background: #26A69A; }
+.project-card.celeste::before { background: #FF7043; }
+.project-card:hover { background: #161616; }
+.project-tag { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.project-card.apotheosis .project-tag { color: #DC143C; }
+.project-card.survive .project-tag { color: #B39DDB; }
+.project-card.zoneout .project-tag { color: #26A69A; }
+.project-card.celeste .project-tag { color: #FF7043; }
+.project-name { font-size: 28px; font-weight: 700; color: #F0F0F0; margin-bottom: 12px; line-height: 1.1; }
+.project-desc { font-size: 14px; font-weight: 400; color: rgba(240,240,240,0.5); line-height: 1.6; max-width: 320px; }
+.project-arrow { position: absolute; bottom: 40px; right: 40px; font-size: 20px; color: rgba(240,240,240,0.2); transition: color 0.2s, transform 0.2s; }
+.project-card:hover .project-arrow { color: rgba(240,240,240,0.6); transform: translate(4px, -4px); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { padding: 24px; }
+  .hero { padding: 100px 24px 48px; }
+  .hero-name { font-size: 48px; }
+  .hero-tagline { font-size: 18px; }
+  .projects-label { padding: 0 24px; }
+  .projects { grid-template-columns: 1fr; padding: 0 24px 60px; }
+  .project-card { padding: 32px 28px; }
+}
+</style>
+</head>
 <body>
-<h1>Coming soon</h1>
+
+<nav>
+  <a class="nav-name" href="index.html">Roshan Premnath</a>
+  <div class="nav-links">
+    <a href="apotheosis.html">Apotheosis</a>
+    <a href="survivethepale.html">Survive the Pale</a>
+    <a href="zoneout.html">Zone-Out</a>
+    <a href="celeste.html">Celeste</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="apotheosis.html">Apotheosis</a>
+  <a href="survivethepale.html">Survive the Pale</a>
+  <a href="zoneout.html">Zone-Out</a>
+  <a href="celeste.html">Celeste</a>
+</div>
+
+<div class="hero">
+  <div class="hero-name">Roshan Premnath</div>
+  <div class="hero-title">Combat Designer</div>
+  <div class="hero-tagline">Action must be fun. That's what I bring to the fight.</div>
+  <div class="divider"></div>
+</div>
+
+<div class="projects-label">Selected Work</div>
+<div class="projects">
+  <a class="project-card apotheosis" href="apotheosis.html">
+    <div class="project-tag">Combat Design</div>
+    <div class="project-name">Apotheosis</div>
+    <div class="project-desc">A top-down combat system where patient precision builds into unstoppable fury.</div>
+    <div class="project-arrow">↗</div>
+  </a>
+  <a class="project-card survive" href="survivethepale.html">
+    <div class="project-tag">System Design</div>
+    <div class="project-name">Survive the Pale</div>
+    <div class="project-desc">The player cannot fight. They can only observe, think, and manipulate.</div>
+    <div class="project-arrow">↗</div>
+  </a>
+  <a class="project-card zoneout" href="zoneout.html">
+    <div class="project-tag">System Design</div>
+    <div class="project-name">Zone-Out</div>
+    <div class="project-desc">Three shapes, three rules. One of them turns survival into mastery.</div>
+    <div class="project-arrow">↗</div>
+  </a>
+  <a class="project-card celeste" href="celeste.html">
+    <div class="project-tag">Level Design</div>
+    <div class="project-name">Celeste Challenge</div>
+    <div class="project-desc">A level design exercise demonstrating rigorous process — source analysis, derived principles, five documented iteration passes.</div>
+    <div class="project-arrow">↗</div>
+  </a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+</script>
 </body>
 </html>
