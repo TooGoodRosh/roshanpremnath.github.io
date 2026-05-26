@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celeste Level Design — Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #F0F0F0; }
+.nav-links a.active { color: #FF7043; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* HERO — text only, no image */
+.hero { margin-top: 60px; padding: 120px 64px 80px; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hero-tag { font-size: 11px; font-weight: 500; color: #FF7043; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-size: 64px; font-weight: 700; color: #F0F0F0; line-height: 1.1; letter-spacing: -1.5px; max-width: 800px; margin-bottom: 24px; }
+.hero-headline { font-size: 20px; font-weight: 400; color: rgba(240,240,240,0.6); max-width: 560px; line-height: 1.6; margin-bottom: 40px; }
+.hero-context { display: flex; gap: 48px; }
+.hero-context-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-context-label { font-size: 11px; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; }
+.hero-context-value { font-size: 14px; color: rgba(240,240,240,0.7); }
+
+/* SHARED */
+.section-label { font-size: 11px; font-weight: 500; color: #FF7043; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; }
+.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+
+/* PHILOSOPHIES */
+.philosophies { padding: 120px 64px; background: #0a0a0a; }
+.philosophies-intro { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 64px; }
+.philosophy-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 64px; }
+.philosophy-item { background: #111; padding: 40px; display: grid; grid-template-columns: 48px 1fr; gap: 32px; align-items: start; }
+.philosophy-number { font-size: 32px; font-weight: 700; color: #FF7043; line-height: 1; }
+.philosophy-content { display: flex; flex-direction: column; gap: 12px; }
+.philosophy-principle { font-size: 20px; font-weight: 700; color: #F0F0F0; line-height: 1.3; }
+.philosophy-explanation { font-size: 15px; color: rgba(240,240,240,0.5); line-height: 1.7; }
+.notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.notes-image { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+/* LEVEL OVERVIEW */
+.overview { padding: 120px 64px; }
+.overview-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+.section-block { display: flex; flex-direction: column; gap: 16px; }
+.section-block-label { font-size: 13px; font-weight: 700; color: #FF7043; letter-spacing: 1px; text-transform: uppercase; }
+.section-block-name { font-size: 24px; font-weight: 700; color: #F0F0F0; }
+.section-block-desc { font-size: 15px; color: rgba(240,240,240,0.6); line-height: 1.7; }
+.layout-image { width: 100%; object-fit: contain; border: 1px solid rgba(255,255,255,0.06); }
+
+/* PASSES */
+.passes { padding: 120px 64px; background: #0a0a0a; }
+.passes-intro { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 64px; }
+.pass-list { display: flex; flex-direction: column; gap: 2px; }
+.pass-item { background: #111; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.pass-content { padding: 48px; display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+.pass-label { font-size: 11px; font-weight: 500; color: #FF7043; letter-spacing: 3px; text-transform: uppercase; }
+.pass-issues { display: flex; flex-direction: column; gap: 16px; }
+.pass-issue { display: flex; flex-direction: column; gap: 6px; }
+.pass-issue-problem { font-size: 14px; font-weight: 700; color: #F0F0F0; }
+.pass-issue-resolution { font-size: 13px; color: rgba(240,240,240,0.5); line-height: 1.6; border-left: 2px solid #FF7043; padding-left: 12px; }
+.pass-image-wrap { overflow: hidden; }
+.pass-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* DISTANCE CHECK */
+.distance { padding: 120px 64px; }
+.distance-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
+.distance-image { width: 100%; object-fit: contain; border: 1px solid rgba(255,255,255,0.06); }
+
+/* FINAL LAYOUT */
+.final { padding: 120px 64px; background: #0a0a0a; }
+.final-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
+.final-image { width: 100%; object-fit: contain; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 100px 24px 64px; }
+  .hero-title { font-size: 40px; }
+  .hero-context { flex-wrap: wrap; gap: 24px; }
+  .philosophies, .overview, .passes, .distance, .final { padding: 64px 24px; }
+  .two-col { grid-template-columns: 1fr; }
+  .pass-item { grid-template-columns: 1fr; }
+  .pass-image-wrap { aspect-ratio: 16/9; }
+  .notes-grid { grid-template-columns: 1fr; }
+  .philosophy-item { grid-template-columns: 1fr; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="index.html">Roshan Premnath</a>
+  <div class="nav-links">
+    <a href="apotheosis.html">Apotheosis</a>
+    <a href="survivethepale.html">Survive the Pale</a>
+    <a href="zoneout.html">Zone-Out</a>
+    <a href="celeste.html" class="active">Celeste</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="apotheosis.html">Apotheosis</a>
+  <a href="survivethepale.html">Survive the Pale</a>
+  <a href="zoneout.html">Zone-Out</a>
+  <a href="celeste.html">Celeste</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Level Design · 2026</div>
+  <div class="hero-title">Ubisoft Level Design Challenge — Celeste Tutorial Level</div>
+  <div class="hero-headline">A level design exercise demonstrating rigorous process — source analysis, derived principles, and five documented iteration passes.</div>
+  <div class="hero-context">
+    <div class="hero-context-item">
+      <div class="hero-context-label">Brief</div>
+      <div class="hero-context-value">Design a tutorial level for Celeste</div>
+    </div>
+    <div class="hero-context-item">
+      <div class="hero-context-label">Challenge</div>
+      <div class="hero-context-value">Ubisoft India Campus Design Challenge 2026</div>
+    </div>
+    <div class="hero-context-item">
+      <div class="hero-context-label">Mechanics taught</div>
+      <div class="hero-context-value">Jump, Dash, Wall Jump</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- DESIGN PHILOSOPHIES -->
+<section class="philosophies">
+  <div class="section-label">Source Analysis</div>
+  <div class="philosophies-intro">Before designing anything, I played Celeste three times with a structured analysis framework — documenting what happened, how it felt, and why it was designed that way. From this I derived three design philosophies that governed every subsequent decision.</div>
+  <div class="philosophy-list">
+    <div class="philosophy-item">
+      <div class="philosophy-number">01</div>
+      <div class="philosophy-content">
+        <div class="philosophy-principle">Uncertainty comes from information asymmetry, not difficulty.</div>
+        <div class="philosophy-explanation">The player doesn't need to be punished to feel uncertain. They need to not know the rules yet. Celeste never makes the player feel cheated — failure is always legible.</div>
+      </div>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-number">02</div>
+      <div class="philosophy-content">
+        <div class="philosophy-principle">Feedback precedes demand.</div>
+        <div class="philosophy-explanation">The geometry communicates what's required before it demands it. The ice block shakes before it falls. The level shows the player what's coming before asking them to respond to it.</div>
+      </div>
+    </div>
+    <div class="philosophy-item">
+      <div class="philosophy-number">03</div>
+      <div class="philosophy-content">
+        <div class="philosophy-principle">Stress tests confirm minimum viable play.</div>
+        <div class="philosophy-explanation">A tutorial is not complete until the player has proven they can perform the mechanics under pressure. Every tutorial ends with a test — not a prompt, a test.</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes-grid">
+    <img class="notes-image" src="images/celeste-notes-01.png" alt="Analysis notes page 1">
+    <img class="notes-image" src="images/celeste-notes-02.png" alt="Analysis notes page 2">
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- LEVEL OVERVIEW -->
+<section class="overview">
+  <div class="section-label">Level Structure</div>
+  <div class="overview-desc">The level is split into two deliberately designed sections. At no point is the player instructed. Every mechanic is discovered through interaction with the geometry alone.</div>
+  <div class="two-col">
+    <div class="section-block">
+      <div class="section-block-label">Section 01</div>
+      <div class="section-block-name">The Playground</div>
+      <div class="section-block-desc">Platforms 0–6. Consequence-free. No death state. The player discovers jump, dash, and wall jump through geometry and experimentation alone. Falling is not failure — it's information.</div>
+    </div>
+    <div class="section-block">
+      <div class="section-block-label">Section 02</div>
+      <div class="section-block-name">The Stress Test</div>
+      <div class="section-block-desc">Platforms 7–18. Death is now the fail state. The player must perform all three mechanics taught in the playground to reach platform 18. This confirms minimum viable play.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ITERATION PASSES -->
+<section class="passes">
+  <div class="section-label">Five Iteration Passes</div>
+  <div class="passes-intro">Every pass identified a specific problem, reasoned through a resolution, and updated the geometry. Nothing was changed without a documented reason.</div>
+  <div class="pass-list">
+
+    <div class="pass-item">
+      <div class="pass-content">
+        <div class="pass-label">Pass 01</div>
+        <div class="pass-issues">
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Wall jump introduced at the hardest moment</div>
+            <div class="pass-issue-resolution">Dedicated wall jump moment needed earlier. Player should hit a wall naturally and find pushing off it is the safe path upward.</div>
+          </div>
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Dash has no isolated introduction</div>
+            <div class="pass-issue-resolution">Dedicated dash introduction needed between the opening jump and the combo section.</div>
+          </div>
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Spike on platform 5 punishes discovery</div>
+            <div class="pass-issue-resolution">The right wall should be an invitation to experiment, not a hazard. Spike removed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-image-wrap">
+        <img class="pass-image" src="images/celeste-pass-01.png" alt="Pass 01">
+      </div>
+    </div>
+
+    <div class="pass-item">
+      <div class="pass-content">
+        <div class="pass-label">Pass 02</div>
+        <div class="pass-issues">
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Jump and Dash introduction has no discovery moment</div>
+            <div class="pass-issue-resolution">Spikes removed below the gap between platforms 0 and 1. Fall becomes a safe fail state. The geometry teaches.</div>
+          </div>
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Player can skip wall jump through jump + dash combo</div>
+            <div class="pass-issue-resolution">New platform added between 2 and 3 as a safe recovery surface. Jump and dash distances need to be calculated.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-image-wrap">
+        <img class="pass-image" src="images/celeste-pass-02.png" alt="Pass 02">
+      </div>
+    </div>
+
+    <div class="pass-item">
+      <div class="pass-content">
+        <div class="pass-label">Pass 03</div>
+        <div class="pass-issues">
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Wall jump skip still exists in the playground</div>
+            <div class="pass-issue-resolution">Player can dash directly to platform 6 without ever wall jumping. Platform 6 needs to be raised beyond dash range, or a geometrically unavoidable wall jump moment must be added.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-image-wrap">
+        <img class="pass-image" src="images/celeste-pass-03.png" alt="Pass 03">
+      </div>
+    </div>
+
+    <div class="pass-item">
+      <div class="pass-content">
+        <div class="pass-label">Pass 04</div>
+        <div class="pass-issues">
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Wall jump skip still unresolved — platform 5 reachable without wall jump</div>
+            <div class="pass-issue-resolution">Player can jump from platform 2 and dash diagonally to reach platform 5 directly, bypassing 3 and 4. Platform 4 must be redesigned so wall jump is the only viable exit regardless of how the player arrived.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-image-wrap">
+        <img class="pass-image" src="images/celeste-pass-04.png" alt="Pass 04">
+      </div>
+    </div>
+
+    <div class="pass-item">
+      <div class="pass-content">
+        <div class="pass-label">Pass 05</div>
+        <div class="pass-issues">
+          <div class="pass-issue">
+            <div class="pass-issue-problem">Platform 4 extended to close the skip permanently</div>
+            <div class="pass-issue-resolution">Platform 4 extended horizontally to block the diagonal jump. Player is now forced to dash horizontally to reach platform 3, making the wall jump from 3 to 4 un-skippable.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pass-image-wrap">
+        <img class="pass-image" src="images/celeste-pass-05.png" alt="Pass 05">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- DISTANCE VERIFICATION -->
+<section class="distance">
+  <div class="section-label">Jump & Dash Distance Verification</div>
+  <div class="distance-desc">To verify platform geometry was buildable within Celeste's movement physics, I captured gameplay footage, extracted before and after frames for each action, and overlaid them onto my 80×80px grid. Every platform dimension was checked against actual movement distances before the final layout was locked.</div>
+  <img class="distance-image" src="images/celeste-distance.png" alt="Distance verification overlay">
+</section>
+
+<hr class="section-divider">
+
+<!-- FINAL LAYOUT -->
+<section class="final">
+  <div class="section-label">Final Layout</div>
+  <div class="final-desc">The result of five passes, three derived philosophies, and geometry verified against Celeste's actual movement physics. Two sections, 18 platforms, zero instructions.</div>
+  <img class="final-image" src="images/celeste-layout.png" alt="Final level layout">
+</section>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+</script>
+</body>
+</html>
