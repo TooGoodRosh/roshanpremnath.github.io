@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zone-Out — Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #F0F0F0; }
+.nav-links a.active { color: #26A69A; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* HERO */
+.hero { position: relative; width: 100%; height: 100vh; overflow: hidden; margin-top: 60px; }
+.hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.45); }
+.hero-placeholder { width: 100%; height: 100%; background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+.hero-placeholder span { font-size: 13px; color: rgba(240,240,240,0.2); letter-spacing: 2px; text-transform: uppercase; }
+.hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 64px; background: linear-gradient(to top, rgba(13,13,13,1) 0%, rgba(13,13,13,0.6) 50%, transparent 100%); }
+.hero-tag { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-size: 80px; font-weight: 700; color: #F0F0F0; line-height: 1; letter-spacing: -2px; margin-bottom: 20px; }
+.hero-tagline-game { font-size: 24px; font-weight: 700; color: rgba(240,240,240,0.4); font-style: italic; margin-bottom: 12px; }
+.hero-headline { font-size: 20px; font-weight: 400; color: rgba(240,240,240,0.7); max-width: 560px; line-height: 1.6; }
+.hero-scroll { position: absolute; bottom: 32px; right: 64px; font-size: 11px; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: rgba(240,240,240,0.3); }
+
+/* SHARED */
+.section-label { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; }
+.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+.img-placeholder { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 11px; color: rgba(240,240,240,0.2); letter-spacing: 1px; text-align: center; padding: 16px; }
+
+/* OVERVIEW */
+.overview { padding: 120px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.overview-left { display: flex; flex-direction: column; gap: 24px; }
+.overview-genre { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; }
+.overview-desc { font-size: 20px; color: #F0F0F0; line-height: 1.7; }
+.overview-premise { font-size: 17px; color: rgba(240,240,240,0.6); line-height: 1.7; border-left: 2px solid #26A69A; padding-left: 24px; font-style: italic; }
+.credits { font-size: 12px; color: rgba(240,240,240,0.3); line-height: 1.8; }
+.credits span { color: rgba(240,240,240,0.6); }
+.overview-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
+/* PLAY IT */
+.play { padding: 120px 64px; background: #0a0a0a; }
+.play-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 560px; line-height: 1.7; margin: 24px 0 48px; }
+.itch-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
+.itch-container iframe { width: 100%; height: 100%; border: none; }
+.play-note { margin-top: 16px; font-size: 12px; color: rgba(240,240,240,0.3); }
+.play-note a { color: #26A69A; text-decoration: none; }
+.play-note a:hover { text-decoration: underline; }
+
+/* SHAPES */
+.shapes { padding: 120px 64px; }
+.shapes-intro { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 64px; }
+.shapes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.shape-card { background: #111; padding: 40px 32px; transition: background 0.2s; }
+.shape-card:hover { background: #161616; }
+.shape-icon { font-size: 48px; margin-bottom: 24px; }
+.shape-role { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.shape-name { font-size: 22px; font-weight: 700; color: #F0F0F0; margin-bottom: 12px; }
+.shape-desc { font-size: 14px; color: rgba(240,240,240,0.5); line-height: 1.6; margin-bottom: 16px; }
+.shape-intent { font-size: 13px; color: rgba(240,240,240,0.7); line-height: 1.6; border-left: 2px solid #26A69A; padding-left: 16px; }
+.shape-spawn { font-size: 11px; color: rgba(240,240,240,0.3); margin-top: 16px; letter-spacing: 1px; }
+
+/* COLOUR SYSTEM */
+.colour { padding: 120px 64px; background: #0a0a0a; }
+.colour-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
+.colour-functions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 64px; }
+.colour-fn { background: #111; padding: 32px; }
+.colour-fn-number { font-size: 32px; font-weight: 700; color: #26A69A; margin-bottom: 8px; }
+.colour-fn-label { font-size: 16px; font-weight: 700; color: #F0F0F0; margin-bottom: 8px; }
+.colour-fn-desc { font-size: 13px; color: rgba(240,240,240,0.5); line-height: 1.6; }
+.colour-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.colour-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
+/* DEATH SEQUENCE */
+.death { padding: 120px 64px; }
+.death-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
+.death-steps { display: flex; flex-direction: column; gap: 2px; margin-bottom: 48px; }
+.death-step { background: #111; padding: 24px 32px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; align-items: center; }
+.death-step-number { font-size: 20px; font-weight: 700; color: #26A69A; }
+.death-step-text { font-size: 15px; color: rgba(240,240,240,0.7); line-height: 1.5; }
+.death-intent { font-size: 17px; color: #F0F0F0; line-height: 1.7; border-left: 2px solid #26A69A; padding-left: 24px; max-width: 640px; }
+.death-image { width: 100%; max-width: 480px; aspect-ratio: 16/9; object-fit: cover; margin-top: 48px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-overlay { padding: 32px 24px; }
+  .hero-title { font-size: 48px; letter-spacing: -1px; }
+  .hero-headline { font-size: 16px; }
+  .hero-scroll { display: none; }
+  .overview { grid-template-columns: 1fr; gap: 40px; }
+  .overview, .play, .shapes, .colour, .death { padding: 64px 24px; }
+  .shapes-grid, .colour-functions, .colour-images { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="index.html">Roshan Premnath</a>
+  <div class="nav-links">
+    <a href="apotheosis.html">Apotheosis</a>
+    <a href="survivethepale.html">Survive the Pale</a>
+    <a href="zoneout.html" class="active">Zone-Out</a>
+    <a href="celeste.html">Celeste</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="apotheosis.html">Apotheosis</a>
+  <a href="survivethepale.html">Survive the Pale</a>
+  <a href="zoneout.html">Zone-Out</a>
+  <a href="celeste.html">Celeste</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <!-- <img class="hero-image" src="images/zo-hero.jpg" alt="Zone-Out hero"> -->
+  <div class="hero-placeholder"><span>zo-hero.jpg</span></div>
+  <div class="hero-overlay">
+    <div class="hero-tag">System Design · 2025</div>
+    <div class="hero-title">Zone-Out</div>
+    <div class="hero-tagline-game">"Don't get caught."</div>
+    <div class="hero-headline">Three shapes, three rules. One of them turns survival into mastery.</div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="overview-left">
+    <div class="section-label">The Game</div>
+    <div class="overview-genre">Browser-based cursor survival · Phaser 5 + Matter.js</div>
+    <div class="overview-desc">Zone-Out is a survival game where the player controls a cursor on a graph paper background. Geometric shapes are thrown from all screen edges. Survive as long as possible.</div>
+    <div class="overview-premise">The longer you survive, the more chaotic the world becomes — punctuated every 30 seconds by a dramatic colour shift that repaints everything.</div>
+    <div class="credits">
+      <span>Game Design, System Design, Development</span> — Roshan Premnath<br>
+      <span>Art Direction, Narrative</span> — Isha
+    </div>
+  </div>
+  <div class="img-placeholder" style="aspect-ratio:16/9;">zo-gameplay.jpg</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PLAY IT -->
+<section class="play">
+  <div class="section-label">Play It</div>
+  <div class="play-desc">The best way to understand Zone-Out is to play it. One hit death. No tutorial. The rules reveal themselves.</div>
+  <div class="itch-container">
+    <iframe src="zoneout-game/index.html" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
+  </div>
+  <div class="play-note">Or play it directly on <a href="https://thegamedesignhermit.itch.io/zone-out" target="_blank">itch.io ↗</a></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- THREE SHAPES -->
+<section class="shapes">
+  <div class="section-label">Shape Design</div>
+  <div class="shapes-intro">Three shapes. Each has a distinct mechanical identity. The player learns them through play, not through a tutorial.</div>
+  <div class="shapes-grid">
+    <div class="shape-card">
+      <div class="shape-icon">■</div>
+      <div class="shape-role">The Threat</div>
+      <div class="shape-name">Square</div>
+      <div class="shape-desc">The baseline danger. Instant death on contact. No special mechanic. Exists to fill space, create pressure, and punish passive play.</div>
+      <div class="shape-intent">The floor of difficulty. Everything else is defined in relation to the square.</div>
+      <div class="shape-spawn">Spawns 60% of the time</div>
+    </div>
+    <div class="shape-card">
+      <div class="shape-icon">●</div>
+      <div class="shape-role">The Shield</div>
+      <div class="shape-name">Circle</div>
+      <div class="shape-desc">Safe to touch. If the player positions themselves inside a circle, incoming shapes are physically blocked by its body. The shield is not passive — circles are physics objects pushed around by squares.</div>
+      <div class="shape-intent">Introduces spatial awareness and positioning as a skill layer without adding any input complexity.</div>
+      <div class="shape-spawn">Spawns 25% of the time</div>
+    </div>
+    <div class="shape-card">
+      <div class="shape-icon">▲</div>
+      <div class="shape-role">The Risk/Reward Tool</div>
+      <div class="shape-name">Triangle</div>
+      <div class="shape-desc">One edge is visually distinct. Hitting it destroys the triangle and clears every shape on screen. Hitting any other part kills instantly. The triangle rotates continuously — the correct edge is never fixed.</div>
+      <div class="shape-intent">A passive player can ignore triangles entirely. A skilled player who masters triangle reads can clear the screen on demand — buying breathing room as difficulty escalates.</div>
+      <div class="shape-spawn">Spawns 15% of the time</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- COLOUR SYSTEM -->
+<section class="colour">
+  <div class="section-label">Colour as Rhythm</div>
+  <div class="colour-desc">Every 30 seconds the entire game world repaints. This is not decoration. The colour shift serves three design functions simultaneously.</div>
+  <div class="colour-functions">
+    <div class="colour-fn">
+      <div class="colour-fn-number">01</div>
+      <div class="colour-fn-label">Reward</div>
+      <div class="colour-fn-desc">Spectacle for surviving another threshold. You earned this moment.</div>
+    </div>
+    <div class="colour-fn">
+      <div class="colour-fn-number">02</div>
+      <div class="colour-fn-label">Signal</div>
+      <div class="colour-fn-desc">A clear marker that difficulty has increased. The world changing IS the warning.</div>
+    </div>
+    <div class="colour-fn">
+      <div class="colour-fn-number">03</div>
+      <div class="colour-fn-label">Chaos</div>
+      <div class="colour-fn-desc">Each new palette is dramatically different, keeping the player visually stimulated.</div>
+    </div>
+  </div>
+  <div class="colour-images">
+    <div class="img-placeholder" style="aspect-ratio:16/9;">zo-colour-01.jpg</div>
+    <div class="img-placeholder" style="aspect-ratio:16/9;">zo-colour-02.jpg</div>
+    <div class="img-placeholder" style="aspect-ratio:16/9;">zo-colour-03.jpg</div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- DEATH SEQUENCE -->
+<section class="death">
+  <div class="section-label">The Death Sequence</div>
+  <div class="death-desc">Death is not an instant cut to a game over screen. It is a moment.</div>
+  <div class="death-steps">
+    <div class="death-step"><div class="death-step-number">1</div><div class="death-step-text">Freeze — physics stops, all shapes retain position</div></div>
+    <div class="death-step"><div class="death-step-number">2</div><div class="death-step-text">Shapes lose fill — only outlines remain, world becomes skeletal</div></div>
+    <div class="death-step"><div class="death-step-number">3</div><div class="death-step-text">Death circle — a sketchy circle draws itself around the cursor's death position</div></div>
+    <div class="death-step"><div class="death-step-number">4</div><div class="death-step-text">"Is my class boring you?!" slides aggressively from the top. Screen shakes on impact.</div></div>
+    <div class="death-step"><div class="death-step-number">5</div><div class="death-step-text">Game over screen — survival time displayed on a photograph of a real notebook</div></div>
+  </div>
+  <div class="death-intent">The player wasn't killed by shapes — they got caught zoning out. The teacher's speech bubble is the punchline. It transforms frustration into humour, encouraging retry.</div>
+  <!-- <img class="death-image" src="images/zo-death.jpg" alt="Zone-Out death screen"> -->
+</section>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+</script>
+</body>
+</html>
