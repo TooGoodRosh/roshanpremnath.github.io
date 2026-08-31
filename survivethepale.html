@@ -4,330 +4,367 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Survive the Pale | Roshan Premnath</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: #F0F0F0; }
-.nav-links a.active { color: #B39DDB; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; }
-.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; }
-.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; }
+.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
 .mobile-menu.open { display: flex; }
 
-/* HERO */
-.hero { position: relative; width: 100%; height: 100vh; overflow: hidden; margin-top: 60px; }
-.hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.5); }
-.hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 64px; background: linear-gradient(to top, rgba(13,13,13,1) 0%, rgba(13,13,13,0.6) 50%, transparent 100%); }
-.hero-tag { font-size: 11px; font-weight: 500; color: #B39DDB; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
-.hero-title { font-size: 80px; font-weight: 700; color: #F0F0F0; line-height: 1; letter-spacing: -2px; margin-bottom: 20px; }
-.hero-headline { font-size: 20px; font-weight: 400; color: rgba(240,240,240,0.7); max-width: 560px; line-height: 1.6; }
-.hero-scroll { position: absolute; bottom: 32px; right: 64px; font-size: 11px; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-.hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: rgba(240,240,240,0.3); }
+/* MAIN */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
 
-/* SHARED SECTION STYLES */
-.section-label { font-size: 11px; font-weight: 500; color: #B39DDB; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; }
-.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
+/* BUTTONS */
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
 
-/* GAME OVERVIEW */
-.overview { padding: 120px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.overview-left { display: flex; flex-direction: column; gap: 24px; }
-.overview-genre { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; }
-.overview-desc { font-size: 20px; font-weight: 400; color: #F0F0F0; line-height: 1.7; }
-.overview-premise { font-size: 17px; font-weight: 400; color: rgba(240,240,240,0.6); line-height: 1.7; border-left: 2px solid #B39DDB; padding-left: 24px; }
-.credits { margin-top: 16px; font-size: 12px; color: rgba(240,240,240,0.3); line-height: 1.8; }
-.credits span { color: rgba(240,240,240,0.6); }
-.overview-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-.overview-image-placeholder { width: 100%; aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.06); }
-.overview-image-placeholder span { font-size: 12px; color: rgba(240,240,240,0.2); }
+/* SECTION BASE */
+.proj-section { padding: 72px 64px; border-top: 1px solid rgba(26,26,26,0.08); }
+.section-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
 
-/* DESIGN PHILOSOPHY */
-.philosophy { padding: 120px 64px; background: #0a0a0a; }
-.philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 48px; }
-.philosophy-block { display: flex; flex-direction: column; gap: 16px; }
-.philosophy-quote { font-size: 13px; font-weight: 500; color: #B39DDB; font-style: italic; line-height: 1.5; }
-.philosophy-text { font-size: 18px; font-weight: 400; color: #F0F0F0; line-height: 1.7; }
-.north-star { grid-column: 1 / -1; padding: 48px; border: 1px solid rgba(179,157,219,0.2); background: rgba(179,157,219,0.04); }
-.north-star-label { font-size: 11px; font-weight: 500; color: #B39DDB; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
-.north-star-text { font-size: 24px; font-weight: 700; color: #F0F0F0; line-height: 1.4; }
+/* PROJECT HEADER */
+.proj-header { padding: 56px 64px 0; }
+.back-link { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.35); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; transition: color 0.15s; }
+.back-link:hover { color: #1A1A1A; }
+.proj-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+.proj-title { font-size: clamp(80px, 11vw, 160px); font-weight: 700; color: #2ECC8A; line-height: 0.88; letter-spacing: -5px; }
+.proj-meta-bar { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding: 32px 0 56px; border-top: 1px solid rgba(26,26,26,0.1); margin-top: 32px; }
+.proj-date { font-size: 13px; color: rgba(26,26,26,0.4); font-weight: 500; flex-shrink: 0; }
+.proj-role-tags { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.proj-role-tag { border: 1px solid rgba(26,26,26,0.12); padding: 6px 14px; font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.6); }
+.proj-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 
-/* CORE LOOP */
-.core-loop { padding: 120px 64px; }
-.loop-diagram { display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.loop-node { flex: 1; padding: 40px 24px; text-align: center; border: 1px solid rgba(255,255,255,0.08); position: relative; }
-.loop-node:hover { border-color: #B39DDB; background: rgba(179,157,219,0.04); }
-.loop-node-number { font-size: 11px; font-weight: 500; color: #B39DDB; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-.loop-node-name { font-size: 24px; font-weight: 700; color: #F0F0F0; margin-bottom: 12px; }
-.loop-node-desc { font-size: 13px; color: rgba(240,240,240,0.4); line-height: 1.6; }
-.loop-arrow { font-size: 24px; color: rgba(179,157,219,0.4); padding: 0 8px; flex-shrink: 0; }
+/* CONCEPT */
+.north-star-block { border-left: 3px solid #2ECC8A; padding-left: 32px; margin-bottom: 56px; }
+.ns-label { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+.ns-text { font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #1A1A1A; line-height: 1.2; letter-spacing: -0.5px; max-width: 680px; }
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.concept-p { font-size: 16px; color: rgba(26,26,26,0.65); line-height: 1.75; }
 
-/* ECOSYSTEM */
-.ecosystem { padding: 120px 64px; background: #0a0a0a; }
-.ecosystem-intro { font-size: 20px; font-weight: 400; color: rgba(240,240,240,0.7); max-width: 640px; line-height: 1.7; margin: 24px 0 64px; }
-.creatures { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.creature-card { background: #111; padding: 40px; display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: start; transition: background 0.2s; }
-.creature-card:hover { background: #161616; }
-.creature-image { width: 120px; height: 120px; object-fit: contain; }
-.creature-image-placeholder { width: 120px; height: 120px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(240,240,240,0.2); text-align: center; padding: 8px; }
-.creature-tier { font-size: 11px; font-weight: 500; color: #B39DDB; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-.creature-name { font-size: 22px; font-weight: 700; color: #F0F0F0; margin-bottom: 8px; }
-.creature-tagline { font-size: 13px; color: rgba(240,240,240,0.4); margin-bottom: 16px; line-height: 1.5; }
-.creature-role { font-size: 14px; color: rgba(240,240,240,0.7); line-height: 1.6; border-left: 2px solid #B39DDB; padding-left: 16px; }
+/* PROJECT HIGHLIGHT */
+.highlight-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 600px; line-height: 1.6; }
+.bs-pipeline { display: flex; align-items: stretch; gap: 1px; background: rgba(26,26,26,0.08); border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
+.bs-component { flex: 1; padding: 28px 22px; background: #FAF7F2; }
+.bs-component-num { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.bs-component-name { font-size: 14px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.2px; margin-bottom: 10px; }
+.bs-component-desc { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.6; }
+.bs-example { border: 1px solid rgba(26,26,26,0.08); }
+.bs-example-label { padding: 13px 24px; background: rgba(26,26,26,0.025); border-bottom: 1px solid rgba(26,26,26,0.08); font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+.bs-example-flow { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.bs-conditions { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
+.bs-priority-col { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
+.bs-result { padding: 24px; }
+.bs-col-label { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.bs-condition-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.bs-condition-trigger { font-size: 13px; color: rgba(26,26,26,0.6); }
+.bs-condition-sep { font-size: 15px; color: rgba(26,26,26,0.2); }
+.bs-condition-state { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: rgba(26,26,26,0.7); background: rgba(26,26,26,0.06); padding: 3px 9px; }
+.bs-priority-item { display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-bottom: 4px; font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); }
+.bs-priority-item.winner { background: rgba(46,204,138,0.1); color: #1A1A1A; }
+.bs-priority-item.winner .bs-rank { background: #2ECC8A; color: #1A1A1A; }
+.bs-rank { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,26,26,0.07); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: rgba(26,26,26,0.4); flex-shrink: 0; }
+.bs-result-state { font-size: 32px; font-weight: 700; color: #2ECC8A; letter-spacing: -1.5px; margin-bottom: 12px; }
+.bs-result-note { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.65; }
 
-/* PROTOTYPE VIDEO */
-.prototype { padding: 120px 64px; }
-.prototype-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 560px; line-height: 1.7; margin: 24px 0 48px; }
-.video-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); }
-.video-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: rgba(240,240,240,0.2); letter-spacing: 2px; text-transform: uppercase; }
-/* When YouTube URL is ready, replace placeholder with:
-<iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" ...></iframe> */
+/* GDD WINDOW */
+.gdd-window { position: relative; height: 60vh; border: 1px solid rgba(26,26,26,0.1); overflow: hidden; transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.gdd-iframe { width: 100%; height: 100%; border: none; display: block; }
+.gdd-expand-btn { position: absolute; top: 12px; right: 12px; z-index: 10; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.85); color: #FAF7F2; border: none; padding: 8px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; backdrop-filter: blur(4px); letter-spacing: 0.3px; }
+.gdd-expand-btn:hover { background: #2ECC8A; color: #1A1A1A; }
 
-/* WHAT WE BUILT */
-.built { padding: 120px 64px; background: #0a0a0a; }
-.built-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 48px 0; }
-.stat { background: #111; padding: 40px; }
-.stat-number { font-size: 48px; font-weight: 700; color: #B39DDB; line-height: 1; margin-bottom: 8px; }
-.stat-label { font-size: 13px; color: rgba(240,240,240,0.4); letter-spacing: 1px; }
-.built-text { font-size: 18px; color: rgba(240,240,240,0.7); max-width: 720px; line-height: 1.7; }
-.built-tech { margin-top: 32px; font-size: 14px; color: rgba(240,240,240,0.5); line-height: 1.8; border-left: 2px solid #B39DDB; padding-left: 24px; }
+/* GAME EMBED */
+.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
+.embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
+.game-frame-wrap { background: #1A1A1A; width: 100%; overflow: hidden; }
+.game-frame-wrap iframe { display: block; width: 100%; aspect-ratio: 16/9; height: auto; border: none; }
+.level-switcher { display: flex; align-items: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.level-switcher span { font-size: 12px; color: rgba(26,26,26,0.4); margin-right: 4px; }
+.level-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); color: rgba(26,26,26,0.6); padding: 5px 14px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.level-btn:hover { background: #1A1A1A; color: #FAF7F2; border-color: #1A1A1A; }
+.level-btn.active { background: #2ECC8A; color: #1A1A1A; border-color: #2ECC8A; }
 
-/* ART GALLERY */
-.gallery { padding: 120px 64px; }
-.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
-.gallery-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: brightness(0.9); transition: filter 0.2s; }
-.gallery-image:hover { filter: brightness(1); }
-.gallery-image-placeholder { width: 100%; aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 11px; color: rgba(240,240,240,0.2); text-align: center; padding: 16px; }
-.gallery-credits { margin-top: 24px; font-size: 12px; color: rgba(240,240,240,0.3); text-align: right; }
+/* SCROLL NAV */
+.scroll-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 200; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+.scroll-nav.visible { opacity: 1; pointer-events: all; }
+.scroll-items { display: flex; flex-direction: column; position: relative; }
+.scroll-items::before { content: ''; position: absolute; right: 3px; top: 18px; bottom: 18px; width: 1px; background: rgba(26,26,26,0.1); z-index: 0; }
+.scroll-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; cursor: pointer; justify-content: flex-end; }
+.scroll-item:hover .scroll-label { color: rgba(26,26,26,0.6); }
+.scroll-item:hover .scroll-dot { background: rgba(26,26,26,0.35); }
+.scroll-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,26,26,0.25); transition: color 0.2s; white-space: nowrap; }
+.scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(26,26,26,0.15); flex-shrink: 0; transition: background 0.2s, transform 0.2s; position: relative; z-index: 1; }
+.scroll-item.active .scroll-dot { background: #2ECC8A; transform: scale(1.5); }
+.scroll-item.active .scroll-label { color: #1A1A1A; font-weight: 600; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-overlay { padding: 32px 24px; }
-  .hero-title { font-size: 48px; letter-spacing: -1px; }
-  .hero-headline { font-size: 16px; }
-  .hero-scroll { display: none; }
-  .overview, .philosophy-grid { grid-template-columns: 1fr; gap: 40px; }
-  .overview, .philosophy, .core-loop, .ecosystem, .prototype, .built, .gallery { padding: 64px 24px; }
-  .loop-diagram { flex-direction: column; }
-  .loop-arrow { transform: rotate(90deg); }
-  .creatures { grid-template-columns: 1fr; }
-  .creature-card { grid-template-columns: 1fr; }
-  .built-stats { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .north-star { grid-column: 1; padding: 32px 24px; }
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .scroll-nav { display: none; }
+  .proj-header { padding: 40px 24px 0; }
+  .proj-title { letter-spacing: -3px; }
+  .proj-meta-bar { gap: 16px; padding: 24px 0 40px; }
+  .proj-section { padding: 48px 24px; }
+  .concept-grid { grid-template-columns: 1fr; gap: 24px; }
+  .bs-pipeline { flex-direction: column; }
+  .bs-example-flow { grid-template-columns: 1fr; }
+  .bs-conditions, .bs-priority-col { border-right: none; border-bottom: 1px solid rgba(26,26,26,0.08); }
+  .gdd-window { height: 50vh; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-name" href="index.html">Roshan Premnath</a>
-  <div class="nav-links">
-    <a href="apotheosis.html">Apotheosis</a>
-    <a href="survivethepale.html" class="active">Survive the Pale</a>
-    <a href="zoneout.html">Zone-Out</a>
-    <a href="celeste.html">Celeste</a>
-  </div>
-  <div class="hamburger" id="hamburger">
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="work.html" class="active">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- SCROLL NAV -->
+<nav class="scroll-nav" id="scrollNav">
+  <div class="scroll-items">
+    <div class="scroll-item active" data-target="s-header">
+      <span class="scroll-label">Intro</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-concept">
+      <span class="scroll-label">Concept</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-highlight">
+      <span class="scroll-label">System</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-gdd">
+      <span class="scroll-label">GDD</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-play">
+      <span class="scroll-label">Play</span>
+      <div class="scroll-dot"></div>
+    </div>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="apotheosis.html">Apotheosis</a>
-  <a href="survivethepale.html">Survive the Pale</a>
-  <a href="zoneout.html">Zone-Out</a>
-  <a href="celeste.html">Celeste</a>
-</div>
+<main class="main">
 
-<!-- HERO -->
-<div class="hero">
-  <img class="hero-image" src="images/stp-hero.jpg" alt="Survive the Pale hero">
-  <div class="hero-overlay">
-    <div class="hero-tag">System Design · 2026</div>
-    <div class="hero-title">Survive the Pale</div>
-    <div class="hero-headline">The player cannot fight. They can only observe, think, and manipulate.</div>
-  </div>
-  <div class="hero-scroll">Scroll to explore</div>
-</div>
-
-<hr class="section-divider">
-
-<!-- GAME OVERVIEW -->
-<section class="overview">
-  <div class="overview-left">
-    <div class="section-label">The Game</div>
-    <div class="overview-genre">Top-down silhouette-based puzzle game</div>
-    <div class="overview-desc">Survive the Pale is built around a dynamic, interconnected ecosystem. The world is not a backdrop. It's a living environment driven by a food chain, behavioral states, and a complex hierarchy of creatures.</div>
-    <div class="overview-premise">The world has collapsed into silence. Predators no longer look dangerous. Prey no longer looks harmless. Shapes deceive, stillness lies, and movement reveals truth.</div>
-    <div class="credits">
-      <span>Game Design, System Design, Level Design, Development</span> — Roshan Premnath<br>
-      <span>Art</span> — Aarya, Vedant, Vansh, Tanisha
+  <!-- HEADER -->
+  <section id="s-header" class="proj-header">
+    <a href="work.html" class="back-link">← All work</a>
+    <div class="proj-eyebrow">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
+    <div class="proj-title">Survive<br>the Pale</div>
+    <div class="proj-meta-bar">
+      <div class="proj-date">May 2026 &nbsp;·&nbsp; 2 weeks</div>
+      <div class="proj-role-tags">
+        <span class="proj-role-tag">Game Designer</span>
+        <span class="proj-role-tag">Systems Designer</span>
+        <span class="proj-role-tag">Prototype Developer</span>
+      </div>
+      <div class="proj-actions">
+        <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
+        <a class="btn-secondary" href="#s-gdd">View GDD ↓</a>
+      </div>
     </div>
-  </div>
-  <img class="overview-image" src="images/stp-characters.jpg" alt="Survive the Pale characters">
-</section>
+  </section>
 
-<hr class="section-divider">
-
-<!-- DESIGN PHILOSOPHY -->
-<section class="philosophy">
-  <div class="section-label">Design Philosophy</div>
-  <div class="philosophy-grid">
-    <div class="north-star">
-      <div class="north-star-label">North Star</div>
-      <div class="north-star-text">Overcome uncertainty through deliberate manipulation and find a path forward.</div>
+  <!-- CONCEPT -->
+  <section id="s-concept" class="proj-section">
+    <div class="section-eyebrow">Concept</div>
+    <div class="north-star-block">
+      <div class="ns-label">North Star</div>
+      <div class="ns-text">Overcome uncertainty through deliberate manipulation and find a path forward.</div>
     </div>
-    <div class="philosophy-block">
-      <div class="philosophy-quote">"The player is never in danger from what they don't know."</div>
-      <div class="philosophy-text">They are in danger from what they cannot fully predict. Progress belongs to those who can read the world well enough to act anyway.</div>
+    <div class="concept-grid">
+      <p class="concept-p">Survive the Pale is a top-down silhouette puzzle game where the player cannot fight. They can only observe, think, and act. Every level is a hostile ecosystem driven by deterministic creature AI. The player's only power is understanding it well enough to manipulate it.</p>
+      <p class="concept-p">The player is never in danger from what they don't know. They are in danger from what they cannot fully predict. Progress belongs to those who can read the world well enough to act anyway. Powerlessness is the design.</p>
     </div>
-    <div class="philosophy-block">
-      <div class="philosophy-quote">"Silhouettes are the core gameplay system."</div>
-      <div class="philosophy-text">Remove the silhouettes and the game collapses. Shape is the player's only identifier for behavioural patterns. Readability comes from shape and scale alone. No colour, no texture, no UI labels.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<hr class="section-divider">
+  <!-- PROJECT HIGHLIGHT -->
+  <section id="s-highlight" class="proj-section">
+    <div class="section-eyebrow">Project Highlight</div>
+    <div class="highlight-label">Behavioural System Design</div>
+    <div class="highlight-intro">All creature behaviour is driven by a context-based state machine. The system is fully deterministic: same context, same output, every time. The player's power to manipulate the ecosystem depends entirely on this predictability.</div>
 
-<!-- CORE LOOP -->
-<section class="core-loop">
-  <div class="section-label">Core Loop</div>
-  <div class="loop-diagram">
-    <div class="loop-node">
-      <div class="loop-node-number">01</div>
-      <div class="loop-node-name">Observe</div>
-      <div class="loop-node-desc">Read creature behaviour. Learn movement patterns, detection radii, priority lists.</div>
-    </div>
-    <div class="loop-arrow">→</div>
-    <div class="loop-node">
-      <div class="loop-node-number">02</div>
-      <div class="loop-node-name">Orchestrate</div>
-      <div class="loop-node-desc">Manipulate the ecosystem. Use creature behaviour against itself to clear a path.</div>
-    </div>
-    <div class="loop-arrow">→</div>
-    <div class="loop-node">
-      <div class="loop-node-number">03</div>
-      <div class="loop-node-name">Progress</div>
-      <div class="loop-node-desc">Reach the exit. Each level builds on the last. Knowledge compounds.</div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- ECOSYSTEM -->
-<section class="ecosystem">
-  <div class="section-label">The Ecosystem</div>
-  <div class="ecosystem-intro">Four creatures. One food chain. Every interaction is deterministic. The player's power comes entirely from learning and exploiting consistent behaviour.</div>
-  <div class="creatures">
-
-    <div class="creature-card">
-      <img class="creature-image" src="images/stp-bat.jpg" alt="ApexBat">
-      <div>
-        <div class="creature-tier">T1 Carnivore</div>
-        <div class="creature-name">ApexBat</div>
-        <div class="creature-tagline">The apex predator. Attacks everything without exception.</div>
-        <div class="creature-role">The most dangerous creature in the game. Cannot be redirected. The player's only options are to avoid its detection zone entirely or engineer a situation where a corpse occupies it temporarily.</div>
+    <div class="bs-pipeline">
+      <div class="bs-component">
+        <div class="bs-component-num">01</div>
+        <div class="bs-component-name">Detection Radius</div>
+        <div class="bs-component-desc">A circular physics body centred on the creature. Broadcasts the type of every entity inside it (player, creature, fruit, or corpse) to the State Decider.</div>
+      </div>
+      <div class="bs-component">
+        <div class="bs-component-num">02</div>
+        <div class="bs-component-name">State Decider</div>
+        <div class="bs-component-desc">The priority engine. When multiple conditions are active simultaneously, it evaluates all of them against the creature's priority list and returns the highest-ranked state.</div>
+      </div>
+      <div class="bs-component">
+        <div class="bs-component-num">03</div>
+        <div class="bs-component-name">State Manager</div>
+        <div class="bs-component-desc">Holds the current active state. Switches immediately when the Decider returns a different state. Activates the correct Behaviour Node and deactivates all others.</div>
+      </div>
+      <div class="bs-component">
+        <div class="bs-component-num">04</div>
+        <div class="bs-component-name">Behaviour Node</div>
+        <div class="bs-component-desc">One script node per state. Runs its logic loop until the State Manager deactivates it or the task completes, then notifies the Manager to re-evaluate.</div>
       </div>
     </div>
 
-    <div class="creature-card">
-      <img class="creature-image" src="images/stp-slug.jpg" alt="UncannySlug">
-      <div>
-        <div class="creature-tier">T1 Herbivore</div>
-        <div class="creature-name">UncannySlug</div>
-        <div class="creature-tagline">Aggressive and indiscriminate. Attacks everything it detects.</div>
-        <div class="creature-role">Dangerous to the player but exploitable against T2 Carnivores. Its indiscriminate aggression means the player can weaponize it by baiting it toward any target.</div>
+    <div class="bs-example">
+      <div class="bs-example-label">Priority Resolution: T2 Herbivore detects food and creature simultaneously</div>
+      <div class="bs-example-flow">
+        <div class="bs-conditions">
+          <div class="bs-col-label">Active Conditions</div>
+          <div class="bs-condition-row">
+            <span class="bs-condition-trigger">Fruit detected</span>
+            <span class="bs-condition-sep">→</span>
+            <span class="bs-condition-state">Opportunity</span>
+          </div>
+          <div class="bs-condition-row">
+            <span class="bs-condition-trigger">Creature detected</span>
+            <span class="bs-condition-sep">→</span>
+            <span class="bs-condition-state">Flee</span>
+          </div>
+        </div>
+        <div class="bs-priority-col">
+          <div class="bs-col-label">Priority List</div>
+          <div class="bs-priority-item winner">
+            <div class="bs-rank">1</div> Flee
+          </div>
+          <div class="bs-priority-item">
+            <div class="bs-rank">2</div> Opportunity
+          </div>
+          <div class="bs-priority-item">
+            <div class="bs-rank">3</div> Neutral
+          </div>
+        </div>
+        <div class="bs-result">
+          <div class="bs-col-label">Result</div>
+          <div class="bs-result-state">Flee</div>
+          <div class="bs-result-note">Survival overrides hunger. Move into its detection radius while it's eating and it abandons the fruit entirely. A behaviour the player learns to exploit for misdirection.</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="creature-card">
-      <img class="creature-image" src="images/stp-crayfish.jpg" alt="Cave Crayfish">
-      <div>
-        <div class="creature-tier">T2 Carnivore</div>
-        <div class="creature-name">Cave Crayfish</div>
-        <div class="creature-tagline">A predator that hunts most creatures but defers to the apex.</div>
-        <div class="creature-role">Dangerous but vulnerable to the Slug. Its eating behaviour (pausing on a corpse) creates the primary opening window the player targets in chain reaction puzzles.</div>
-      </div>
+  <!-- GDD -->
+  <section id="s-gdd" class="proj-section">
+    <div class="section-eyebrow">Game Design Document</div>
+    <div class="gdd-window" id="gddWindow">
+      <button class="gdd-expand-btn" id="gddExpandBtn">⤢ Expand</button>
+      <iframe class="gdd-iframe" src="stp-gdd.pdf"></iframe>
     </div>
+  </section>
 
-    <div class="creature-card">
-      <img class="creature-image" src="images/stp-mushroomhead.jpg" alt="MushroomHead">
-      <div>
-        <div class="creature-tier">T2 Herbivore</div>
-        <div class="creature-name">MushroomHead</div>
-        <div class="creature-tagline">The most passive creature in the ecosystem. Easily startled, easily manipulated.</div>
-        <div class="creature-role">The player's primary manipulation tool. Attracted by mushrooms and repelled by creatures. The player can move it predictably by exploiting either response.</div>
-      </div>
+  <!-- PLAY -->
+  <section id="s-play" class="proj-section">
+    <div class="section-eyebrow">Play</div>
+    <div class="embed-controls">
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>or</span> <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>to move &nbsp;·&nbsp;</span> <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
     </div>
-
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- PROTOTYPE VIDEO -->
-<section class="prototype">
-  <div class="section-label">Gameplay</div>
-  <div class="prototype-desc">Three levels built in two weeks. The ecosystem running in real time: creatures detecting, deciding, acting.</div>
-  <div class="video-container">
-    <!-- YouTube embed -->
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CD8srFoZfuI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;"></iframe>
-    
-  </div>
-</section>
-
-<hr class="section-divider">
-
-<!-- WHAT WE BUILT -->
-<section class="built">
-  <div class="section-label">What We Built</div>
-  <div class="built-stats">
-    <div class="stat">
-      <div class="stat-number">3</div>
-      <div class="stat-label">Levels</div>
+    <div class="game-frame-wrap">
+      <iframe id="stp-frame" src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
     </div>
-    <div class="stat">
-      <div class="stat-number">30</div>
-      <div class="stat-label">Minutes of gameplay</div>
+    <div class="embed-note">No pause menu. Reload the page to reset the game.</div>
+    <div class="level-switcher">
+      <span>Jump to level:</span>
+      <button class="level-btn active" onclick="switchLevel('Level1', this)">Level 1</button>
+      <button class="level-btn" onclick="switchLevel('Level2', this)">Level 2</button>
+      <button class="level-btn" onclick="switchLevel('Level3', this)">Level 3</button>
     </div>
-    <div class="stat">
-      <div class="stat-number">2</div>
-      <div class="stat-label">Weeks to build</div>
-    </div>
-  </div>
-  <div class="built-text">Each level introduces new creature interactions and tools, building a complete knowledge transfer arc from first encounter to confident manipulation.</div>
-  <div class="built-tech">Built in Phaser Editor 5 using a modular script node architecture. Every creature is assembled from the same four components: Detection Radius, State Decider, State Manager, and Behaviour Node. Adding a new creature requires no new system code.</div>
-</section>
+  </section>
 
-<hr class="section-divider">
-
-<!-- ART GALLERY -->
-<section class="gallery">
-  <div class="section-label">Art Direction</div>
-  <div class="gallery-grid">
-    <img class="gallery-image" src="images/stp-characters.jpg" alt="Character design">
-    <img class="gallery-image" src="images/stp-environment.jpg" alt="Environment art">
-    <img class="gallery-image" src="images/stp-level1.jpg" alt="Level 1 design">
-  </div>
-  <div class="gallery-credits">Art by Aarya, Vedant, Vansh, Tanisha</div>
-</section>
+</main>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  // Scroll nav
+  const scrollItems = document.querySelectorAll('.scroll-item');
+  const targetSections = [...scrollItems].map(item => document.getElementById(item.dataset.target));
+  let fadeTimer;
+
+  function updateScrollNav() {
+    const winH = window.innerHeight;
+    let activeIdx = 0;
+    targetSections.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= winH * 0.5) activeIdx = i;
+    });
+    scrollItems.forEach((item, i) => item.classList.toggle('active', i === activeIdx));
+    const nav = document.getElementById('scrollNav');
+    nav.classList.add('visible');
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(() => nav.classList.remove('visible'), 1500);
+  }
+
+  window.addEventListener('scroll', updateScrollNav, { passive: true });
+
+  scrollItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      targetSections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // GDD expand / collapse
+  let gddExpanded = false;
+  document.getElementById('gddExpandBtn').addEventListener('click', () => {
+    gddExpanded = !gddExpanded;
+    document.getElementById('gddWindow').style.height = gddExpanded ? '90vh' : '60vh';
+    document.getElementById('gddExpandBtn').textContent = gddExpanded ? '⤡ Collapse' : '⤢ Expand';
+  });
+
+  // Level switcher
+  function switchLevel(levelKey, btn) {
+    const iframe = document.getElementById('stp-frame');
+    const game = iframe.contentWindow.game;
+    if (!game) return;
+    game.registry.set('isMenuOpen', false);
+    game.registry.remove('activeCheckpoint');
+    game.scene.getScenes(true).forEach(s => game.scene.stop(s.sys.settings.key));
+    game.scene.start(levelKey);
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
 </script>
 </body>
 </html>
