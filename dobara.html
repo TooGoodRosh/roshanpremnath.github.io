@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zone-Out | Roshan Premnath</title>
+<title>Dobara | Roshan Premnath</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,41 +63,30 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .highlight-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
 .highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 600px; line-height: 1.6; }
 
-/* COLOUR SCHEME SYSTEM */
-.cs-seed { border: 1px solid rgba(26,26,26,0.08); padding: 28px 32px; margin-bottom: 1px; display: flex; align-items: flex-start; gap: 40px; }
-.cs-seed-tag { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; margin-top: 2px; }
-.cs-seed-text { font-size: 14px; color: rgba(26,26,26,0.6); line-height: 1.65; max-width: 560px; }
-.cs-seed-text strong { color: #1A1A1A; font-weight: 600; }
+/* PHASE GRID */
+.phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(26,26,26,0.08); border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
+.phase-card { background: #FAF7F2; padding: 32px 28px; }
+.phase-card.resolved { background: rgba(46,204,138,0.04); }
+.phase-day { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+.phase-node-count { font-size: 52px; font-weight: 700; color: #1A1A1A; letter-spacing: -3px; line-height: 1; margin-bottom: 4px; }
+.phase-node-label { font-size: 11px; color: rgba(26,26,26,0.35); font-weight: 400; margin-bottom: 28px; }
+.phase-attr { margin-bottom: 16px; }
+.phase-attr-key { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.phase-attr-val { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.7); line-height: 1.4; }
+.phase-attr-val.shift { color: #F47A23; }
+.phase-attr-val.final { color: #2ECC8A; }
 
-.cs-table { border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
-.cs-table-head { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0; background: rgba(26,26,26,0.025); border-bottom: 1px solid rgba(26,26,26,0.08); }
-.cs-table-head div { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.4); letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px; }
-.cs-row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(26,26,26,0.06); align-items: center; }
-.cs-row:last-child { border-bottom: none; }
-.cs-element { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-right: 1px solid rgba(26,26,26,0.06); }
-.cs-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.cs-element-name { font-size: 13px; font-weight: 600; color: #1A1A1A; }
-.cs-rule { padding: 18px 24px; border-right: 1px solid rgba(26,26,26,0.06); }
-.cs-rule-formula { font-size: 13px; font-weight: 600; color: #1A1A1A; font-family: monospace; margin-bottom: 3px; }
-.cs-rule-name { font-size: 11px; color: rgba(26,26,26,0.4); }
-.cs-purpose { padding: 18px 24px; font-size: 12px; color: rgba(26,26,26,0.55); line-height: 1.55; }
+/* INSIGHT CALLOUT */
+.insight-block { border: 1px solid rgba(26,26,26,0.08); padding: 32px; }
+.insight-label { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.insight-text { font-size: 15px; color: rgba(26,26,26,0.7); line-height: 1.75; max-width: 720px; }
+.insight-text strong { color: #1A1A1A; font-weight: 600; }
 
-.cs-note { border: 1px solid rgba(46,204,138,0.2); background: rgba(46,204,138,0.04); padding: 20px 24px; }
-.cs-note-text { font-size: 13px; color: rgba(26,26,26,0.6); line-height: 1.6; }
-.cs-note-text strong { color: #1A1A1A; }
-
-/* GDD WINDOW */
+/* GDD / DOC WINDOW */
 .gdd-window { position: relative; height: 60vh; border: 1px solid rgba(26,26,26,0.1); overflow: hidden; transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .gdd-iframe { width: 100%; height: 100%; border: none; display: block; }
 .gdd-expand-btn { position: absolute; top: 12px; right: 12px; z-index: 10; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.85); color: #FAF7F2; border: none; padding: 8px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; backdrop-filter: blur(4px); letter-spacing: 0.3px; }
 .gdd-expand-btn:hover { background: #2ECC8A; color: #1A1A1A; }
-
-/* GAME EMBED */
-.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
-.embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
-.game-frame-wrap { background: #1A1A1A; width: 100%; overflow: hidden; }
-.game-frame-wrap iframe { display: block; width: 100%; aspect-ratio: 16/9; height: auto; border: none; }
 
 /* SCROLL NAV */
 .scroll-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 200; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
@@ -124,9 +113,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   .proj-meta-bar { gap: 16px; padding: 24px 0 40px; }
   .proj-section { padding: 48px 24px; }
   .concept-grid { grid-template-columns: 1fr; gap: 24px; }
-  .cs-seed { flex-direction: column; gap: 12px; }
-  .cs-table-head, .cs-row { grid-template-columns: 120px 1fr; }
-  .cs-table-head div:last-child, .cs-purpose { display: none; }
+  .phase-grid { grid-template-columns: 1fr; }
   .gdd-window { height: 50vh; }
 }
 </style>
@@ -173,8 +160,8 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
       <span class="scroll-label">GDD</span>
       <div class="scroll-dot"></div>
     </div>
-    <div class="scroll-item" data-target="s-play">
-      <span class="scroll-label">Play</span>
+    <div class="scroll-item" data-target="s-flowmap">
+      <span class="scroll-label">Flowmap</span>
       <div class="scroll-dot"></div>
     </div>
   </div>
@@ -185,18 +172,18 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   <!-- HEADER -->
   <section id="s-header" class="proj-header">
     <a href="projects.html" class="back-link">← All projects</a>
-    <div class="proj-eyebrow">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
-    <div class="proj-title">Zone-Out</div>
+    <div class="proj-eyebrow">Puzzle Design &nbsp;·&nbsp; Narrative Design &nbsp;·&nbsp; BYOG 2025</div>
+    <div class="proj-title">Dobara</div>
     <div class="proj-meta-bar">
-      <div class="proj-date">April 2026 &nbsp;·&nbsp; 2 days</div>
+      <div class="proj-date">BYOG 2025 &nbsp;·&nbsp; 48 hours</div>
       <div class="proj-role-tags">
         <span class="proj-role-tag">Game Designer</span>
-        <span class="proj-role-tag">Systems Designer</span>
-        <span class="proj-role-tag">Developer</span>
+        <span class="proj-role-tag">Puzzle Designer</span>
       </div>
       <div class="proj-actions">
-        <a class="btn-primary" href="#s-play">Play Now ↓</a>
+        <a class="btn-primary" href="https://thegamedesignhermit.itch.io/dobara" target="_blank" rel="noopener">Download on itch.io ↗</a>
         <a class="btn-secondary" href="#s-gdd">View GDD ↓</a>
+        <a class="btn-secondary" href="#s-flowmap">View Flowmap ↓</a>
       </div>
     </div>
   </section>
@@ -206,119 +193,91 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
     <div class="section-eyebrow">Concept</div>
     <div class="north-star-block">
       <div class="ns-label">North Star</div>
-      <div class="ns-text">Don't get caught.</div>
+      <div class="ns-text">You will be wrong twice before you are right once.</div>
     </div>
     <div class="concept-grid">
-      <p class="concept-p">Zone-Out is a cursor survival game set on graph paper. Geometric shapes pour in from every edge. The player controls nothing but their own position. There are no attacks, no power-ups, no lives. Only the question of how long you can last before the shapes find you.</p>
-      <p class="concept-p">The framing is a classroom daydream. The cursor is the player's mind, wandering. The shapes are the intrusion of the real world. Every 30 seconds the world repaints itself in a new colour scheme, a dramatic visual punctuation that signals both reward and escalating danger. Get caught, and the teacher notices.</p>
+      <p class="concept-p">Dobara (Re:Murderer) is a node-based detective puzzle built for BYOG 2025. The player is a detective sequencing evidence into a causal tree to name the murderer. Each node in the sequence links causally to the next: every connection must hold logically from motive to action to consequence.</p>
+      <p class="concept-p">The design is built on a single detonation: new evidence arrives, the prime suspect shifts, and the causal chain the player built collapses. Not partially. Entirely. The restructure that follows is the game. Every phase ends in a conclusion. Every conclusion but the last one is wrong.</p>
     </div>
   </section>
 
   <!-- PROJECT HIGHLIGHT -->
   <section id="s-highlight" class="proj-section">
     <div class="section-eyebrow">Project Highlight</div>
-    <div class="highlight-label">Procedural Colour Scheme Generation</div>
-    <div class="highlight-intro">Every 30 seconds, the game world repaints using a single random seed hue. All element colours derive from that seed through colour theory, guaranteeing harmony while ensuring every palette feels dramatically different.</div>
+    <div class="highlight-label">Phase Escalation</div>
+    <div class="highlight-intro">Three phases. Three prime suspects. The node count grows each phase, but the prime suspect change is what forces a complete restructure of the causal tree, not just its extension.</div>
 
-    <div class="cs-seed">
-      <div class="cs-seed-tag">Seed</div>
-      <div class="cs-seed-text">A random integer <strong>H (0-359°)</strong> is chosen each cycle. No colour is picked independently. Every element on screen is mathematically derived from H, so the palette is always coherent regardless of what value H lands on.</div>
-    </div>
-
-    <div class="cs-table">
-      <div class="cs-table-head">
-        <div>Element</div>
-        <div>Derivation Rule</div>
-        <div>Design Purpose</div>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-day">Day 01</div>
+        <div class="phase-node-count">5</div>
+        <div class="phase-node-label">evidence nodes</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Canvas on open</div>
+          <div class="phase-attr-val">Partially pre-filled</div>
+        </div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Prime Suspect</div>
+          <div class="phase-attr-val">Suspect A</div>
+        </div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Player guidance</div>
+          <div class="phase-attr-val">Tutorial-guided</div>
+        </div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Design goal</div>
+          <div class="phase-attr-val">Teach causal sequencing through scaffolded discovery</div>
+        </div>
       </div>
 
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(210,80%,60%);"></div>
-          <div class="cs-element-name">Cursor</div>
+      <div class="phase-card">
+        <div class="phase-day">Day 02</div>
+        <div class="phase-node-count">7</div>
+        <div class="phase-node-label">evidence nodes</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Canvas on open</div>
+          <div class="phase-attr-val">Empty</div>
         </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H</div>
-          <div class="cs-rule-name">Seed hue, full saturation</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Prime Suspect</div>
+          <div class="phase-attr-val shift">Suspect B — suspect shifts</div>
         </div>
-        <div class="cs-purpose">The player's identity. Anchors the entire palette. Always vivid and readable.</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Player guidance</div>
+          <div class="phase-attr-val">Player alone</div>
+        </div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Design goal</div>
+          <div class="phase-attr-val">Force a total restructure — the prior chain is now entirely wrong</div>
+        </div>
       </div>
 
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(30,12%,10%);"></div>
-          <div class="cs-element-name">Background</div>
+      <div class="phase-card resolved">
+        <div class="phase-day">Day 03</div>
+        <div class="phase-node-count">9</div>
+        <div class="phase-node-label">evidence nodes</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Canvas on open</div>
+          <div class="phase-attr-val">Empty</div>
         </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H + 180°</div>
-          <div class="cs-rule-name">Complementary, very dark</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Prime Suspect</div>
+          <div class="phase-attr-val final">Suspect C — final reveal</div>
         </div>
-        <div class="cs-purpose">Maximum contrast against the cursor. Keeps graph paper legible at all palette values.</div>
-      </div>
-
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(270,70%,55%);"></div>
-          <div class="cs-element-name">Square</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Player guidance</div>
+          <div class="phase-attr-val">Player alone</div>
         </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H + 60°</div>
-          <div class="cs-rule-name">Analogous offset</div>
+        <div class="phase-attr">
+          <div class="phase-attr-key">Design goal</div>
+          <div class="phase-attr-val">Arrive at a watertight conclusion with all evidence accounted for</div>
         </div>
-        <div class="cs-purpose">Distinct from cursor but harmonious. Immediately readable as the primary threat.</div>
-      </div>
-
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(330,65%,50%);"></div>
-          <div class="cs-element-name">Triangle body</div>
-        </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H + 120°</div>
-          <div class="cs-rule-name">Triadic</div>
-        </div>
-        <div class="cs-purpose">Separated enough from the square to be recognisable as a different threat type.</div>
-      </div>
-
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(310,75%,65%);"></div>
-          <div class="cs-element-name">Triangle safe edge</div>
-        </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H + 100°</div>
-          <div class="cs-rule-name">Triadic, lighter offset</div>
-        </div>
-        <div class="cs-purpose">Visually distinguishable from the triangle body. The player must learn to read this edge to use the triangle's clear mechanic.</div>
-      </div>
-
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(120,60%,55%);"></div>
-          <div class="cs-element-name">Circle</div>
-        </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H - 90°</div>
-          <div class="cs-rule-name">Split-complementary</div>
-        </div>
-        <div class="cs-purpose">Reads as safe and distinct from threats. Players learn to associate this colour with a shield before they understand the mechanic.</div>
-      </div>
-
-      <div class="cs-row">
-        <div class="cs-element">
-          <div class="cs-swatch" style="background: hsl(240,55%,50%);"></div>
-          <div class="cs-element-name">Timer overlay</div>
-        </div>
-        <div class="cs-rule">
-          <div class="cs-rule-formula">H + 30°</div>
-          <div class="cs-rule-name">Near-analogous</div>
-        </div>
-        <div class="cs-purpose">Close to the cursor hue, so the timer feels like it belongs to the player rather than the world.</div>
       </div>
     </div>
 
-    <div class="cs-note">
-      <div class="cs-note-text">The result is a system that generates <strong>infinite unique palettes</strong> with zero design input per cycle. No palette is hand-authored. Every colour relationship is always mathematically valid. The 30-second repaint becomes a spectacle the player earns, a signal that difficulty has escalated, and a source of visual variety, all at once.</div>
+    <div class="insight-block">
+      <div class="insight-label">Design Insight</div>
+      <div class="insight-text">Adding nodes alone creates a scaling problem. <strong>Changing the prime suspect creates a paradigm shift.</strong> Every causal link in the sequence flows from motive and opportunity. Shift the suspect and the logic inverts: the evidence that made Suspect A the killer now points away from Suspect B entirely. The player is not extending their answer. They are discarding it and starting again. That is the moment the design was built to deliver.</div>
     </div>
   </section>
 
@@ -327,31 +286,26 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
     <div class="section-eyebrow">Game Design Document</div>
     <div class="gdd-window" id="gddWindow">
       <button class="gdd-expand-btn" id="gddExpandBtn">⤢ Expand</button>
-      <iframe class="gdd-iframe" src="zo-gdd.pdf"></iframe>
+      <iframe class="gdd-iframe" src="dobara-gdd.pdf"></iframe>
     </div>
   </section>
 
-  <!-- PLAY -->
-  <section id="s-play" class="proj-section">
-    <div class="section-eyebrow">Play</div>
-    <div class="embed-controls">
-      <kbd>Mouse</kbd> <span>to move &nbsp;·&nbsp; Avoid all shapes &nbsp;·&nbsp; Touch a Circle to use it as a shield</span>
+  <!-- FLOWMAP -->
+  <section id="s-flowmap" class="proj-section">
+    <div class="section-eyebrow">Game Flow</div>
+    <div class="gdd-window" id="flowWindow">
+      <button class="gdd-expand-btn" id="flowExpandBtn">⤢ Expand</button>
+      <iframe class="gdd-iframe" src="dobara-flowmap.pdf"></iframe>
     </div>
-    <div class="game-frame-wrap">
-      <iframe src="zoneout-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
-    </div>
-    <div class="embed-note">One hit, no lives. Survive as long as you can.</div>
   </section>
 
 </main>
 
 <script>
-  // Hamburger
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('open');
   });
 
-  // Scroll nav
   const scrollItems = document.querySelectorAll('.scroll-item');
   const targetSections = [...scrollItems].map(item => document.getElementById(item.dataset.target));
   let fadeTimer;
@@ -377,12 +331,18 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
     });
   });
 
-  // GDD expand / collapse
   let gddExpanded = false;
   document.getElementById('gddExpandBtn').addEventListener('click', () => {
     gddExpanded = !gddExpanded;
     document.getElementById('gddWindow').style.height = gddExpanded ? '90vh' : '60vh';
     document.getElementById('gddExpandBtn').textContent = gddExpanded ? '⤡ Collapse' : '⤢ Expand';
+  });
+
+  let flowExpanded = false;
+  document.getElementById('flowExpandBtn').addEventListener('click', () => {
+    flowExpanded = !flowExpanded;
+    document.getElementById('flowWindow').style.height = flowExpanded ? '90vh' : '60vh';
+    document.getElementById('flowExpandBtn').textContent = flowExpanded ? '⤡ Collapse' : '⤢ Expand';
   });
 </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work | Roshan Premnath</title>
+<title>Projects | Roshan Premnath</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,10 +12,10 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 /* SIDEBAR */
 .sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
 .sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
-.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
-.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
-.sidebar-nav a:hover { color: #1A1A1A; }
-.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-nav a { font-size: 13px; font-weight: 700; color: rgba(26,26,26,0.6); text-decoration: none; padding: 11px 16px; border: 1px solid rgba(26,26,26,0.15); display: block; margin-left: 0; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; border-color: rgba(26,26,26,0.4); background: rgba(26,26,26,0.03); }
+.sidebar-nav a.active { color: #1A1A1A; background: #2ECC8A; border-color: #2ECC8A; }
 
 /* MOBILE TOP BAR */
 .topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
@@ -56,6 +56,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .badge-active { background: rgba(46,204,138,0.12); color: #2ECC8A; }
 .badge-winner { background: rgba(244,122,35,0.12); color: #F47A23; }
 .badge-playable { background: rgba(26,26,26,0.07); color: rgba(26,26,26,0.55); }
+.badge-jam { background: rgba(89,130,239,0.10); color: #5982EF; }
 
 .active-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2ECC8A; margin-right: 6px; animation: pulse 2s infinite; vertical-align: middle; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -81,7 +82,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 <aside class="sidebar">
   <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
   <nav class="sidebar-nav">
-    <a href="work.html" class="active">Work</a>
+    <a href="projects.html" class="active">Projects</a>
     <a href="breakdowns.html">Breakdowns</a>
     <a href="about.html">About</a>
   </nav>
@@ -94,19 +95,31 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   </button>
 </div>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="work.html">Work</a>
+  <a href="projects.html">Projects</a>
   <a href="breakdowns.html">Breakdowns</a>
   <a href="about.html">About</a>
 </div>
 
 <main class="main">
 <div class="page-header">
-  <div class="page-title">Work</div>
+  <div class="page-title">Projects</div>
   <div class="page-sub">All projects, chronological, most recent first</div>
 </div>
 
 <div class="timeline">
   <div class="timeline-year">2026</div>
+
+  <a class="entry" href="apotheosis.html">
+    <div class="entry-date"><strong>Feb</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Apotheosis</div>
+      <div class="entry-disciplines">Combat Design &nbsp;·&nbsp; Systems Design &nbsp;·&nbsp; Narrative Integration</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">Ongoing</div>
+      <span class="badge badge-active"><span class="active-dot"></span>Active Development</span>
+    </div>
+  </a>
 
   <a class="entry" href="survivethepale.html">
     <div class="entry-date"><strong>May</strong>2026</div>
@@ -143,18 +156,20 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
       <span class="badge badge-playable">Playable Prototype</span>
     </div>
   </a>
+  <div class="timeline-year">2025</div>
 
-  <a class="entry" href="apotheosis.html">
-    <div class="entry-date"><strong>Feb</strong>2026</div>
+  <a class="entry" href="dobara.html">
+    <div class="entry-date"><strong>BYOG</strong>2025</div>
     <div class="entry-main">
-      <div class="entry-title">Apotheosis</div>
-      <div class="entry-disciplines">Combat Design &nbsp;·&nbsp; Systems Design &nbsp;·&nbsp; Narrative Integration</div>
+      <div class="entry-title">Dobara</div>
+      <div class="entry-disciplines">Puzzle Design &nbsp;·&nbsp; Narrative Design &nbsp;·&nbsp; Game Jam</div>
     </div>
     <div class="entry-right">
-      <div class="entry-duration">Ongoing</div>
-      <span class="badge badge-active"><span class="active-dot"></span>Active Development</span>
+      <div class="entry-duration">48 hours</div>
+      <span class="badge badge-jam">Game Jam Entry</span>
     </div>
   </a>
+
 </div>
 
 </main>
