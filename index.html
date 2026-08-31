@@ -7,22 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-.nav-name { font-size: 16px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.45); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
-.nav-links a:hover { color: #1A1A1A; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; }
+.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
-.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 24px 64px; flex-direction: column; gap: 20px; z-index: 99; }
-.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
 .mobile-menu.open { display: flex; }
 
+/* MAIN CONTENT */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
+
 /* HERO */
-.hero { padding: 160px 64px 80px; display: flex; flex-direction: column; justify-content: center; }
+.hero { padding: 100px 64px 72px; display: flex; flex-direction: column; justify-content: center; }
 .hero-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
 .hero-name { font-size: 80px; font-weight: 700; color: #2ECC8A; line-height: 0.95; letter-spacing: -3px; }
 .hero-tagline { font-size: 20px; font-weight: 400; color: rgba(26,26,26,0.55); margin-top: 28px; max-width: 500px; line-height: 1.65; }
@@ -43,10 +51,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
 .btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
 
-.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
 .embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
-.level-switcher { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.level-switcher { display: flex; align-items: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
 .level-switcher span { font-size: 12px; color: rgba(26,26,26,0.4); margin-right: 4px; }
 .level-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); color: rgba(26,26,26,0.6); padding: 5px 14px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
 .level-btn:hover { background: #1A1A1A; color: #FAF7F2; border-color: #1A1A1A; }
@@ -56,23 +64,21 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 /* ALL WORK */
 .all-work { padding: 56px 64px; border-top: 1px solid rgba(26,26,26,0.08); display: flex; align-items: center; justify-content: space-between; }
-.all-work a { font-size: 22px; font-weight: 700; color: #1A1A1A; text-decoration: none; letter-spacing: -0.5px; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
+.all-work a { font-size: 22px; font-weight: 700; color: #1A1A1A; text-decoration: none; letter-spacing: -0.5px; transition: color 0.2s; }
 .all-work a:hover { color: #2ECC8A; }
 .all-work-count { font-size: 13px; font-weight: 400; color: rgba(26,26,26,0.35); }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu { padding: 24px; }
-  .hero { padding: 120px 24px 60px; }
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .hero { padding: 48px 24px 56px; }
   .hero-name { font-size: 52px; letter-spacing: -2px; }
   .hero-tagline { font-size: 17px; }
   .featured { padding: 0 24px 60px; }
   .featured-title { font-size: 36px; letter-spacing: -1px; }
-  .featured-embed iframe { height: 380px; }
-  .embed-placeholder { height: 380px; }
   .all-work { padding: 40px 24px; }
   .all-work a { font-size: 18px; }
 }
@@ -80,67 +86,72 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 </head>
 <body>
 
-<nav>
-  <a class="nav-name" href="index.html">Roshan Premnath</a>
-  <div class="nav-links">
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
     <a href="work.html">Work</a>
     <a href="breakdowns.html">Breakdowns</a>
     <a href="about.html">About</a>
-  </div>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+  </nav>
+</aside>
 
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</div>
 <div class="mobile-menu" id="mobileMenu">
   <a href="work.html">Work</a>
   <a href="breakdowns.html">Breakdowns</a>
   <a href="about.html">About</a>
 </div>
 
-<div class="hero">
-  <div class="hero-label">Game Designer</div>
-  <div class="hero-name">Roshan<br>Premnath</div>
-  <div class="hero-tagline">I design systems where understanding is the player's greatest power.</div>
-  <div class="hero-divider"></div>
-</div>
+<main class="main">
+  <div class="hero">
+    <div class="hero-label">Game Designer</div>
+    <div class="hero-name">Roshan<br>Premnath</div>
+    <div class="hero-tagline">I design systems where understanding is the player's greatest power.</div>
+    <div class="hero-divider"></div>
+  </div>
 
-<div class="featured">
-  <div class="featured-label">Frontline Project</div>
-  <div class="featured-card">
-    <div class="featured-tags">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
-    <div class="featured-title">Survive the Pale</div>
-    <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
-    <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
-    <div class="featured-actions">
-      <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
-      <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
-    </div>
-    <div class="embed-controls">
-      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>or</span> <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>to move &nbsp;·&nbsp;</span> <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
-    </div>
-    <div class="featured-embed">
-      <iframe id="stp-frame" src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
-    </div>
-    <div class="embed-note">No pause menu — reload the page to reset the game.</div>
-    <div class="level-switcher">
-      <span>Jump to level:</span>
-      <button class="level-btn active" onclick="switchLevel('Level1', this)">Level 1</button>
-      <button class="level-btn" onclick="switchLevel('Level2', this)">Level 2</button>
-      <button class="level-btn" onclick="switchLevel('Level3', this)">Level 3</button>
+  <div class="featured">
+    <div class="featured-label">Frontline Project</div>
+    <div class="featured-card">
+      <div class="featured-tags">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
+      <div class="featured-title">Survive the Pale</div>
+      <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
+      <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
+      <div class="featured-actions">
+        <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
+        <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
+      </div>
+      <div class="embed-controls">
+        <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>or</span> <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>to move &nbsp;·&nbsp;</span> <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
+      </div>
+      <div class="featured-embed">
+        <iframe id="stp-frame" src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
+      </div>
+      <div class="embed-note">No pause menu — reload the page to reset the game.</div>
+      <div class="level-switcher">
+        <span>Jump to level:</span>
+        <button class="level-btn active" onclick="switchLevel('Level1', this)">Level 1</button>
+        <button class="level-btn" onclick="switchLevel('Level2', this)">Level 2</button>
+        <button class="level-btn" onclick="switchLevel('Level3', this)">Level 3</button>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="all-work">
-  <a href="work.html">See all work ↗</a>
-  <span class="all-work-count">4 projects &nbsp;·&nbsp; 2026</span>
-</div>
+  <div class="all-work">
+    <a href="work.html">See all work ↗</a>
+    <span class="all-work-count">4 projects &nbsp;·&nbsp; 2026</span>
+  </div>
+</main>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
 
   function switchLevel(levelKey, btn) {
     const iframe = document.getElementById('stp-frame');
