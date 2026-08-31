@@ -140,6 +140,9 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .highlight-eyebrow { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; text-transform: none; margin-bottom: 16px; }
 .obsidian-link-block { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .obsidian-link-note { font-size: 11px; color: rgba(26,26,26,0.4); }
+.trailer-wrap { border: 1px solid rgba(26,26,26,0.1); background: #1A1A1A; line-height: 0; }
+.trailer-wrap video { width: 100%; display: block; aspect-ratio: 16/9; }
+.trailer-caption { font-size: 12px; color: rgba(26,26,26,0.4); margin-top: 12px; max-width: 640px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -185,7 +188,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
       <div class="scroll-dot"></div>
     </div>
     <div class="scroll-item" data-target="s-gallery">
-      <span class="scroll-label">Gallery</span>
+      <span class="scroll-label">Trailer</span>
       <div class="scroll-dot"></div>
     </div>
   </div>
@@ -283,35 +286,13 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- TRAILER -->
   <section id="s-gallery" class="proj-section">
-    <div class="section-eyebrow">Art &amp; Prototype</div>
-    <div class="gallery-window" id="galleryWindow">
-      <button class="gallery-expand-btn" id="galleryExpandBtn">⤢ Expand</button>
-      <div class="gallery-scroll">
-        <div class="gallery-slot">
-          <div class="gallery-slot-icon">▣</div>
-          <div class="gallery-slot-label">Combat Prototype</div>
-        </div>
-        <div class="gallery-slot">
-          <div class="gallery-slot-icon">▣</div>
-          <div class="gallery-slot-label">Level Layout</div>
-        </div>
-        <div class="gallery-slot">
-          <div class="gallery-slot-icon">▣</div>
-          <div class="gallery-slot-label">Enemy Design</div>
-        </div>
-        <div class="gallery-slot">
-          <div class="gallery-slot-icon">▣</div>
-          <div class="gallery-slot-label">Concept Art</div>
-        </div>
-        <div class="gallery-slot">
-          <div class="gallery-slot-icon">▣</div>
-          <div class="gallery-slot-label">Boss Design</div>
-        </div>
-      </div>
+    <div class="section-eyebrow">Trailer</div>
+    <div class="trailer-wrap">
+      <video controls preload="metadata" src="apotheosis-trailer.mp4"></video>
     </div>
-    <div class="gallery-note">Art and screenshots will be added as development progresses.</div>
+    <div class="trailer-caption">This trailer was made as part of a college workshop. The gameplay showcased belongs to CD1 and considerable progress has been made since.</div>
   </section>
 
 </main>
