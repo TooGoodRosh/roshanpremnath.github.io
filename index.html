@@ -46,6 +46,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
 .embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
+.level-switcher { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+.level-switcher span { font-size: 12px; color: rgba(26,26,26,0.4); margin-right: 4px; }
+.level-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); color: rgba(26,26,26,0.6); padding: 5px 14px; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.level-btn:hover { background: #1A1A1A; color: #FAF7F2; border-color: #1A1A1A; }
+.level-btn.active { background: #2ECC8A; color: #1A1A1A; border-color: #2ECC8A; }
 .featured-embed { background: #1A1A1A; width: 100%; overflow: hidden; }
 .featured-embed iframe { display: block; width: 100%; aspect-ratio: 16/9; height: auto; border: none; }
 
@@ -112,12 +117,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
       <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
     </div>
     <div class="embed-controls">
-      <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>or</span> <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd> <span>to move &nbsp;·&nbsp;</span> <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
     </div>
     <div class="featured-embed">
-      <iframe src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
+      <iframe id="stp-frame" src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
     </div>
     <div class="embed-note">No pause menu — reload the page to reset the game.</div>
+    <div class="level-switcher">
+      <span>Jump to level:</span>
+      <button class="level-btn active" onclick="switchLevel('Level1', this)">Level 1</button>
+      <button class="level-btn" onclick="switchLevel('Level2', this)">Level 2</button>
+      <button class="level-btn" onclick="switchLevel('Level3', this)">Level 3</button>
+    </div>
   </div>
 </div>
 
@@ -130,6 +141,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  function switchLevel(levelKey, btn) {
+    const iframe = document.getElementById('stp-frame');
+    const game = iframe.contentWindow.game;
+    if (!game) return;
+
+    game.scene.getScenes(true).forEach(s => game.scene.stop(s.sys.settings.key));
+    game.scene.start(levelKey);
+
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
 </script>
 </body>
 </html>
