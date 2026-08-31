@@ -1,0 +1,56 @@
+{
+    "id": "3a15623d-b191-4ab0-ae05-d9cbe774a5e2",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "ArcadeImage",
+            "id": "fe52bc86-2096-4580-84e4-1005f751b674",
+            "label": "guapen",
+            "hitArea.shape": "RECTANGLE",
+            "hitArea.width": 416,
+            "hitArea.height": 120,
+            "texture": {
+                "key": "guapen"
+            },
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "body.physicsType": 1,
+            "body.width": 416,
+            "body.height": 120,
+            "list": [
+                {
+                    "prefabId": "18c8b3f2-e174-41b7-8d51-4f40f50c416d",
+                    "id": "c50e45e9-3524-43a5-8a71-0f246909faa6",
+                    "label": "hideOnAwake"
+                },
+                {
+                    "prefabId": "e5342b8e-2bdf-4010-af72-359018df7aca",
+                    "id": "2c63f510-6fd1-49ad-9902-a5f9144087f8",
+                    "label": "checkpointLogic"
+                },
+                {
+                    "prefabId": "f6277e45-aff8-48dd-904f-eef5d1c28b1e",
+                    "id": "4d9bc9ef-917a-459c-927c-a2056fc1d57d",
+                    "label": "syncPhysicsBody"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

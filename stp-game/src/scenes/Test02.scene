@@ -1,0 +1,137 @@
+{
+    "id": "e286ec83-f329-4703-834c-19e33f19b57c",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Test02",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "EditableTilemapLayer",
+            "id": "144c4533-bb71-41d8-b34a-3d4b157dcbbf",
+            "label": "Ground",
+            "y": 74,
+            "tilemapId": "0011afad-b347-4087-9230-2fc2b8778dbd"
+        },
+        {
+            "prefabId": "021213fb-3ad5-4574-b5b2-daf8fa6c4ebd",
+            "id": "15850faa-306d-4c2c-b040-426954c29d18",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "fruit",
+            "x": 491,
+            "y": 463
+        },
+        {
+            "prefabId": "e6d767ff-fa7a-4a39-b8c4-0075be7b60c9",
+            "id": "e35d3c09-a062-4b62-b3fd-f69f8373e309",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY",
+                "body.width",
+                "body.height"
+            ],
+            "label": "obstacle",
+            "x": -7,
+            "y": -168,
+            "scaleX": 10,
+            "scaleY": 1,
+            "body.width": 2080,
+            "body.height": 240,
+            "list": [
+                {
+                    "prefabId": "18c8b3f2-e174-41b7-8d51-4f40f50c416d",
+                    "id": "b300149d-0a26-4723-a901-23cf4a641a05",
+                    "label": "hideOnAwake"
+                },
+                {
+                    "prefabId": "067851f7-89a0-49a8-aba6-91dc6bb4510a",
+                    "id": "d9c4ec37-cc4b-402c-b53a-27d1584efa77",
+                    "label": "cameraController"
+                }
+            ]
+        },
+        {
+            "prefabId": "9c7cf13b-abf4-41b7-85bc-f51ba62d864e",
+            "id": "73aa5925-94e3-4422-aa22-ddbfb64ac60e",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "player",
+            "x": 218,
+            "y": 569
+        },
+        {
+            "prefabId": "ea7300ee-a28f-4982-8644-7a4ad49964b4",
+            "id": "14770305-8c56-4128-a7ab-ce5f425eea82",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "tier2Herbivore",
+            "x": 1484,
+            "y": 336
+        },
+        {
+            "prefabId": "85d792b1-b364-40c7-a71c-ad1779d2ab9f",
+            "id": "23ef2a07-2c9a-433e-8d4b-89f0735ce9c9",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "corpse",
+            "x": 705,
+            "y": 649
+        }
+    ],
+    "plainObjects": [
+        {
+            "id": "0011afad-b347-4087-9230-2fc2b8778dbd",
+            "type": "EditableTilemap",
+            "label": "editabletilemap",
+            "width": 40,
+            "height": 10,
+            "tileWidth": 64,
+            "tileHeight": 64,
+            "tilesets": [
+                {
+                    "name": "tilesheet_ground01",
+                    "imageKey": "tilesheet_ground01",
+                    "tileWidth": 64,
+                    "tileHeight": 64,
+                    "tileMargin": 0,
+                    "tileSpacing": 0
+                }
+            ],
+            "paintLayerId": "144c4533-bb71-41d8-b34a-3d4b157dcbbf",
+            "paintTileset": "tilesheet_ground01",
+            "layers": [
+                {
+                    "name": "Ground",
+                    "data": "[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,0,0,0,5,5,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,1,1,1,1,1,5,5,3,3,3,3,3,5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5,1,5,5,5,5,5,5,5,5,5,5,5,5,5,1,5,5,5,5,5,5,5,5,3,5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5,1,5,5,1,1,1,5,5,1,1,1,5,5,5,1,5,5,5,5,5,5,5,5,3,5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5,1,5,5,1,5,1,5,5,1,5,5,5,5,5,1,5,5,5,5,1,1,1,1,1,5,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5,1,5,5,1,5,5,5,5,1,1,1,5,5,5,1,5,5,5,5,1,2,2,2,2,2,5,5,5,5,5,0,0,0,0,0,5,5,5,5,5,1,5,5,1,1,1,1,5,5,5,1,5,5,5,1,5,5,5,5,1,2,2,2,5,5,2,5,5,5,5,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,5,5,5,1,5,5,5,5,3,3,3,3,3,2,2,5,5,5,5,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,5,5,5,5,5,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,0,0,0,0,0]",
+                    "width": 40,
+                    "height": 15,
+                    "tileWidth": 64,
+                    "tileHeight": 64
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

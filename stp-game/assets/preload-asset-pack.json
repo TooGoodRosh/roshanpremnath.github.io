@@ -1,0 +1,739 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/sprites/items/Obstacles/A_Big_Rock.png",
+                "type": "image",
+                "key": "A_Big_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Bone.png",
+                "type": "image",
+                "key": "A_Bone"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Bush.png",
+                "type": "image",
+                "key": "A_Bush"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Crystal.png",
+                "type": "image",
+                "key": "A_Crystal"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Door_Rock.png",
+                "type": "image",
+                "key": "A_Door_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Lake.png",
+                "type": "image",
+                "key": "A_Lake"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_M_Rock.png",
+                "type": "image",
+                "key": "A_M_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Mineshaft.png",
+                "type": "image",
+                "key": "A_Mineshaft"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Mushrrom_01.png",
+                "type": "image",
+                "key": "A_Mushrrom_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Big_Boii_Rock.png",
+                "type": "image",
+                "key": "A_N_Big_Boii_Rock_1"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_clift_01.png",
+                "type": "image",
+                "key": "A_N_clift_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Door_Rock1.png",
+                "type": "image",
+                "key": "A_N_Door_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Lake.png",
+                "type": "image",
+                "key": "A_N_Lake_1"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Mineshaft.png",
+                "type": "image",
+                "key": "A_N_Mineshaft_1"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_raft.png",
+                "type": "image",
+                "key": "A_N_raft"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rib_Bone.png",
+                "type": "image",
+                "key": "A_N_Rib_Bone_1"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock.png",
+                "type": "image",
+                "key": "A_N_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_M_01.png",
+                "type": "image",
+                "key": "A_N_Rock_M_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_M_02.png",
+                "type": "image",
+                "key": "A_N_Rock_M_02"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_S_01.png",
+                "type": "image",
+                "key": "A_N_Rock_S_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_tri.png",
+                "type": "image",
+                "key": "A_N_Rock_tri"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_V.png",
+                "type": "image",
+                "key": "A_N_Rock_V"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_V2.png",
+                "type": "image",
+                "key": "A_N_Rock_V2"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Rock_V3.png",
+                "type": "image",
+                "key": "A_N_Rock_V3"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_tomb_01.png",
+                "type": "image",
+                "key": "A_N_tomb"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Tomb_02.png",
+                "type": "image",
+                "key": "A_N_Tomb_02"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_tree_03.1.png",
+                "type": "image",
+                "key": "A_N_tree_03."
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_tree_04.png",
+                "type": "image",
+                "key": "A_N_tree_04"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Wall.png",
+                "type": "image",
+                "key": "A_N_Wall_1"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_N_Waterfall_Rock.png",
+                "type": "image",
+                "key": "A_N_Waterfall_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Rib_Bone.png",
+                "type": "image",
+                "key": "A_Rib_Bone"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Rock.png",
+                "type": "image",
+                "key": "A_Rock"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Stump.png",
+                "type": "image",
+                "key": "A_Stump"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Stump_01.png",
+                "type": "image",
+                "key": "A_Stump_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_tomb_01.png",
+                "type": "image",
+                "key": "A_tomb_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_TrainTracks_01.png",
+                "type": "image",
+                "key": "A_TrainTracks_01"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_TrainTracks_02.png",
+                "type": "image",
+                "key": "A_TrainTracks_02"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Tree.png",
+                "type": "image",
+                "key": "A_Tree"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_tree_03.png",
+                "type": "image",
+                "key": "A_tree_03"
+            },
+            {
+                "url": "assets/sprites/items/Obstacles/A_Wall.png",
+                "type": "image",
+                "key": "A_Wall"
+            },
+            {
+                "url": "assets/animations/combat/creature_combat.json",
+                "type": "animation",
+                "key": "creature_combat"
+            },
+            {
+                "url": "assets/dino.png",
+                "type": "image",
+                "key": "dino"
+            },
+            {
+                "url": "assets/sprites/VFX/clouds2.png",
+                "type": "image",
+                "key": "dust_particle"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/Ground_Dark_03.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "Ground_Dark_03"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/Ground_light_03.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "Ground_light_03"
+            },
+            {
+                "url": "assets/guapen.png",
+                "type": "image",
+                "key": "guapen"
+            },
+            {
+                "url": "assets/sprites/Play.png",
+                "type": "image",
+                "key": "Play"
+            },
+            {
+                "url": "assets/animations/player/player_death.json",
+                "type": "animation",
+                "key": "player_death"
+            },
+            {
+                "url": "assets/animations/player/player_idle.json",
+                "type": "animation",
+                "key": "player_idle"
+            },
+            {
+                "url": "assets/animations/player/player_pickup.json",
+                "type": "animation",
+                "key": "player_pickup"
+            },
+            {
+                "url": "assets/animations/player/player_throw.json",
+                "type": "animation",
+                "key": "player_throw"
+            },
+            {
+                "url": "assets/animations/player/player_walk.json",
+                "type": "animation",
+                "key": "player_walk"
+            },
+            {
+                "url": "assets/sprites/Quit.png",
+                "type": "image",
+                "key": "Quit"
+            },
+            {
+                "url": "assets/sprite_background.png",
+                "type": "image",
+                "key": "sprite_background"
+            },
+            {
+                "url": "assets/sprite_bridge1.png",
+                "type": "image",
+                "key": "sprite_bridge1"
+            },
+            {
+                "url": "assets/sprite_bridge2.png",
+                "type": "image",
+                "key": "sprite_bridge2"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/sprite_carnivore1.png",
+                "type": "image",
+                "key": "sprite_carnivore1"
+            },
+            {
+                "url": "assets/sprites/creatures/tier1-carnivore/sprite_carnivore2.png",
+                "type": "image",
+                "key": "sprite_carnivore2"
+            },
+            {
+                "url": "assets/sprites/items/fruit/sprite_corpse.png",
+                "type": "image",
+                "key": "sprite_corpse"
+            },
+            {
+                "url": "assets/sprites/VFX/clouds.png",
+                "type": "image",
+                "key": "sprite_fightclouds"
+            },
+            {
+                "url": "assets/sprites/items/fruit/sprite_apple.png",
+                "type": "image",
+                "key": "sprite_fruit_dep"
+            },
+            {
+                "url": "assets/sprites/items/fruit/sprite_fruit1.png",
+                "type": "image",
+                "key": "sprite_fruit"
+            },
+            {
+                "url": "sprite_ground_lvl1_sector1.png",
+                "type": "image",
+                "key": "sprite_ground_lvl1_sector1"
+            },
+            {
+                "url": "sprite_ground_lvl1_sector2.png",
+                "type": "image",
+                "key": "sprite_ground_lvl1_sector2"
+            },
+            {
+                "url": "sprite_ground_lvl1_sector3.png",
+                "type": "image",
+                "key": "sprite_ground_lvl1_sector3"
+            },
+            {
+                "url": "assets/sprite_ground_lvl2.png",
+                "type": "image",
+                "key": "sprite_ground_lvl2"
+            },
+            {
+                "url": "assets/sprites/creatures/tier1-herbivore/sprite_herb2.png",
+                "type": "image",
+                "key": "sprite_herb2"
+            },
+            {
+                "url": "assets/sprites/player/sprite_player01.png",
+                "type": "image",
+                "key": "sprite_player_01"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-herbivore/Enemy_Low_1.png",
+                "type": "image",
+                "key": "sprite_tier2-herbivore"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/spritesheet_car01_eat.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_car01_eat"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/spritesheet_car01_idle1.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_car01_idle1"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/spritesheet_car01_walk.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_car01_walk"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/spritesheet_car01_walkend.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_car01_walkend"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-carnivore/spritesheet_car01_walkstart.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_car01_walkstart"
+            },
+            {
+                "url": "assets/sprites/spritesheet_fightclouds.png",
+                "frameConfig": {
+                    "frameWidth": 730,
+                    "frameHeight": 700,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_fightclouds_1"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-herbivore/spritesheet_herb01_eat.png",
+                "frameConfig": {
+                    "frameWidth": 420,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb01_eat"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-herbivore/spritesheet_herb01_idle1.png",
+                "frameConfig": {
+                    "frameWidth": 420,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb01_idle1"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-herbivore/spritesheet_herb01_startled.png",
+                "frameConfig": {
+                    "frameWidth": 420,
+                    "frameHeight": 720,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb01_startled"
+            },
+            {
+                "url": "assets/sprites/creatures/tier2-herbivore/spritesheet_herb01_walk.png",
+                "frameConfig": {
+                    "frameWidth": 420,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb01_walk"
+            },
+            {
+                "url": "assets/sprites/creatures/tier1-herbivore/spritesheet_herb02_eat.png",
+                "frameConfig": {
+                    "frameWidth": 850,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb02_eat"
+            },
+            {
+                "url": "assets/sprites/creatures/tier1-herbivore/spritesheet_herb02_idle.png",
+                "frameConfig": {
+                    "frameWidth": 850,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb02_idle"
+            },
+            {
+                "url": "assets/sprites/creatures/tier1-herbivore/spritesheet_herb02_walk.png",
+                "frameConfig": {
+                    "frameWidth": 850,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_herb02_walk"
+            },
+            {
+                "url": "assets/animations/player/spritesheet_player01_death.png",
+                "frameConfig": {
+                    "frameWidth": 650,
+                    "frameHeight": 650,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_player01_death"
+            },
+            {
+                "url": "assets/sprites/player/spritesheet_player01_idle1.png",
+                "frameConfig": {
+                    "frameWidth": 300,
+                    "frameHeight": 580,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_player01_idle"
+            },
+            {
+                "url": "assets/sprites/player/spritesheet_player01_pickup.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_player01_pickup"
+            },
+            {
+                "url": "assets/sprites/player/spritesheet_player01_throw.png",
+                "frameConfig": {
+                    "frameWidth": 500,
+                    "frameHeight": 680,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_player01_throw"
+            },
+            {
+                "url": "assets/sprites/player/spritesheet_player01_walk.png",
+                "frameConfig": {
+                    "frameWidth": 300,
+                    "frameHeight": 580,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "spritesheet_player01_walk"
+            },
+            {
+                "url": "assets/animations/creatures/tier1herb_eat.json",
+                "type": "animation",
+                "key": "tier1herb_eat"
+            },
+            {
+                "url": "assets/animations/creatures/tier1herb_idle.json",
+                "type": "animation",
+                "key": "tier1herb_idle"
+            },
+            {
+                "url": "assets/animations/creatures/tier1herb_walk.json",
+                "type": "animation",
+                "key": "tier1herb_walk"
+            },
+            {
+                "url": "assets/animations/creatures/tier2carn_eat.json",
+                "type": "animation",
+                "key": "tier2carn_eat"
+            },
+            {
+                "url": "assets/animations/creatures/tier2carn_idle.json",
+                "type": "animation",
+                "key": "tier2carn_idle"
+            },
+            {
+                "url": "assets/animations/creatures/tier2carn_walk.json",
+                "type": "animation",
+                "key": "tier2carn_walk"
+            },
+            {
+                "url": "assets/animations/creatures/tier2carn_walkend.json",
+                "type": "animation",
+                "key": "tier2carn_walkend"
+            },
+            {
+                "url": "assets/animations/creatures/tier2carn_walkstart.json",
+                "type": "animation",
+                "key": "tier2carn_walkstart"
+            },
+            {
+                "url": "assets/animations/creatures/tier2herb_eat.json",
+                "type": "animation",
+                "key": "tier2herb_eat"
+            },
+            {
+                "url": "assets/animations/creatures/tier2herb_idle.json",
+                "type": "animation",
+                "key": "tier2herb_idle"
+            },
+            {
+                "url": "assets/animations/creatures/tier2herb_startled.json",
+                "type": "animation",
+                "key": "tier2herb_startled"
+            },
+            {
+                "url": "assets/animations/creatures/tier2herb_walk.json",
+                "type": "animation",
+                "key": "tier2herb_walk"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/tileset_diorama.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": 15,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "tileset_diorama"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/tileset_ground_grass_dark.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "tileset_ground_grass_dark"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/tileset_ground_grass_light.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "tileset_ground_grass_light"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/tilesheet_ground01.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": 15,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "tilesheet_ground01"
+            },
+            {
+                "url": "assets/sprites/UI_title.png",
+                "type": "image",
+                "key": "UI_title"
+            },
+            {
+                "url": "assets/tilemaps/tilesets/void_map_03.png",
+                "frameConfig": {
+                    "frameWidth": 64,
+                    "frameHeight": 64,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "void_map_03"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}
