@@ -43,9 +43,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
 .btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
 
+.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
+.embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
 .featured-embed { background: #1A1A1A; width: 100%; overflow: hidden; }
-.featured-embed iframe { display: block; width: 100%; height: 560px; border: none; }
-.embed-placeholder { width: 100%; height: 560px; display: flex; align-items: center; justify-content: center; color: rgba(250,247,242,0.2); font-size: 13px; letter-spacing: 1px; }
+.featured-embed iframe { display: block; width: 100%; aspect-ratio: 16/9; height: auto; border: none; }
 
 /* ALL WORK */
 .all-work { padding: 56px 64px; border-top: 1px solid rgba(26,26,26,0.08); display: flex; align-items: center; justify-content: space-between; }
@@ -109,9 +111,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
       <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
       <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
     </div>
+    <div class="embed-controls">
+      <kbd>Space</kbd> + <kbd>Left Click</kbd> <span>to throw picked up items</span>
+    </div>
     <div class="featured-embed">
       <iframe src="stp-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
     </div>
+    <div class="embed-note">No pause menu — reload the page to reset the game.</div>
   </div>
 </div>
 
