@@ -9,6 +9,7 @@ import MainMenu from './scenes/MainMenu.js';
 window.addEventListener('load', function () {
 
 	var game = new Phaser.Game(config);
+	window.game = game;
 
 	game.scene.add("MainMenu", MainMenu);
 	game.scene.add("Level1", Level1);
