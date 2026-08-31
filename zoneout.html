@@ -3,259 +3,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zone-Out — Roshan Premnath</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Zone-Out | Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: #F0F0F0; }
-.nav-links a.active { color: #26A69A; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; }
-.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px; flex-direction: column; gap: 20px; z-index: 99; }
-.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; }
+.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
 .mobile-menu.open { display: flex; }
 
-/* HERO */
-.hero { position: relative; width: 100%; height: 100vh; overflow: hidden; margin-top: 60px; }
-.hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: brightness(0.45); }
-.hero-placeholder { width: 100%; height: 100%; background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
-.hero-placeholder span { font-size: 13px; color: rgba(240,240,240,0.2); letter-spacing: 2px; text-transform: uppercase; }
-.hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 64px; background: linear-gradient(to top, rgba(13,13,13,1) 0%, rgba(13,13,13,0.6) 50%, transparent 100%); }
-.hero-tag { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
-.hero-title { font-size: 80px; font-weight: 700; color: #F0F0F0; line-height: 1; letter-spacing: -2px; margin-bottom: 20px; }
-.hero-tagline-game { font-size: 24px; font-weight: 700; color: rgba(240,240,240,0.4); font-style: italic; margin-bottom: 12px; }
-.hero-headline { font-size: 20px; font-weight: 400; color: rgba(240,240,240,0.7); max-width: 560px; line-height: 1.6; }
-.hero-scroll { position: absolute; bottom: 32px; right: 64px; font-size: 11px; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-.hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: rgba(240,240,240,0.3); }
+/* MAIN */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
 
-/* SHARED */
-.section-label { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; }
-.section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0; }
-.img-placeholder { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 11px; color: rgba(240,240,240,0.2); letter-spacing: 1px; text-align: center; padding: 16px; }
+/* BUTTONS */
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
 
-/* OVERVIEW */
-.overview { padding: 120px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.overview-left { display: flex; flex-direction: column; gap: 24px; }
-.overview-genre { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.3); letter-spacing: 2px; text-transform: uppercase; }
-.overview-desc { font-size: 20px; color: #F0F0F0; line-height: 1.7; }
-.overview-premise { font-size: 17px; color: rgba(240,240,240,0.6); line-height: 1.7; border-left: 2px solid #26A69A; padding-left: 24px; font-style: italic; }
-.credits { font-size: 12px; color: rgba(240,240,240,0.3); line-height: 1.8; }
-.credits span { color: rgba(240,240,240,0.6); }
-.overview-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+/* SECTION BASE */
+.proj-section { padding: 72px 64px; border-top: 1px solid rgba(26,26,26,0.08); }
+.section-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
 
-/* PLAY IT */
-.play { padding: 120px 64px; background: #0a0a0a; }
-.play-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 560px; line-height: 1.7; margin: 24px 0 48px; }
-.itch-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
-.itch-container iframe { width: 100%; height: 100%; border: none; }
-.play-note { margin-top: 16px; font-size: 12px; color: rgba(240,240,240,0.3); }
-.play-note a { color: #26A69A; text-decoration: none; }
-.play-note a:hover { text-decoration: underline; }
+/* PROJECT HEADER */
+.proj-header { padding: 56px 64px 0; }
+.back-link { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.35); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; transition: color 0.15s; }
+.back-link:hover { color: #1A1A1A; }
+.proj-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+.proj-title { font-size: clamp(80px, 11vw, 160px); font-weight: 700; color: #2ECC8A; line-height: 0.88; letter-spacing: -5px; }
+.proj-meta-bar { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding: 32px 0 56px; border-top: 1px solid rgba(26,26,26,0.1); margin-top: 32px; }
+.proj-date { font-size: 13px; color: rgba(26,26,26,0.4); font-weight: 500; flex-shrink: 0; }
+.proj-role-tags { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.proj-role-tag { border: 1px solid rgba(26,26,26,0.12); padding: 6px 14px; font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.6); }
+.proj-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 
-/* SHAPES */
-.shapes { padding: 120px 64px; }
-.shapes-intro { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 64px; }
-.shapes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.shape-card { background: #111; padding: 40px 32px; transition: background 0.2s; }
-.shape-card:hover { background: #161616; }
-.shape-icon { font-size: 48px; margin-bottom: 24px; }
-.shape-role { font-size: 11px; font-weight: 500; color: #26A69A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-.shape-name { font-size: 22px; font-weight: 700; color: #F0F0F0; margin-bottom: 12px; }
-.shape-desc { font-size: 14px; color: rgba(240,240,240,0.5); line-height: 1.6; margin-bottom: 16px; }
-.shape-intent { font-size: 13px; color: rgba(240,240,240,0.7); line-height: 1.6; border-left: 2px solid #26A69A; padding-left: 16px; }
-.shape-spawn { font-size: 11px; color: rgba(240,240,240,0.3); margin-top: 16px; letter-spacing: 1px; }
+/* CONCEPT */
+.north-star-block { border-left: 3px solid #2ECC8A; padding-left: 32px; margin-bottom: 56px; }
+.ns-label { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+.ns-text { font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: #1A1A1A; line-height: 1.2; letter-spacing: -0.5px; max-width: 680px; }
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.concept-p { font-size: 16px; color: rgba(26,26,26,0.65); line-height: 1.75; }
 
-/* COLOUR SYSTEM */
-.colour { padding: 120px 64px; background: #0a0a0a; }
-.colour-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
-.colour-functions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 64px; }
-.colour-fn { background: #111; padding: 32px; }
-.colour-fn-number { font-size: 32px; font-weight: 700; color: #26A69A; margin-bottom: 8px; }
-.colour-fn-label { font-size: 16px; font-weight: 700; color: #F0F0F0; margin-bottom: 8px; }
-.colour-fn-desc { font-size: 13px; color: rgba(240,240,240,0.5); line-height: 1.6; }
-.colour-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.colour-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+/* PROJECT HIGHLIGHT */
+.highlight-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 600px; line-height: 1.6; }
 
-/* DEATH SEQUENCE */
-.death { padding: 120px 64px; }
-.death-desc { font-size: 18px; color: rgba(240,240,240,0.6); max-width: 640px; line-height: 1.7; margin: 24px 0 48px; }
-.death-steps { display: flex; flex-direction: column; gap: 2px; margin-bottom: 48px; }
-.death-step { background: #111; padding: 24px 32px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; align-items: center; }
-.death-step-number { font-size: 20px; font-weight: 700; color: #26A69A; }
-.death-step-text { font-size: 15px; color: rgba(240,240,240,0.7); line-height: 1.5; }
-.death-intent { font-size: 17px; color: #F0F0F0; line-height: 1.7; border-left: 2px solid #26A69A; padding-left: 24px; max-width: 640px; }
-.death-image { width: 100%; max-width: 480px; aspect-ratio: 16/9; object-fit: cover; margin-top: 48px; }
+/* COLOUR SCHEME SYSTEM */
+.cs-seed { border: 1px solid rgba(26,26,26,0.08); padding: 28px 32px; margin-bottom: 1px; display: flex; align-items: flex-start; gap: 40px; }
+.cs-seed-tag { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; margin-top: 2px; }
+.cs-seed-text { font-size: 14px; color: rgba(26,26,26,0.6); line-height: 1.65; max-width: 560px; }
+.cs-seed-text strong { color: #1A1A1A; font-weight: 600; }
+
+.cs-table { border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
+.cs-table-head { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0; background: rgba(26,26,26,0.025); border-bottom: 1px solid rgba(26,26,26,0.08); }
+.cs-table-head div { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.4); letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px; }
+.cs-row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(26,26,26,0.06); align-items: center; }
+.cs-row:last-child { border-bottom: none; }
+.cs-element { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-right: 1px solid rgba(26,26,26,0.06); }
+.cs-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cs-element-name { font-size: 13px; font-weight: 600; color: #1A1A1A; }
+.cs-rule { padding: 18px 24px; border-right: 1px solid rgba(26,26,26,0.06); }
+.cs-rule-formula { font-size: 13px; font-weight: 600; color: #1A1A1A; font-family: monospace; margin-bottom: 3px; }
+.cs-rule-name { font-size: 11px; color: rgba(26,26,26,0.4); }
+.cs-purpose { padding: 18px 24px; font-size: 12px; color: rgba(26,26,26,0.55); line-height: 1.55; }
+
+.cs-note { border: 1px solid rgba(46,204,138,0.2); background: rgba(46,204,138,0.04); padding: 20px 24px; }
+.cs-note-text { font-size: 13px; color: rgba(26,26,26,0.6); line-height: 1.6; }
+.cs-note-text strong { color: #1A1A1A; }
+
+/* GDD WINDOW */
+.gdd-window { position: relative; height: 60vh; border: 1px solid rgba(26,26,26,0.1); overflow: hidden; transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.gdd-iframe { width: 100%; height: 100%; border: none; display: block; }
+.gdd-expand-btn { position: absolute; top: 12px; right: 12px; z-index: 10; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.85); color: #FAF7F2; border: none; padding: 8px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; backdrop-filter: blur(4px); letter-spacing: 0.3px; }
+.gdd-expand-btn:hover { background: #2ECC8A; color: #1A1A1A; }
+
+/* GAME EMBED */
+.embed-controls { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.45); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.embed-controls kbd { background: rgba(26,26,26,0.07); border: 1px solid rgba(26,26,26,0.15); border-radius: 3px; padding: 2px 7px; font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(26,26,26,0.6); }
+.embed-note { font-size: 12px; color: rgba(26,26,26,0.35); margin-top: 12px; }
+.game-frame-wrap { background: #1A1A1A; width: 100%; overflow: hidden; }
+.game-frame-wrap iframe { display: block; width: 100%; aspect-ratio: 16/9; height: auto; border: none; }
+
+/* SCROLL NAV */
+.scroll-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 200; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+.scroll-nav.visible { opacity: 1; pointer-events: all; }
+.scroll-items { display: flex; flex-direction: column; position: relative; }
+.scroll-items::before { content: ''; position: absolute; right: 3px; top: 18px; bottom: 18px; width: 1px; background: rgba(26,26,26,0.1); z-index: 0; }
+.scroll-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; cursor: pointer; justify-content: flex-end; }
+.scroll-item:hover .scroll-label { color: rgba(26,26,26,0.6); }
+.scroll-item:hover .scroll-dot { background: rgba(26,26,26,0.35); }
+.scroll-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,26,26,0.25); transition: color 0.2s; white-space: nowrap; }
+.scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(26,26,26,0.15); flex-shrink: 0; transition: background 0.2s, transform 0.2s; position: relative; z-index: 1; }
+.scroll-item.active .scroll-dot { background: #2ECC8A; transform: scale(1.5); }
+.scroll-item.active .scroll-label { color: #1A1A1A; font-weight: 600; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-overlay { padding: 32px 24px; }
-  .hero-title { font-size: 48px; letter-spacing: -1px; }
-  .hero-headline { font-size: 16px; }
-  .hero-scroll { display: none; }
-  .overview { grid-template-columns: 1fr; gap: 40px; }
-  .overview, .play, .shapes, .colour, .death { padding: 64px 24px; }
-  .shapes-grid, .colour-functions, .colour-images { grid-template-columns: 1fr; }
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .scroll-nav { display: none; }
+  .proj-header { padding: 40px 24px 0; }
+  .proj-title { letter-spacing: -3px; }
+  .proj-meta-bar { gap: 16px; padding: 24px 0 40px; }
+  .proj-section { padding: 48px 24px; }
+  .concept-grid { grid-template-columns: 1fr; gap: 24px; }
+  .cs-seed { flex-direction: column; gap: 12px; }
+  .cs-table-head, .cs-row { grid-template-columns: 120px 1fr; }
+  .cs-table-head div:last-child, .cs-purpose { display: none; }
+  .gdd-window { height: 50vh; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-name" href="index.html">Roshan Premnath</a>
-  <div class="nav-links">
-    <a href="apotheosis.html">Apotheosis</a>
-    <a href="survivethepale.html">Survive the Pale</a>
-    <a href="zoneout.html" class="active">Zone-Out</a>
-    <a href="celeste.html">Celeste</a>
-  </div>
-  <div class="hamburger" id="hamburger">
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="work.html" class="active">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- SCROLL NAV -->
+<nav class="scroll-nav" id="scrollNav">
+  <div class="scroll-items">
+    <div class="scroll-item active" data-target="s-header">
+      <span class="scroll-label">Intro</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-concept">
+      <span class="scroll-label">Concept</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-highlight">
+      <span class="scroll-label">System</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-gdd">
+      <span class="scroll-label">GDD</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-play">
+      <span class="scroll-label">Play</span>
+      <div class="scroll-dot"></div>
+    </div>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="apotheosis.html">Apotheosis</a>
-  <a href="survivethepale.html">Survive the Pale</a>
-  <a href="zoneout.html">Zone-Out</a>
-  <a href="celeste.html">Celeste</a>
-</div>
+<main class="main">
 
-<!-- HERO -->
-<div class="hero">
-  <img class="hero-image" src="images/zo-hero.jpg" alt="Zone-Out hero">
-  <div class="hero-overlay">
-    <div class="hero-tag">System Design · 2025</div>
-    <div class="hero-title">Zone-Out</div>
-    <div class="hero-tagline-game">"Don't get caught."</div>
-    <div class="hero-headline">Three shapes, three rules. One of them turns survival into mastery.</div>
-  </div>
-  <div class="hero-scroll">Scroll to explore</div>
-</div>
-
-<hr class="section-divider">
-
-<!-- OVERVIEW -->
-<section class="overview">
-  <div class="overview-left">
-    <div class="section-label">The Game</div>
-    <div class="overview-genre">Browser-based cursor survival · Phaser 5 + Matter.js</div>
-    <div class="overview-desc">Zone-Out is a survival game where the player controls a cursor on a graph paper background. Geometric shapes are thrown from all screen edges. Survive as long as possible.</div>
-    <div class="overview-premise">The longer you survive, the more chaotic the world becomes — punctuated every 30 seconds by a dramatic colour shift that repaints everything.</div>
-    <div class="credits">
-      <span>Game Design, System Design, Development</span> — Roshan Premnath<br>
-      <span>Art Direction, Narrative</span> — Isha
+  <!-- HEADER -->
+  <section id="s-header" class="proj-header">
+    <a href="work.html" class="back-link">← All work</a>
+    <div class="proj-eyebrow">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
+    <div class="proj-title">Zone-Out</div>
+    <div class="proj-meta-bar">
+      <div class="proj-date">April 2026 &nbsp;·&nbsp; 2 days</div>
+      <div class="proj-role-tags">
+        <span class="proj-role-tag">Game Designer</span>
+        <span class="proj-role-tag">Systems Designer</span>
+        <span class="proj-role-tag">Developer</span>
+      </div>
+      <div class="proj-actions">
+        <a class="btn-primary" href="#s-play">Play Now ↓</a>
+        <a class="btn-secondary" href="#s-gdd">View GDD ↓</a>
+      </div>
     </div>
-  </div>
-  <img src="images/zo-gameplay.jpg" alt="Zone-Out gameplay" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-</section>
+  </section>
 
-<hr class="section-divider">
-
-<!-- PLAY IT -->
-<section class="play">
-  <div class="section-label">Play It</div>
-  <div class="play-desc">The best way to understand Zone-Out is to play it. One hit death. No tutorial. The rules reveal themselves.</div>
-  <div class="itch-container">
-    <iframe src="zoneout-game/index.html" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
-  </div>
-  <div class="play-note">Or play it directly on <a href="https://thegamedesignhermit.itch.io/zone-out" target="_blank">itch.io ↗</a></div>
-</section>
-
-<hr class="section-divider">
-
-<!-- THREE SHAPES -->
-<section class="shapes">
-  <div class="section-label">Shape Design</div>
-  <div class="shapes-intro">Three shapes. Each has a distinct mechanical identity. The player learns them through play, not through a tutorial.</div>
-  <div class="shapes-grid">
-    <div class="shape-card">
-      <div class="shape-icon">■</div>
-      <div class="shape-role">The Threat</div>
-      <div class="shape-name">Square</div>
-      <div class="shape-desc">The baseline danger. Instant death on contact. No special mechanic. Exists to fill space, create pressure, and punish passive play.</div>
-      <div class="shape-intent">The floor of difficulty. Everything else is defined in relation to the square.</div>
-      <div class="shape-spawn">Spawns 60% of the time</div>
+  <!-- CONCEPT -->
+  <section id="s-concept" class="proj-section">
+    <div class="section-eyebrow">Concept</div>
+    <div class="north-star-block">
+      <div class="ns-label">North Star</div>
+      <div class="ns-text">Don't get caught.</div>
     </div>
-    <div class="shape-card">
-      <div class="shape-icon">●</div>
-      <div class="shape-role">The Shield</div>
-      <div class="shape-name">Circle</div>
-      <div class="shape-desc">Safe to touch. If the player positions themselves inside a circle, incoming shapes are physically blocked by its body. The shield is not passive — circles are physics objects pushed around by squares.</div>
-      <div class="shape-intent">Introduces spatial awareness and positioning as a skill layer without adding any input complexity.</div>
-      <div class="shape-spawn">Spawns 25% of the time</div>
+    <div class="concept-grid">
+      <p class="concept-p">Zone-Out is a cursor survival game set on graph paper. Geometric shapes pour in from every edge. The player controls nothing but their own position. There are no attacks, no power-ups, no lives. Only the question of how long you can last before the shapes find you.</p>
+      <p class="concept-p">The framing is a classroom daydream. The cursor is the player's mind, wandering. The shapes are the intrusion of the real world. Every 30 seconds the world repaints itself in a new colour scheme, a dramatic visual punctuation that signals both reward and escalating danger. Get caught, and the teacher notices.</p>
     </div>
-    <div class="shape-card">
-      <div class="shape-icon">▲</div>
-      <div class="shape-role">The Risk/Reward Tool</div>
-      <div class="shape-name">Triangle</div>
-      <div class="shape-desc">One edge is visually distinct. Hitting it destroys the triangle and clears every shape on screen. Hitting any other part kills instantly. The triangle rotates continuously — the correct edge is never fixed.</div>
-      <div class="shape-intent">A passive player can ignore triangles entirely. A skilled player who masters triangle reads can clear the screen on demand — buying breathing room as difficulty escalates.</div>
-      <div class="shape-spawn">Spawns 15% of the time</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<hr class="section-divider">
+  <!-- PROJECT HIGHLIGHT -->
+  <section id="s-highlight" class="proj-section">
+    <div class="section-eyebrow">Project Highlight</div>
+    <div class="highlight-label">Procedural Colour Scheme Generation</div>
+    <div class="highlight-intro">Every 30 seconds, the game world repaints using a single random seed hue. All element colours derive from that seed through colour theory, guaranteeing harmony while ensuring every palette feels dramatically different.</div>
 
-<!-- COLOUR SYSTEM -->
-<section class="colour">
-  <div class="section-label">Colour as Rhythm</div>
-  <div class="colour-desc">Every 30 seconds the entire game world repaints. This is not decoration. The colour shift serves three design functions simultaneously.</div>
-  <div class="colour-functions">
-    <div class="colour-fn">
-      <div class="colour-fn-number">01</div>
-      <div class="colour-fn-label">Reward</div>
-      <div class="colour-fn-desc">Spectacle for surviving another threshold. You earned this moment.</div>
+    <div class="cs-seed">
+      <div class="cs-seed-tag">Seed</div>
+      <div class="cs-seed-text">A random integer <strong>H (0-359°)</strong> is chosen each cycle. No colour is picked independently. Every element on screen is mathematically derived from H, so the palette is always coherent regardless of what value H lands on.</div>
     </div>
-    <div class="colour-fn">
-      <div class="colour-fn-number">02</div>
-      <div class="colour-fn-label">Signal</div>
-      <div class="colour-fn-desc">A clear marker that difficulty has increased. The world changing IS the warning.</div>
-    </div>
-    <div class="colour-fn">
-      <div class="colour-fn-number">03</div>
-      <div class="colour-fn-label">Chaos</div>
-      <div class="colour-fn-desc">Each new palette is dramatically different, keeping the player visually stimulated.</div>
-    </div>
-  </div>
-  <div class="colour-images">
-    <img src="images/zo-colour-01.jpg" alt="Colour scheme 1" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-    <img src="images/zo-colour-02.jpg" alt="Colour scheme 2" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-    <img src="images/zo-colour-03.jpg" alt="Colour scheme 3" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
-  </div>
-</section>
 
-<hr class="section-divider">
+    <div class="cs-table">
+      <div class="cs-table-head">
+        <div>Element</div>
+        <div>Derivation Rule</div>
+        <div>Design Purpose</div>
+      </div>
 
-<!-- DEATH SEQUENCE -->
-<section class="death">
-  <div class="section-label">The Death Sequence</div>
-  <div class="death-desc">Death is not an instant cut to a game over screen. It is a moment.</div>
-  <div class="death-steps">
-    <div class="death-step"><div class="death-step-number">1</div><div class="death-step-text">Freeze — physics stops, all shapes retain position</div></div>
-    <div class="death-step"><div class="death-step-number">2</div><div class="death-step-text">Shapes lose fill — only outlines remain, world becomes skeletal</div></div>
-    <div class="death-step"><div class="death-step-number">3</div><div class="death-step-text">Death circle — a sketchy circle draws itself around the cursor's death position</div></div>
-    <div class="death-step"><div class="death-step-number">4</div><div class="death-step-text">"Is my class boring you?!" slides aggressively from the top. Screen shakes on impact.</div></div>
-    <div class="death-step"><div class="death-step-number">5</div><div class="death-step-text">Game over screen — survival time displayed on a photograph of a real notebook</div></div>
-  </div>
-  <div class="death-intent">The player wasn't killed by shapes — they got caught zoning out. The teacher's speech bubble is the punchline. It transforms frustration into humour, encouraging retry.</div>
-  <img class="death-image" src="images/zo-death.jpg" alt="Zone-Out death screen">
-</section>
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(210,80%,60%);"></div>
+          <div class="cs-element-name">Cursor</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H</div>
+          <div class="cs-rule-name">Seed hue, full saturation</div>
+        </div>
+        <div class="cs-purpose">The player's identity. Anchors the entire palette. Always vivid and readable.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(30,12%,10%);"></div>
+          <div class="cs-element-name">Background</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H + 180°</div>
+          <div class="cs-rule-name">Complementary, very dark</div>
+        </div>
+        <div class="cs-purpose">Maximum contrast against the cursor. Keeps graph paper legible at all palette values.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(270,70%,55%);"></div>
+          <div class="cs-element-name">Square</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H + 60°</div>
+          <div class="cs-rule-name">Analogous offset</div>
+        </div>
+        <div class="cs-purpose">Distinct from cursor but harmonious. Immediately readable as the primary threat.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(330,65%,50%);"></div>
+          <div class="cs-element-name">Triangle body</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H + 120°</div>
+          <div class="cs-rule-name">Triadic</div>
+        </div>
+        <div class="cs-purpose">Separated enough from the square to be recognisable as a different threat type.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(310,75%,65%);"></div>
+          <div class="cs-element-name">Triangle safe edge</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H + 100°</div>
+          <div class="cs-rule-name">Triadic, lighter offset</div>
+        </div>
+        <div class="cs-purpose">Visually distinguishable from the triangle body. The player must learn to read this edge to use the triangle's clear mechanic.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(120,60%,55%);"></div>
+          <div class="cs-element-name">Circle</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H - 90°</div>
+          <div class="cs-rule-name">Split-complementary</div>
+        </div>
+        <div class="cs-purpose">Reads as safe and distinct from threats. Players learn to associate this colour with a shield before they understand the mechanic.</div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-element">
+          <div class="cs-swatch" style="background: hsl(240,55%,50%);"></div>
+          <div class="cs-element-name">Timer overlay</div>
+        </div>
+        <div class="cs-rule">
+          <div class="cs-rule-formula">H + 30°</div>
+          <div class="cs-rule-name">Near-analogous</div>
+        </div>
+        <div class="cs-purpose">Close to the cursor hue, so the timer feels like it belongs to the player rather than the world.</div>
+      </div>
+    </div>
+
+    <div class="cs-note">
+      <div class="cs-note-text">The result is a system that generates <strong>infinite unique palettes</strong> with zero design input per cycle. No palette is hand-authored. Every colour relationship is always mathematically valid. The 30-second repaint becomes a spectacle the player earns, a signal that difficulty has escalated, and a source of visual variety, all at once.</div>
+    </div>
+  </section>
+
+  <!-- GDD -->
+  <section id="s-gdd" class="proj-section">
+    <div class="section-eyebrow">Game Design Document</div>
+    <div class="gdd-window" id="gddWindow">
+      <button class="gdd-expand-btn" id="gddExpandBtn">⤢ Expand</button>
+      <iframe class="gdd-iframe" src="zo-gdd.pdf"></iframe>
+    </div>
+  </section>
+
+  <!-- PLAY -->
+  <section id="s-play" class="proj-section">
+    <div class="section-eyebrow">Play</div>
+    <div class="embed-controls">
+      <kbd>Mouse</kbd> <span>to move &nbsp;·&nbsp; Avoid all shapes &nbsp;·&nbsp; Touch a Circle to use it as a shield</span>
+    </div>
+    <div class="game-frame-wrap">
+      <iframe src="zoneout-game/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
+    </div>
+    <div class="embed-note">One hit, no lives. Survive as long as you can.</div>
+  </section>
+
+</main>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  // Scroll nav
+  const scrollItems = document.querySelectorAll('.scroll-item');
+  const targetSections = [...scrollItems].map(item => document.getElementById(item.dataset.target));
+  let fadeTimer;
+
+  function updateScrollNav() {
+    const winH = window.innerHeight;
+    let activeIdx = 0;
+    targetSections.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= winH * 0.5) activeIdx = i;
+    });
+    scrollItems.forEach((item, i) => item.classList.toggle('active', i === activeIdx));
+    const nav = document.getElementById('scrollNav');
+    nav.classList.add('visible');
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(() => nav.classList.remove('visible'), 1500);
+  }
+
+  window.addEventListener('scroll', updateScrollNav, { passive: true });
+
+  scrollItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      targetSections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // GDD expand / collapse
+  let gddExpanded = false;
+  document.getElementById('gddExpandBtn').addEventListener('click', () => {
+    gddExpanded = !gddExpanded;
+    document.getElementById('gddWindow').style.height = gddExpanded ? '90vh' : '60vh';
+    document.getElementById('gddExpandBtn').textContent = gddExpanded ? '⤡ Collapse' : '⤢ Expand';
+  });
 </script>
 </body>
 </html>
