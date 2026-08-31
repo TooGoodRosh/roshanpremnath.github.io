@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortal Shell 2 Breakdown | Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
+
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-nav a { font-size: 13px; font-weight: 700; color: rgba(26,26,26,0.6); text-decoration: none; padding: 11px 16px; border: 1px solid rgba(26,26,26,0.15); display: block; margin-left: 0; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; border-color: rgba(26,26,26,0.4); background: rgba(26,26,26,0.03); }
+.sidebar-nav a.active { color: #1A1A1A; background: #2ECC8A; border-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* MAIN */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
+
+/* BUTTONS */
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
+
+/* SECTION BASE */
+.proj-section { padding: 72px 64px; border-top: 1px solid rgba(26,26,26,0.08); }
+.section-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
+
+/* HEADER */
+.proj-header { padding: 56px 64px 0; }
+.back-link { font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.35); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 28px; transition: color 0.15s; }
+.back-link:hover { color: #1A1A1A; }
+.proj-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+.proj-title { font-size: clamp(48px, 6.5vw, 108px); font-weight: 700; color: #2ECC8A; line-height: 0.9; letter-spacing: -3px; }
+.proj-meta-bar { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding: 32px 0 56px; border-top: 1px solid rgba(26,26,26,0.1); margin-top: 32px; }
+.proj-date { font-size: 13px; color: rgba(26,26,26,0.4); font-weight: 500; flex-shrink: 0; }
+.proj-role-tags { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.proj-role-tag { border: 1px solid rgba(26,26,26,0.12); padding: 6px 14px; font-size: 12px; font-weight: 500; color: rgba(26,26,26,0.6); }
+.proj-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+/* THESIS */
+.thesis-block { border-left: 3px solid #2ECC8A; padding-left: 32px; margin-bottom: 48px; }
+.thesis-label { font-size: 10px; font-weight: 600; color: #2ECC8A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+.thesis-text { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: #1A1A1A; line-height: 1.25; letter-spacing: -0.3px; max-width: 720px; }
+.intro-p { font-size: 16px; color: rgba(26,26,26,0.65); line-height: 1.75; max-width: 680px; }
+.conclusion-block { margin-top: 40px; padding: 28px 32px; border: 1px solid rgba(26,26,26,0.08); }
+.conclusion-label { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.conclusion-text { font-size: 15px; color: rgba(26,26,26,0.7); line-height: 1.75; max-width: 680px; }
+.conclusion-text strong { color: #1A1A1A; font-weight: 600; }
+
+/* DOCUMENT WINDOW */
+.gdd-window { position: relative; height: 60vh; border: 1px solid rgba(26,26,26,0.1); overflow: hidden; transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.gdd-iframe { width: 100%; height: 100%; border: none; display: block; }
+.gdd-expand-btn { position: absolute; top: 12px; right: 12px; z-index: 10; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(26,26,26,0.85); color: #FAF7F2; border: none; padding: 8px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; backdrop-filter: blur(4px); letter-spacing: 0.3px; }
+.gdd-expand-btn:hover { background: #2ECC8A; color: #1A1A1A; }
+
+/* SCROLL NAV */
+.scroll-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 200; opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+.scroll-nav.visible { opacity: 1; pointer-events: all; }
+.scroll-items { display: flex; flex-direction: column; position: relative; }
+.scroll-items::before { content: ''; position: absolute; right: 3px; top: 18px; bottom: 18px; width: 1px; background: rgba(26,26,26,0.1); z-index: 0; }
+.scroll-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; cursor: pointer; justify-content: flex-end; }
+.scroll-item:hover .scroll-label { color: rgba(26,26,26,0.6); }
+.scroll-item:hover .scroll-dot { background: rgba(26,26,26,0.35); }
+.scroll-label { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,26,26,0.25); transition: color 0.2s; white-space: nowrap; }
+.scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(26,26,26,0.15); flex-shrink: 0; transition: background 0.2s, transform 0.2s; position: relative; z-index: 1; }
+.scroll-item.active .scroll-dot { background: #2ECC8A; transform: scale(1.5); }
+.scroll-item.active .scroll-label { color: #1A1A1A; font-weight: 600; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .scroll-nav { display: none; }
+  .proj-header { padding: 40px 24px 0; }
+  .proj-title { letter-spacing: -2px; }
+  .proj-meta-bar { gap: 16px; padding: 24px 0 40px; }
+  .proj-section { padding: 48px 24px; }
+  .gdd-window { height: 50vh; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="projects.html">Projects</a>
+    <a href="breakdowns.html" class="active">Breakdowns</a>
+    <a href="about.html">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="projects.html">Projects</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- SCROLL NAV -->
+<nav class="scroll-nav" id="scrollNav">
+  <div class="scroll-items">
+    <div class="scroll-item active" data-target="s-header">
+      <span class="scroll-label">Intro</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-thesis">
+      <span class="scroll-label">Thesis</span>
+      <div class="scroll-dot"></div>
+    </div>
+    <div class="scroll-item" data-target="s-document">
+      <span class="scroll-label">Document</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- HEADER -->
+  <section id="s-header" class="proj-header">
+    <a href="breakdowns.html" class="back-link">← All breakdowns</a>
+    <div class="proj-eyebrow">Combat Systems &nbsp;·&nbsp; Action Economy &nbsp;·&nbsp; Soulslike Design</div>
+    <div class="proj-title">Why has<br>Mortal Shell 2<br>dropped Stamina?</div>
+    <div class="proj-meta-bar">
+      <div class="proj-date">Aug 2026 &nbsp;·&nbsp; ~3000 words</div>
+      <div class="proj-role-tags">
+        <span class="proj-role-tag">Game: Mortal Shell 2</span>
+        <span class="proj-role-tag">Developer: Cold Symmetry</span>
+      </div>
+      <div class="proj-actions">
+        <a class="btn-primary" href="#s-document">Read Document ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THESIS -->
+  <section id="s-thesis" class="proj-section">
+    <div class="section-eyebrow">Thesis</div>
+    <div class="thesis-block">
+      <div class="thesis-label">Core Argument</div>
+      <div class="thesis-text">Deliberate aggression leads to expression.</div>
+    </div>
+    <p class="intro-p">Mortal Shell 2 dropped stamina, the system that has become synonymous with soulslike combat, and still feels unambiguously soulslike. This breakdown is a study of how Cold Symmetry rebuilt the same underlying principle across a closed economic loop of Break, Stagger, and Resolve, and why that architecture does something stamina structurally could not: it converts discipline into identity rather than just survival.</p>
+    <div class="conclusion-block">
+      <div class="conclusion-label">Closing Argument</div>
+      <div class="conclusion-text">Combat asks the same discipline of you, and pays it back in identity, <strong>where stamina only ever paid it back in survival.</strong></div>
+    </div>
+  </section>
+
+  <!-- DOCUMENT -->
+  <section id="s-document" class="proj-section">
+    <div class="section-eyebrow">Full Breakdown</div>
+    <div class="gdd-window" id="docWindow">
+      <button class="gdd-expand-btn" id="docExpandBtn">⤢ Expand</button>
+      <iframe class="gdd-iframe" src="ms2-breakdown.pdf"></iframe>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+
+  const scrollItems = document.querySelectorAll('.scroll-item');
+  const targetSections = [...scrollItems].map(item => document.getElementById(item.dataset.target));
+  let fadeTimer;
+
+  function updateScrollNav() {
+    const winH = window.innerHeight;
+    let activeIdx = 0;
+    targetSections.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= winH * 0.5) activeIdx = i;
+    });
+    scrollItems.forEach((item, i) => item.classList.toggle('active', i === activeIdx));
+    const nav = document.getElementById('scrollNav');
+    nav.classList.add('visible');
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(() => nav.classList.remove('visible'), 1500);
+  }
+
+  window.addEventListener('scroll', updateScrollNav, { passive: true });
+
+  scrollItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      targetSections[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  let docExpanded = false;
+  document.getElementById('docExpandBtn').addEventListener('click', () => {
+    docExpanded = !docExpanded;
+    document.getElementById('docWindow').style.height = docExpanded ? '90vh' : '60vh';
+    document.getElementById('docExpandBtn').textContent = docExpanded ? '⤡ Collapse' : '⤢ Expand';
+  });
+</script>
+</body>
+</html>
