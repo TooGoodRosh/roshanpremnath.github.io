@@ -147,6 +147,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
     const game = iframe.contentWindow.game;
     if (!game) return;
 
+    game.registry.set('isMenuOpen', false);
+    game.registry.remove('activeCheckpoint');
+
     game.scene.getScenes(true).forEach(s => game.scene.stop(s.sys.settings.key));
     game.scene.start(levelKey);
 
