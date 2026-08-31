@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.nav-name { font-size: 16px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.45); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
+.nav-links a:hover { color: #1A1A1A; }
+.nav-links a.active { color: #1A1A1A; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 24px 64px; flex-direction: column; gap: 20px; z-index: 99; }
+.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* PAGE HEADER */
+.page-header { padding: 140px 64px 64px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+.page-title { font-size: 56px; font-weight: 700; letter-spacing: -2px; color: #1A1A1A; }
+.page-sub { font-size: 15px; color: rgba(26,26,26,0.45); margin-top: 12px; font-weight: 400; }
+
+/* TIMELINE */
+.timeline { padding: 0 64px 100px; }
+.timeline-year { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; padding: 48px 0 16px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+
+.entry { display: grid; grid-template-columns: 100px 1fr auto; gap: 0 40px; align-items: center; padding: 32px 0; border-bottom: 1px solid rgba(26,26,26,0.06); text-decoration: none; color: inherit; transition: background 0.15s; }
+.entry:hover { background: rgba(26,26,26,0.02); margin: 0 -64px; padding-left: 64px; padding-right: 64px; }
+.entry:hover .entry-title { color: #2ECC8A; }
+
+.entry-date { font-size: 13px; color: rgba(26,26,26,0.4); font-weight: 400; line-height: 1.4; }
+.entry-date strong { display: block; font-weight: 500; color: rgba(26,26,26,0.6); }
+
+.entry-main { display: flex; flex-direction: column; gap: 6px; }
+.entry-title { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; transition: color 0.15s; line-height: 1; }
+.entry-disciplines { font-size: 12px; color: rgba(26,26,26,0.4); font-weight: 400; margin-top: 4px; }
+
+.entry-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.entry-duration { font-size: 12px; color: rgba(26,26,26,0.35); text-align: right; }
+
+.badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; }
+.badge-active { background: rgba(46,204,138,0.12); color: #2ECC8A; }
+.badge-winner { background: rgba(244,122,35,0.12); color: #F47A23; }
+.badge-playable { background: rgba(26,26,26,0.07); color: rgba(26,26,26,0.55); }
+
+.active-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2ECC8A; margin-right: 6px; animation: pulse 2s infinite; vertical-align: middle; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { padding: 24px; }
+  .page-header { padding: 120px 24px 48px; }
+  .page-title { font-size: 40px; }
+  .timeline { padding: 0 24px 80px; }
+  .entry { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .entry:hover { margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+  .entry-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .entry-date { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="index.html">Roshan Premnath</a>
+  <div class="nav-links">
+    <a href="work.html" class="active">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<div class="page-header">
+  <div class="page-title">Work</div>
+  <div class="page-sub">All projects — chronological, most recent first</div>
+</div>
+
+<div class="timeline">
+  <div class="timeline-year">2026</div>
+
+  <a class="entry" href="survivethepale.html">
+    <div class="entry-date"><strong>May</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Survive the Pale</div>
+      <div class="entry-disciplines">Systems Design &nbsp;·&nbsp; AI Behaviour &nbsp;·&nbsp; Puzzle Design</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">2 weeks</div>
+      <span class="badge badge-playable">Playable Prototype</span>
+    </div>
+  </a>
+
+  <a class="entry" href="celeste.html">
+    <div class="entry-date"><strong>Apr</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Ubisoft Level Design Challenge</div>
+      <div class="entry-disciplines">Level Design &nbsp;·&nbsp; Iteration &nbsp;·&nbsp; Player Psychology</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">1 week</div>
+      <span class="badge badge-winner">★ Competition Winner</span>
+    </div>
+  </a>
+
+  <a class="entry" href="zoneout.html">
+    <div class="entry-date"><strong>Apr</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Zone-Out</div>
+      <div class="entry-disciplines">Systems Design &nbsp;·&nbsp; Procedural Design &nbsp;·&nbsp; Difficulty Scaling</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">2 days</div>
+      <span class="badge badge-playable">Playable Prototype</span>
+    </div>
+  </a>
+
+  <a class="entry" href="apotheosis.html">
+    <div class="entry-date"><strong>Feb</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Apotheosis</div>
+      <div class="entry-disciplines">Combat Design &nbsp;·&nbsp; Systems Design &nbsp;·&nbsp; Narrative Integration</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">Ongoing</div>
+      <span class="badge badge-active"><span class="active-dot"></span>Active Development</span>
+    </div>
+  </a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+</script>
+</body>
+</html>

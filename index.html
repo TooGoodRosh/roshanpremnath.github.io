@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roshan Premnath — Combat Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Roshan Premnath — Game Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; }
@@ -22,44 +22,52 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .mobile-menu.open { display: flex; }
 
 /* HERO */
-.hero { padding: 140px 64px 64px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-.hero-name { font-size: 72px; font-weight: 700; color: #2ECC8A; line-height: 1; letter-spacing: -1px; }
-.hero-title { font-size: 16px; font-weight: 400; color: rgba(26,26,26,0.4); margin-top: 12px; letter-spacing: 3px; text-transform: uppercase; }
-.hero-tagline { font-size: 22px; font-weight: 400; color: #1A1A1A; margin-top: 24px; max-width: 480px; line-height: 1.6; }
-.divider { width: 48px; height: 2px; background: #2ECC8A; margin: 40px 0; }
+.hero { padding: 160px 64px 80px; display: flex; flex-direction: column; justify-content: center; }
+.hero-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+.hero-name { font-size: 80px; font-weight: 700; color: #2ECC8A; line-height: 0.95; letter-spacing: -3px; }
+.hero-tagline { font-size: 20px; font-weight: 400; color: rgba(26,26,26,0.55); margin-top: 28px; max-width: 500px; line-height: 1.65; }
+.hero-divider { width: 48px; height: 2px; background: #2ECC8A; margin: 48px 0; }
 
-/* PROJECTS */
-.projects-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; padding: 0 64px; }
-.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 0 64px 80px; }
-.project-card { padding: 40px; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; background: #F0EDE8; text-decoration: none; display: block; }
-.project-card::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; }
-.project-card.apotheosis::before { background: #DC143C; }
-.project-card.survive::before { background: #B39DDB; }
-.project-card.zoneout::before { background: #26A69A; }
-.project-card.celeste::before { background: #FF7043; }
-.project-card:hover { background: #E8E4DE; }
-.project-tag { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.project-card.apotheosis .project-tag { color: #DC143C; }
-.project-card.survive .project-tag { color: #B39DDB; }
-.project-card.zoneout .project-tag { color: #26A69A; }
-.project-card.celeste .project-tag { color: #FF7043; }
-.project-name { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 12px; line-height: 1.1; }
-.project-desc { font-size: 14px; font-weight: 400; color: rgba(26,26,26,0.5); line-height: 1.6; max-width: 320px; }
-.project-arrow { position: absolute; bottom: 40px; right: 40px; font-size: 20px; color: rgba(26,26,26,0.2); transition: color 0.2s, transform 0.2s; }
-.project-card:hover .project-arrow { color: rgba(26,26,26,0.6); transform: translate(4px, -4px); }
+/* FEATURED */
+.featured { padding: 0 64px 80px; }
+.featured-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+.featured-card { border-top: 2px solid #2ECC8A; padding-top: 40px; }
+.featured-tags { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.featured-title { font-size: 52px; font-weight: 700; color: #1A1A1A; line-height: 1; letter-spacing: -2px; margin-bottom: 24px; }
+.featured-desc { font-size: 17px; font-weight: 400; color: rgba(26,26,26,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 28px; }
+.featured-meta { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 0.3px; margin-bottom: 36px; }
+.featured-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 48px; flex-wrap: wrap; }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
+
+.featured-embed { background: #1A1A1A; width: 100%; overflow: hidden; }
+.featured-embed iframe { display: block; width: 100%; height: 560px; border: none; }
+.embed-placeholder { width: 100%; height: 560px; display: flex; align-items: center; justify-content: center; color: rgba(250,247,242,0.2); font-size: 13px; letter-spacing: 1px; }
+
+/* ALL WORK */
+.all-work { padding: 56px 64px; border-top: 1px solid rgba(26,26,26,0.08); display: flex; align-items: center; justify-content: space-between; }
+.all-work a { font-size: 22px; font-weight: 700; color: #1A1A1A; text-decoration: none; letter-spacing: -0.5px; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
+.all-work a:hover { color: #2ECC8A; }
+.all-work-count { font-size: 13px; font-weight: 400; color: rgba(26,26,26,0.35); }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .mobile-menu { padding: 24px; background: #FAF7F2; }
-  .hero { padding: 100px 24px 48px; }
-  .hero-name { font-size: 48px; }
-  .hero-tagline { font-size: 18px; }
-  .projects-label { padding: 0 24px; }
-  .projects { grid-template-columns: 1fr; padding: 0 24px 60px; }
-  .project-card { padding: 32px 28px; }
+  .mobile-menu { padding: 24px; }
+  .hero { padding: 120px 24px 60px; }
+  .hero-name { font-size: 52px; letter-spacing: -2px; }
+  .hero-tagline { font-size: 17px; }
+  .featured { padding: 0 24px 60px; }
+  .featured-title { font-size: 36px; letter-spacing: -1px; }
+  .featured-embed iframe { height: 380px; }
+  .embed-placeholder { height: 380px; }
+  .all-work { padding: 40px 24px; }
+  .all-work a { font-size: 18px; }
 }
 </style>
 </head>
@@ -68,10 +76,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 <nav>
   <a class="nav-name" href="index.html">Roshan Premnath</a>
   <div class="nav-links">
-    <a href="apotheosis.html">Apotheosis</a>
-    <a href="survivethepale.html">Survive the Pale</a>
-    <a href="zoneout.html">Zone-Out</a>
-    <a href="celeste.html">Celeste</a>
+    <a href="work.html">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
   </div>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
@@ -79,45 +86,38 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="apotheosis.html">Apotheosis</a>
-  <a href="survivethepale.html">Survive the Pale</a>
-  <a href="zoneout.html">Zone-Out</a>
-  <a href="celeste.html">Celeste</a>
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
 </div>
 
 <div class="hero">
-  <div class="hero-name">Roshan Premnath</div>
-  <div class="hero-title">Combat Designer</div>
-  <div class="hero-tagline">Action must be fun. That's what I bring to the fight.</div>
-  <div class="divider"></div>
+  <div class="hero-label">Game Designer</div>
+  <div class="hero-name">Roshan<br>Premnath</div>
+  <div class="hero-tagline">I design systems where understanding is the player's greatest power.</div>
+  <div class="hero-divider"></div>
 </div>
 
-<div class="projects-label">Selected Work</div>
-<div class="projects">
-  <a class="project-card apotheosis" href="apotheosis.html">
-    <div class="project-tag">Combat Design</div>
-    <div class="project-name">Apotheosis</div>
-    <div class="project-desc">A top-down combat system where patient precision builds into unstoppable fury.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card survive" href="survivethepale.html">
-    <div class="project-tag">System Design</div>
-    <div class="project-name">Survive the Pale</div>
-    <div class="project-desc">The player cannot fight. They can only observe, think, and manipulate.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card zoneout" href="zoneout.html">
-    <div class="project-tag">System Design</div>
-    <div class="project-name">Zone-Out</div>
-    <div class="project-desc">Three shapes, three rules. One of them turns survival into mastery.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card celeste" href="celeste.html">
-    <div class="project-tag">Level Design</div>
-    <div class="project-name">Celeste Challenge</div>
-    <div class="project-desc">A level design exercise demonstrating rigorous process — source analysis, derived principles, five documented iteration passes.</div>
-    <div class="project-arrow">↗</div>
-  </a>
+<div class="featured">
+  <div class="featured-label">Frontline Project</div>
+  <div class="featured-card">
+    <div class="featured-tags">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
+    <div class="featured-title">Survive the Pale</div>
+    <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
+    <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
+    <div class="featured-actions">
+      <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
+      <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
+    </div>
+    <div class="featured-embed">
+      <iframe src="https://html-classic.itch.zone/html/19001040/index.html" allowfullscreen allow="autoplay; fullscreen *; gamepad"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="all-work">
+  <a href="work.html">See all work ↗</a>
+  <span class="all-work-count">4 projects &nbsp;·&nbsp; 2026</span>
 </div>
 
 <script>
