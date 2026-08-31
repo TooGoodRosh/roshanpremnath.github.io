@@ -3,127 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roshan Premnath — Combat Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Roshan Premnath — Game Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0F0F0; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,13,13,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 64px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-.nav-name { font-size: 16px; font-weight: 700; color: #F47A23; text-decoration: none; letter-spacing: -0.5px; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 13px; font-weight: 500; color: rgba(240,240,240,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.2s; }
-.nav-links a:hover { color: #F0F0F0; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 2px; background: #F0F0F0; transition: all 0.2s; }
-.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0D0D0D; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 24px 64px; flex-direction: column; gap: 20px; z-index: 99; }
-.mobile-menu a { font-size: 16px; font-weight: 500; color: rgba(240,240,240,0.7); text-decoration: none; }
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; }
+.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
 .mobile-menu.open { display: flex; }
 
-/* HERO */
-.hero { padding: 140px 64px 64px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-.hero-name { font-size: 72px; font-weight: 700; color: #F47A23; line-height: 1; letter-spacing: -1px; }
-.hero-title { font-size: 16px; font-weight: 400; color: rgba(240,240,240,0.4); margin-top: 12px; letter-spacing: 3px; text-transform: uppercase; }
-.hero-tagline { font-size: 22px; font-weight: 400; color: #F0F0F0; margin-top: 24px; max-width: 480px; line-height: 1.6; }
-.divider { width: 48px; height: 2px; background: #F47A23; margin: 40px 0; }
+/* MAIN CONTENT */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
 
-/* PROJECTS */
-.projects-label { font-size: 11px; font-weight: 500; color: rgba(240,240,240,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; padding: 0 64px; }
-.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 0 64px 80px; }
-.project-card { padding: 40px; cursor: pointer; transition: background 0.2s; position: relative; overflow: hidden; background: #111; text-decoration: none; display: block; }
-.project-card::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; }
-.project-card.apotheosis::before { background: #DC143C; }
-.project-card.survive::before { background: #B39DDB; }
-.project-card.zoneout::before { background: #26A69A; }
-.project-card.celeste::before { background: #FF7043; }
-.project-card:hover { background: #161616; }
-.project-tag { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.project-card.apotheosis .project-tag { color: #DC143C; }
-.project-card.survive .project-tag { color: #B39DDB; }
-.project-card.zoneout .project-tag { color: #26A69A; }
-.project-card.celeste .project-tag { color: #FF7043; }
-.project-name { font-size: 28px; font-weight: 700; color: #F0F0F0; margin-bottom: 12px; line-height: 1.1; }
-.project-desc { font-size: 14px; font-weight: 400; color: rgba(240,240,240,0.5); line-height: 1.6; max-width: 320px; }
-.project-arrow { position: absolute; bottom: 40px; right: 40px; font-size: 20px; color: rgba(240,240,240,0.2); transition: color 0.2s, transform 0.2s; }
-.project-card:hover .project-arrow { color: rgba(240,240,240,0.6); transform: translate(4px, -4px); }
+/* HERO */
+.hero { padding: 80px 64px 72px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.hero-left { display: flex; flex-direction: column; }
+.hero-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+.hero-name { font-size: 80px; font-weight: 700; color: #2ECC8A; line-height: 0.95; letter-spacing: -3px; }
+.hero-bio { font-size: 16px; font-weight: 400; color: rgba(26,26,26,0.6); margin-top: 32px; max-width: 480px; line-height: 1.75; }
+.hero-divider { width: 48px; height: 2px; background: #2ECC8A; margin: 40px 0; }
+.hero-photo { width: 280px; height: 340px; background: rgba(26,26,26,0.07); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-photo-placeholder { font-size: 48px; font-weight: 700; color: rgba(26,26,26,0.15); letter-spacing: -2px; }
+
+/* FEATURED */
+.featured { padding: 0 64px 80px; }
+.featured-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+.featured-card { border-top: 2px solid #2ECC8A; padding-top: 40px; }
+.featured-tags { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.featured-title { font-size: 52px; font-weight: 700; color: #1A1A1A; line-height: 1; letter-spacing: -2px; margin-bottom: 24px; }
+.featured-desc { font-size: 17px; font-weight: 400; color: rgba(26,26,26,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 28px; }
+.featured-meta { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 0.3px; margin-bottom: 36px; }
+.featured-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 48px; flex-wrap: wrap; }
+
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
+.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
+
+.featured-card-top { display: grid; grid-template-columns: 1fr 180px; gap: 48px; align-items: start; }
+.featured-roles { padding-top: 44px; }
+.roles-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+.role-box { border: 1px solid rgba(26,26,26,0.12); padding: 11px 16px; font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.65); margin-bottom: 8px; }
+
+.project-highlight { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(26,26,26,0.08); }
+.highlight-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 560px; line-height: 1.6; }
+.bs-pipeline { display: flex; align-items: stretch; gap: 1px; background: rgba(26,26,26,0.08); border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
+.bs-component { flex: 1; padding: 28px 22px; background: #FAF7F2; }
+.bs-component-num { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.bs-component-name { font-size: 14px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.2px; margin-bottom: 10px; }
+.bs-component-desc { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.6; }
+.bs-example { border: 1px solid rgba(26,26,26,0.08); }
+.bs-example-label { padding: 13px 24px; background: rgba(26,26,26,0.025); border-bottom: 1px solid rgba(26,26,26,0.08); font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+.bs-example-flow { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.bs-conditions { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
+.bs-priority-col { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
+.bs-result { padding: 24px; }
+.bs-col-label { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.bs-condition-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.bs-condition-trigger { font-size: 13px; color: rgba(26,26,26,0.6); }
+.bs-condition-sep { font-size: 15px; color: rgba(26,26,26,0.2); }
+.bs-condition-state { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: rgba(26,26,26,0.7); background: rgba(26,26,26,0.06); padding: 3px 9px; }
+.bs-priority-item { display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-bottom: 4px; font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); }
+.bs-priority-item.winner { background: rgba(46,204,138,0.1); color: #1A1A1A; }
+.bs-priority-item.winner .bs-rank { background: #2ECC8A; color: #1A1A1A; }
+.bs-rank { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,26,26,0.07); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: rgba(26,26,26,0.4); flex-shrink: 0; }
+.bs-result-state { font-size: 32px; font-weight: 700; color: #2ECC8A; letter-spacing: -1.5px; margin-bottom: 12px; }
+.bs-result-note { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.65; }
+
+/* ALL WORK */
+.all-work { padding: 56px 64px; border-top: 1px solid rgba(26,26,26,0.08); display: flex; align-items: center; justify-content: space-between; }
+.all-work a { font-size: 22px; font-weight: 700; color: #1A1A1A; text-decoration: none; letter-spacing: -0.5px; transition: color 0.2s; }
+.all-work a:hover { color: #2ECC8A; }
+.all-work-count { font-size: 13px; font-weight: 400; color: rgba(26,26,26,0.35); }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu { padding: 24px; }
-  .hero { padding: 100px 24px 48px; }
-  .hero-name { font-size: 48px; }
-  .hero-tagline { font-size: 18px; }
-  .projects-label { padding: 0 24px; }
-  .projects { grid-template-columns: 1fr; padding: 0 24px 60px; }
-  .project-card { padding: 32px 28px; }
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .hero { padding: 48px 24px 56px; grid-template-columns: 1fr; }
+  .hero-photo { width: 100%; height: 240px; }
+  .hero-name { font-size: 52px; letter-spacing: -2px; }
+  .hero-bio { font-size: 15px; }
+  .featured { padding: 0 24px 60px; }
+  .featured-title { font-size: 36px; letter-spacing: -1px; }
+  .featured-card-top { grid-template-columns: 1fr; }
+  .bs-pipeline { flex-direction: column; }
+  .bs-example-flow { grid-template-columns: 1fr; }
+  .bs-conditions, .bs-priority-col { border-right: none; border-bottom: 1px solid rgba(26,26,26,0.08); }
+  .all-work { padding: 40px 24px; }
+  .all-work a { font-size: 18px; }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-name" href="index.html">Roshan Premnath</a>
-  <div class="nav-links">
-    <a href="apotheosis.html">Apotheosis</a>
-    <a href="survivethepale.html">Survive the Pale</a>
-    <a href="zoneout.html">Zone-Out</a>
-    <a href="celeste.html">Celeste</a>
-  </div>
-  <div class="hamburger" id="hamburger">
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="work.html">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
-  </div>
-</nav>
-
+  </button>
+</div>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="apotheosis.html">Apotheosis</a>
-  <a href="survivethepale.html">Survive the Pale</a>
-  <a href="zoneout.html">Zone-Out</a>
-  <a href="celeste.html">Celeste</a>
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
 </div>
 
-<div class="hero">
-  <div class="hero-name">Roshan Premnath</div>
-  <div class="hero-title">Combat Designer</div>
-  <div class="hero-tagline">Action must be fun. That's what I bring to the fight.</div>
-  <div class="divider"></div>
-</div>
+<main class="main">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-label">Game Designer</div>
+      <div class="hero-name">Roshan<br>Premnath</div>
+      <div class="hero-bio">Final-year game designer at Ecole Intuit Lab. I work across systems, level, and combat design — two internships deep, with a Ubisoft Level Design Challenge win and a conviction that the best games make understanding feel like power.</div>
+      <div class="hero-divider"></div>
+    </div>
+    <div class="hero-photo">
+      <!-- Replace with: <img src="images/your-photo.jpg" alt="Roshan Premnath"> -->
+      <div class="hero-photo-placeholder">RP</div>
+    </div>
+  </div>
 
-<div class="projects-label">Selected Work</div>
-<div class="projects">
-  <a class="project-card apotheosis" href="apotheosis.html">
-    <div class="project-tag">Combat Design</div>
-    <div class="project-name">Apotheosis</div>
-    <div class="project-desc">A top-down combat system where patient precision builds into unstoppable fury.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card survive" href="survivethepale.html">
-    <div class="project-tag">System Design</div>
-    <div class="project-name">Survive the Pale</div>
-    <div class="project-desc">The player cannot fight. They can only observe, think, and manipulate.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card zoneout" href="zoneout.html">
-    <div class="project-tag">System Design</div>
-    <div class="project-name">Zone-Out</div>
-    <div class="project-desc">Three shapes, three rules. One of them turns survival into mastery.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-  <a class="project-card celeste" href="celeste.html">
-    <div class="project-tag">Level Design</div>
-    <div class="project-name">Celeste Challenge</div>
-    <div class="project-desc">A level design exercise demonstrating rigorous process — source analysis, derived principles, five documented iteration passes.</div>
-    <div class="project-arrow">↗</div>
-  </a>
-</div>
+  <div class="featured">
+    <div class="featured-label">Frontline Project</div>
+    <div class="featured-card">
+      <div class="featured-card-top">
+        <div>
+          <div class="featured-tags">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
+          <div class="featured-title">Survive the Pale</div>
+          <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
+          <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
+          <div class="featured-actions">
+            <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
+            <a class="btn-secondary" href="survivethepale.html">Full case study →</a>
+          </div>
+        </div>
+        <div class="featured-roles">
+          <div class="roles-label">My Role</div>
+          <div class="role-box">Game Designer</div>
+          <div class="role-box">Systems Designer</div>
+          <div class="role-box">Prototype Developer</div>
+        </div>
+      </div>
+      <div class="project-highlight">
+        <div class="highlight-label">Project Highlight — Behavioural System Design</div>
+        <div class="highlight-intro">All creature behaviour is driven by a context-based state machine. The system is fully deterministic — same context, same output, every time. The player's power to manipulate the ecosystem depends entirely on this predictability.</div>
+
+        <div class="bs-pipeline">
+          <div class="bs-component">
+            <div class="bs-component-num">01</div>
+            <div class="bs-component-name">Detection Radius</div>
+            <div class="bs-component-desc">A circular physics body centred on the creature. Broadcasts the type of every entity inside it — player, creature, fruit, or corpse — to the State Decider.</div>
+          </div>
+          <div class="bs-component">
+            <div class="bs-component-num">02</div>
+            <div class="bs-component-name">State Decider</div>
+            <div class="bs-component-desc">The priority engine. When multiple conditions are active simultaneously, it evaluates all of them against the creature's priority list and returns the highest-ranked state.</div>
+          </div>
+          <div class="bs-component">
+            <div class="bs-component-num">03</div>
+            <div class="bs-component-name">State Manager</div>
+            <div class="bs-component-desc">Holds the current active state. Switches immediately when the Decider returns a different state. Activates the correct Behaviour Node and deactivates all others.</div>
+          </div>
+          <div class="bs-component">
+            <div class="bs-component-num">04</div>
+            <div class="bs-component-name">Behaviour Node</div>
+            <div class="bs-component-desc">One script node per state. Runs its logic loop until the State Manager deactivates it or the task completes — then notifies the Manager to re-evaluate.</div>
+          </div>
+        </div>
+
+        <div class="bs-example">
+          <div class="bs-example-label">Priority Resolution — T2 Herbivore detects food and creature simultaneously</div>
+          <div class="bs-example-flow">
+            <div class="bs-conditions">
+              <div class="bs-col-label">Active Conditions</div>
+              <div class="bs-condition-row">
+                <span class="bs-condition-trigger">Fruit detected</span>
+                <span class="bs-condition-sep">→</span>
+                <span class="bs-condition-state">Opportunity</span>
+              </div>
+              <div class="bs-condition-row">
+                <span class="bs-condition-trigger">Creature detected</span>
+                <span class="bs-condition-sep">→</span>
+                <span class="bs-condition-state">Flee</span>
+              </div>
+            </div>
+            <div class="bs-priority-col">
+              <div class="bs-col-label">Priority List</div>
+              <div class="bs-priority-item winner">
+                <div class="bs-rank">1</div> Flee
+              </div>
+              <div class="bs-priority-item">
+                <div class="bs-rank">2</div> Opportunity
+              </div>
+              <div class="bs-priority-item">
+                <div class="bs-rank">3</div> Neutral
+              </div>
+            </div>
+            <div class="bs-result">
+              <div class="bs-col-label">Result</div>
+              <div class="bs-result-state">Flee</div>
+              <div class="bs-result-note">Survival overrides hunger. Move into its detection radius while it's eating and it abandons the fruit entirely — a behaviour the player learns to exploit for misdirection.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="all-work">
+    <a href="work.html">See all work ↗</a>
+    <span class="all-work-count">4 projects &nbsp;·&nbsp; 2026</span>
+  </div>
+</main>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
 </script>
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
+
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-nav a { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); text-decoration: none; padding: 9px 12px; margin-left: -12px; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; }
+.sidebar-nav a.active { color: #1A1A1A; border-left-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* MAIN CONTENT */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
+
+/* PAGE HEADER */
+.page-header { padding: 80px 64px 64px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+.page-title { font-size: 56px; font-weight: 700; letter-spacing: -2px; color: #1A1A1A; }
+.page-sub { font-size: 15px; color: rgba(26,26,26,0.45); margin-top: 12px; font-weight: 400; }
+
+/* TIMELINE */
+.timeline { padding: 0 64px 100px; }
+.timeline-year { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; padding: 48px 0 16px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+
+.entry { display: grid; grid-template-columns: 100px 1fr auto; gap: 0 40px; align-items: center; padding: 32px 0; border-bottom: 1px solid rgba(26,26,26,0.06); text-decoration: none; color: inherit; transition: background 0.15s; }
+.entry:hover { background: rgba(26,26,26,0.02); margin: 0 -64px; padding-left: 64px; padding-right: 64px; }
+.entry:hover .entry-title { color: #2ECC8A; }
+
+.entry-date { font-size: 13px; color: rgba(26,26,26,0.4); font-weight: 400; line-height: 1.4; }
+.entry-date strong { display: block; font-weight: 500; color: rgba(26,26,26,0.6); }
+
+.entry-main { display: flex; flex-direction: column; gap: 6px; }
+.entry-title { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; transition: color 0.15s; line-height: 1; }
+.entry-disciplines { font-size: 12px; color: rgba(26,26,26,0.4); font-weight: 400; margin-top: 4px; }
+
+.entry-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.entry-duration { font-size: 12px; color: rgba(26,26,26,0.35); text-align: right; }
+
+.badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; }
+.badge-active { background: rgba(46,204,138,0.12); color: #2ECC8A; }
+.badge-winner { background: rgba(244,122,35,0.12); color: #F47A23; }
+.badge-playable { background: rgba(26,26,26,0.07); color: rgba(26,26,26,0.55); }
+
+.active-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #2ECC8A; margin-right: 6px; animation: pulse 2s infinite; vertical-align: middle; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .page-header { padding: 40px 24px 40px; }
+  .page-title { font-size: 40px; }
+  .timeline { padding: 0 24px 80px; }
+  .entry { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .entry:hover { margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+  .entry-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .entry-date { display: none; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="work.html" class="active">Work</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="work.html">Work</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<main class="main">
+<div class="page-header">
+  <div class="page-title">Work</div>
+  <div class="page-sub">All projects — chronological, most recent first</div>
+</div>
+
+<div class="timeline">
+  <div class="timeline-year">2026</div>
+
+  <a class="entry" href="survivethepale.html">
+    <div class="entry-date"><strong>May</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Survive the Pale</div>
+      <div class="entry-disciplines">Systems Design &nbsp;·&nbsp; AI Behaviour &nbsp;·&nbsp; Puzzle Design</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">2 weeks</div>
+      <span class="badge badge-playable">Playable Prototype</span>
+    </div>
+  </a>
+
+  <a class="entry" href="celeste.html">
+    <div class="entry-date"><strong>Apr</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Ubisoft Level Design Challenge</div>
+      <div class="entry-disciplines">Level Design &nbsp;·&nbsp; Iteration &nbsp;·&nbsp; Player Psychology</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">1 week</div>
+      <span class="badge badge-winner">★ Competition Winner</span>
+    </div>
+  </a>
+
+  <a class="entry" href="zoneout.html">
+    <div class="entry-date"><strong>Apr</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Zone-Out</div>
+      <div class="entry-disciplines">Systems Design &nbsp;·&nbsp; Procedural Design &nbsp;·&nbsp; Difficulty Scaling</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">2 days</div>
+      <span class="badge badge-playable">Playable Prototype</span>
+    </div>
+  </a>
+
+  <a class="entry" href="apotheosis.html">
+    <div class="entry-date"><strong>Feb</strong>2026</div>
+    <div class="entry-main">
+      <div class="entry-title">Apotheosis</div>
+      <div class="entry-disciplines">Combat Design &nbsp;·&nbsp; Systems Design &nbsp;·&nbsp; Narrative Integration</div>
+    </div>
+    <div class="entry-right">
+      <div class="entry-duration">Ongoing</div>
+      <span class="badge badge-active"><span class="active-dot"></span>Active Development</span>
+    </div>
+  </a>
+</div>
+
+</main>
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

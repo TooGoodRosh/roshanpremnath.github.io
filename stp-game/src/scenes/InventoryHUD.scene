@@ -1,0 +1,60 @@
+{
+    "id": "c2a72aca-4ab1-485a-8242-49df14d9a3ff",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "c8410f0a-8478-4395-b216-928a896f5f31",
+            "label": "container_1",
+            "list": [
+                {
+                    "type": "Ellipse",
+                    "id": "3dc6962a-5c9e-422c-9a80-5bbbb24a8493",
+                    "label": "ellipse_1",
+                    "scope": "CLASS",
+                    "scaleX": 0.5,
+                    "scaleY": 0.5,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.25,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Image",
+                    "id": "aba552c3-bd8d-4027-86c5-f901e1884b29",
+                    "label": "itemIcon",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "sprite_fruit"
+                    },
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "prefabId": "c8f36726-d80c-4674-bcb3-98d9e178b28b",
+                    "id": "e7490a59-2e7e-42ec-b9f0-5dd7a8841f78",
+                    "label": "inventoryHUDController",
+                    "scope": "CLASS"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

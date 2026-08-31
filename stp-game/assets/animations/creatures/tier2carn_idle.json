@@ -1,0 +1,66 @@
+{
+    "anims": [
+        {
+            "key": "tier2carn__idle",
+            "type": "frame",
+            "frames": [
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 0,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 1,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 2,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 3,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 4,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 5,
+                    "duration": 0,
+                    "keyframe": false
+                },
+                {
+                    "key": "spritesheet_car01_idle1",
+                    "frame": 6,
+                    "duration": 0,
+                    "keyframe": false
+                }
+            ],
+            "frameRate": 8,
+            "skipMissedFrames": true,
+            "repeat": -1,
+            "randomFrame": false
+        }
+    ],
+    "globalTimeScale": 1,
+    "meta": {
+        "app": "Phaser Editor 2D v3",
+        "contentType": "Phaser v3 Animations"
+    },
+    "settings": {
+        "sourceLang": "JAVA_SCRIPT",
+        "esModule": false,
+        "generateCode": false
+    }
+}

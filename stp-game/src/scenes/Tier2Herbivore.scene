@@ -1,0 +1,113 @@
+{
+    "id": "ea7300ee-a28f-4982-8644-7a4ad49964b4",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "ArcadeSprite",
+            "id": "b71b6f62-8b1d-485d-b56c-8a4d8c597ce4",
+            "label": "arcadeimage_1",
+            "texture": {
+                "key": "spritesheet_herb01_idle1",
+                "frame": 0
+            },
+            "scaleX": 0.2,
+            "scaleY": 0.2,
+            "originY": 1,
+            "body.width": 420,
+            "body.height": 680,
+            "list": [
+                {
+                    "prefabId": "6e76b45a-4e5e-449a-badc-049a24688d28",
+                    "id": "964d0a50-301d-448b-a945-018765213261",
+                    "label": "detectionRadius"
+                },
+                {
+                    "prefabId": "982cf0de-d787-4f56-be4a-5a740c89f4a4",
+                    "id": "b1b09d9b-ec2b-45c8-8b16-9445e996ce69",
+                    "label": "stateDecider"
+                },
+                {
+                    "prefabId": "0e1b6fea-3737-4234-aa29-776f969ea081",
+                    "id": "ffc87a85-7b97-4afa-83fc-10c14a3fb970",
+                    "label": "stateManager"
+                },
+                {
+                    "prefabId": "8ea57601-9691-4bcc-8565-31c61b3ff9f2",
+                    "id": "614ef5ff-618b-4ebe-8856-11a9d392b033",
+                    "label": "behaviourNeutral"
+                },
+                {
+                    "prefabId": "d77386d6-b0f1-48b1-90d6-b1653ef4a5d6",
+                    "id": "fa1137fd-3bb8-43b6-822c-e30fe83850eb",
+                    "label": "behaviourOpportunity"
+                },
+                {
+                    "prefabId": "005b2dd5-f4e8-45bc-ba04-0bbfcd940d31",
+                    "id": "08097ab0-2661-4ccd-825d-1e86c6a7e631",
+                    "label": "behaviourFlee"
+                },
+                {
+                    "prefabId": "7e6af28a-3d32-48d6-b136-f0ff46762899",
+                    "id": "4618de6e-9dfc-46f2-8b4c-e16d4b5fcd19",
+                    "label": "tier2HerbivoreController"
+                },
+                {
+                    "prefabId": "efc88fc7-f695-48d6-a7ff-3d938a8ec9ce",
+                    "id": "41edd52e-e116-4bee-b8dd-703cc7cea51c",
+                    "label": "attackResolution"
+                },
+                {
+                    "prefabId": "14bffe05-cf76-4c58-a8e6-5d738cd2c172",
+                    "id": "e1486356-3f6b-46a4-b8b9-f29096b5dfec",
+                    "label": "behaviourCombat"
+                },
+                {
+                    "prefabId": "28d8a426-af96-449f-b21e-91183add6fd9",
+                    "id": "1c5a081e-2a40-40cb-946f-0ec41b873c7e",
+                    "label": "squashStretch"
+                },
+                {
+                    "prefabId": "2d637e1c-d2c6-44b2-960b-522f09738667",
+                    "id": "f0e121b8-926b-4899-af2a-e5773e41380d",
+                    "label": "detectionGlow"
+                },
+                {
+                    "prefabId": "2e55141f-1ce4-452d-8133-f6e730e11d7c",
+                    "id": "9997ffec-24ce-4a10-b4a0-535581522bdc",
+                    "label": "atmosphereDepth"
+                },
+                {
+                    "prefabId": "7d41317a-4090-4b04-a60b-37f321621170",
+                    "id": "aa2c6577-ddb4-44bb-84e8-66eb7c0007e4",
+                    "unlock": [
+                        "isStatic"
+                    ],
+                    "label": "ySort",
+                    "isStatic": false
+                },
+                {
+                    "prefabId": "e3b478cf-92e3-499e-b5b4-edc405471b3e",
+                    "id": "d12b93de-f3ab-4aa0-8a9d-28d55169daf7",
+                    "label": "movementDust"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

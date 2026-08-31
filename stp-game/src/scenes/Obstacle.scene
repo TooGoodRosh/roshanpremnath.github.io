@@ -1,0 +1,50 @@
+{
+    "id": "e6d767ff-fa7a-4a39-b8c4-0075be7b60c9",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "ArcadeImage",
+            "id": "b38fdd0d-21e2-4334-a67e-509871846f68",
+            "label": "arcadeimage_1",
+            "texture": {
+                "key": "guapen"
+            },
+            "originX": 0,
+            "originY": 0,
+            "body.physicsType": 1,
+            "body.pushable": false,
+            "body.immovable": true,
+            "body.width": 208,
+            "body.height": 240,
+            "list": [
+                {
+                    "prefabId": "f47ef2f3-2f81-4d15-a3c9-59e7ea7237d5",
+                    "id": "055bbc68-7f49-48b2-bce4-300fd434f08c",
+                    "label": "obstacleCollider"
+                },
+                {
+                    "prefabId": "f6277e45-aff8-48dd-904f-eef5d1c28b1e",
+                    "id": "16efae36-f1b4-4866-a85a-34b474777341",
+                    "label": "syncPhysicsBody"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

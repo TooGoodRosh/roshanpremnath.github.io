@@ -1,0 +1,56 @@
+{
+    "id": "e3b478cf-92e3-499e-b5b4-edc405471b3e",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "ScriptNode",
+            "id": "b81bb143-6dbe-42ca-a72c-de08f5621556",
+            "label": "scriptnode_1"
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    },
+    "prefabProperties": [
+        {
+            "name": "dustColour",
+            "label": "colour",
+            "tooltip": "",
+            "defValue": "#ffffff",
+            "customDefinition": false,
+            "editorOnly": false,
+            "deprecated": false,
+            "type": {
+                "id": "color",
+                "isArray": false
+            }
+        },
+        {
+            "name": "dustScale",
+            "label": "scale",
+            "tooltip": "",
+            "defValue": 1,
+            "customDefinition": false,
+            "editorOnly": false,
+            "deprecated": false,
+            "type": {
+                "id": "number",
+                "isArray": false
+            }
+        }
+    ]
+}
