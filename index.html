@@ -48,8 +48,8 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .stats-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; }
 
 /* FEATURED */
-.featured { padding: 0 64px 80px; }
-.featured-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+.featured { padding: 56px 64px 80px; }
+.featured-label { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; text-transform: none; margin-bottom: 40px; }
 .featured-card { border-top: 2px solid #2ECC8A; padding-top: 40px; }
 .featured-tags { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
 .featured-title { font-size: clamp(52px, 7vw, 96px); font-weight: 700; color: #1A1A1A; line-height: 0.95; letter-spacing: -3px; margin-bottom: 24px; }
@@ -70,7 +70,8 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .featured-image img { width: 100%; height: auto; display: block; }
 
 .project-highlight { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(26,26,26,0.08); }
-.highlight-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.highlight-label { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; text-transform: none; margin-bottom: 16px; }
+.highlight-sublabel { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; margin-top: 10px; }
 .highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 560px; line-height: 1.6; }
 .bs-pipeline { display: flex; align-items: stretch; gap: 1px; background: rgba(26,26,26,0.08); border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
 .bs-component { flex: 1; padding: 28px 22px; background: #FAF7F2; }
@@ -189,7 +190,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
           <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
           <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
           <div class="featured-actions">
-            <a class="btn-primary" href="https://thegamedesignhermit.itch.io/survive-the-pale" target="_blank">Play Now ↗</a>
+            <a class="btn-primary" href="survivethepale.html#s-play">Play Now ↗</a>
             <a class="btn-secondary" href="survivethepale.html">Project Page →</a>
           </div>
         </div>
@@ -204,7 +205,8 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
         </div>
       </div>
       <div class="project-highlight">
-        <div class="highlight-label">Project Highlight: Behavioural System Design</div>
+        <div class="highlight-label">Project Highlight</div>
+        <div class="highlight-sublabel">Behavioural System Design</div>
         <div class="highlight-intro">All creature behaviour is driven by a context-based state machine. The system is fully deterministic: same context, same output, every time. The player's power to manipulate the ecosystem depends entirely on this predictability.</div>
 
         <div class="bs-pipeline">
