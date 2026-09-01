@@ -33,12 +33,12 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .hero { padding: 56px 64px 0; }
 .hero-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
 .hero-name { font-size: clamp(88px, 11.5vw, 168px); font-weight: 700; color: #2ECC8A; line-height: 0.87; letter-spacing: -5px; }
-.hero-body { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; padding: 40px 0 64px; border-top: 1px solid rgba(26,26,26,0.1); margin-top: 32px; }
+.hero-name-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; margin-bottom: 32px; }
+.hero-body { padding: 40px 0 64px; border-top: 1px solid rgba(26,26,26,0.1); }
 .hero-bio { font-size: 16px; font-weight: 400; color: rgba(26,26,26,0.6); max-width: 480px; line-height: 1.75; }
 .hero-divider { width: 48px; height: 2px; background: #2ECC8A; margin-top: 40px; }
-.hero-photo { width: 220px; height: 280px; background: rgba(26,26,26,0.07); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-photo { width: 220px; height: 280px; background: rgba(26,26,26,0.07); flex-shrink: 0; overflow: hidden; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-photo-placeholder { font-size: 40px; font-weight: 700; color: rgba(26,26,26,0.15); letter-spacing: -2px; }
 
 /* STATS STRIP */
 .stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(26,26,26,0.08); border-bottom: 1px solid rgba(26,26,26,0.08); }
@@ -109,8 +109,9 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   .main { margin-left: 0; padding-top: 56px; }
   .hero { padding: 40px 24px 0; }
   .hero-name { letter-spacing: -3px; }
-  .hero-body { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 48px; }
+  .hero-name-row { flex-direction: column; gap: 24px; }
   .hero-photo { width: 100%; height: 220px; }
+  .hero-body { padding: 32px 0 48px; }
   .hero-bio { font-size: 15px; }
   .stats-strip { grid-template-columns: 1fr; }
   .stats-item { padding: 24px; border-right: none !important; border-bottom: 1px solid rgba(26,26,26,0.08); }
@@ -151,22 +152,21 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 <main class="main">
   <div class="hero">
     <div class="hero-eyebrow">Game Designer</div>
-    <div class="hero-name">Roshan<br>Premnath</div>
-    <div class="hero-body">
-      <div>
-        <div class="hero-bio">Final-year game designer at Ecole Intuit Lab. I work across systems, level, and combat design. Two internships deep, Ubisoft Level Design Challenge winner, with a conviction that the best games make understanding feel like power.</div>
-        <div class="hero-divider"></div>
-      </div>
+    <div class="hero-name-row">
+      <div class="hero-name">Roshan<br>Premnath</div>
       <div class="hero-photo">
-        <!-- Replace with: <img src="images/your-photo.jpg" alt="Roshan Premnath"> -->
-        <div class="hero-photo-placeholder">RP</div>
+        <img src="images/portrait.png" alt="Roshan Premnath">
       </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-bio">Final-year game designer at Ecole Intuit Lab. I work across systems, level, and combat design. Two internships deep, Ubisoft Level Design Challenge winner, with a conviction that the best games make understanding feel like power.</div>
+      <div class="hero-divider"></div>
     </div>
   </div>
 
   <div class="stats-strip">
     <div class="stats-item">
-      <div class="stats-num">04</div>
+      <div class="stats-num">05</div>
       <div class="stats-label">Projects</div>
     </div>
     <div class="stats-item">
