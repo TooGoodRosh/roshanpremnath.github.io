@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Roshan Premnath</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; display: flex; }
+
+/* SIDEBAR */
+.sidebar { position: fixed; top: 0; left: 0; width: 200px; height: 100vh; background: #FAF7F2; border-right: 1px solid rgba(26,26,26,0.08); display: flex; flex-direction: column; padding: 48px 32px; z-index: 100; }
+.sidebar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 48px; display: block; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-nav a { font-size: 13px; font-weight: 700; color: rgba(26,26,26,0.6); text-decoration: none; padding: 11px 16px; border: 1px solid rgba(26,26,26,0.15); display: block; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+.sidebar-nav a:hover { color: #1A1A1A; border-color: rgba(26,26,26,0.4); background: rgba(26,26,26,0.03); }
+.sidebar-nav a.active { color: #1A1A1A; background: #2ECC8A; border-color: #2ECC8A; }
+
+/* MOBILE TOP BAR */
+.topbar { display: none; position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(250,247,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 0 24px; align-items: center; justify-content: space-between; z-index: 100; }
+.topbar-name { font-size: 15px; font-weight: 700; color: #2ECC8A; text-decoration: none; letter-spacing: -0.5px; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #1A1A1A; transition: all 0.2s; }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: #FAF7F2; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 24px; flex-direction: column; gap: 16px; z-index: 99; }
+.mobile-menu a { font-size: 15px; font-weight: 500; color: rgba(26,26,26,0.7); text-decoration: none; }
+.mobile-menu.open { display: flex; }
+
+/* MAIN */
+.main { margin-left: 200px; flex: 1; min-width: 0; }
+
+/* ABOUT HEADER */
+.about-header { padding: 56px 64px 48px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+.about-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+.about-name { font-size: clamp(64px, 9vw, 136px); font-weight: 700; color: #2ECC8A; line-height: 0.87; letter-spacing: -4px; }
+
+/* POV */
+.about-pov { padding: 56px 64px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+.section-eyebrow { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+.pov-block { max-width: 680px; }
+.pov-line { font-size: 19px; font-weight: 400; color: #1A1A1A; line-height: 1.55; padding: 24px 0; border-top: 1px solid rgba(26,26,26,0.08); }
+.pov-line:last-child { border-bottom: 1px solid rgba(26,26,26,0.08); }
+
+/* BACKGROUND */
+.about-background { padding: 56px 64px; border-bottom: 1px solid rgba(26,26,26,0.08); }
+.context-block { display: flex; flex-direction: column; gap: 6px; }
+.context-institution { font-size: 22px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.5px; }
+.context-detail { font-size: 15px; font-weight: 400; color: rgba(26,26,26,0.5); }
+
+/* CONTACT */
+.about-contact { padding: 56px 64px 80px; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.contact-item { display: flex; align-items: center; gap: 16px; }
+.contact-label { font-size: 11px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; width: 64px; flex-shrink: 0; }
+.contact-link { font-size: 15px; font-weight: 500; color: #1A1A1A; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.15); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
+.contact-link:hover { color: #2ECC8A; border-color: #2ECC8A; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body { display: block; }
+  .sidebar { display: none; }
+  .topbar { display: flex; }
+  .main { margin-left: 0; padding-top: 56px; }
+  .about-header { padding: 40px 24px 36px; }
+  .about-name { letter-spacing: -2px; }
+  .about-pov { padding: 40px 24px; }
+  .pov-line { font-size: 17px; }
+  .about-background { padding: 40px 24px; }
+  .about-contact { padding: 40px 24px 64px; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="sidebar-name" href="index.html">Roshan<br>Premnath</a>
+  <nav class="sidebar-nav">
+    <a href="projects.html">Projects</a>
+    <a href="breakdowns.html">Breakdowns</a>
+    <a href="about.html" class="active">About</a>
+  </nav>
+</aside>
+
+<div class="topbar">
+  <a class="topbar-name" href="index.html">Roshan Premnath</a>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="projects.html">Projects</a>
+  <a href="breakdowns.html">Breakdowns</a>
+  <a href="about.html">About</a>
+</div>
+
+<main class="main">
+
+  <div class="about-header">
+    <div class="about-eyebrow">Game Designer</div>
+    <div class="about-name">Roshan<br>Premnath</div>
+  </div>
+
+  <div class="about-pov">
+    <div class="section-eyebrow">Design POV</div>
+    <div class="pov-block">
+      <div class="pov-line">I design gameplay systems that teach through play.</div>
+      <div class="pov-line">I look for tension in how independent systems constrain and support each other, not in how numbers stack.</div>
+      <div class="pov-line">I test every claim in-engine before I trust it.</div>
+      <div class="pov-line">I treat design as a process I can teach, not an instinct I can't repeat.</div>
+    </div>
+  </div>
+
+  <div class="about-background">
+    <div class="section-eyebrow">Background</div>
+    <div class="context-block">
+      <div class="context-institution">Ecole Intuit Lab Mumbai</div>
+      <div class="context-detail">Game Art and Design · Batch of 2027</div>
+    </div>
+  </div>
+
+  <div class="about-contact">
+    <div class="section-eyebrow">Contact</div>
+    <div class="contact-links">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a class="contact-link" href="mailto:rpremnath9485@gmail.com">rpremnath9485@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <a class="contact-link" href="https://www.linkedin.com/in/roshan-premnath-85171b243" target="_blank" rel="noopener">roshan-premnath</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">itch.io</span>
+        <a class="contact-link" href="https://thegamedesignhermit.itch.io" target="_blank" rel="noopener">thegamedesignhermit</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+</script>
+
+</body>
+</html>
