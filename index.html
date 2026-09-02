@@ -47,60 +47,31 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
 .stats-num { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; color: #1A1A1A; letter-spacing: -3px; line-height: 1; }
 .stats-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.4); letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; }
 
-/* FEATURED */
-.featured { padding: 56px 64px 80px; }
-.featured-label { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; text-transform: none; margin-bottom: 40px; }
-.featured-card { border-top: 2px solid #2ECC8A; padding-top: 40px; }
-.featured-tags { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.featured-title { font-size: clamp(52px, 7vw, 96px); font-weight: 700; color: #1A1A1A; line-height: 0.95; letter-spacing: -3px; margin-bottom: 24px; }
-.featured-desc { font-size: 17px; font-weight: 400; color: rgba(26,26,26,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 28px; }
-.featured-meta { font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 0.3px; margin-bottom: 36px; }
-.featured-actions { display: flex; gap: 20px; align-items: center; margin-bottom: 48px; flex-wrap: wrap; }
+/* DECK */
+.deck { padding: 56px 64px 80px; border-top: 1px solid rgba(26,26,26,0.08); }
+.deck-group { margin-bottom: 56px; }
+.deck-group:last-child { margin-bottom: 0; }
+.deck-group-label { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; margin-bottom: 28px; }
 
-.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #1A1A1A; color: #FAF7F2; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 28px; text-decoration: none; transition: background 0.2s, color 0.2s; }
-.btn-primary:hover { background: #2ECC8A; color: #1A1A1A; }
-.btn-secondary { display: inline-flex; align-items: center; gap: 6px; color: #1A1A1A; font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(26,26,26,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-.btn-secondary:hover { color: #2ECC8A; border-color: #2ECC8A; }
+.card-grid { display: flex; flex-wrap: wrap; gap: 28px; }
 
-.featured-card-top { display: grid; grid-template-columns: 1fr 160px 260px; gap: 40px; align-items: start; }
-.featured-roles { padding-top: 44px; }
-.roles-label { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
-.role-box { border: 1px solid rgba(26,26,26,0.12); padding: 11px 16px; font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.65); margin-bottom: 8px; }
-.featured-image { width: 100%; flex-shrink: 0; }
-.featured-image img { width: 100%; height: auto; display: block; }
-
-.project-highlight { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(26,26,26,0.08); }
-.highlight-label { font-size: 32px; font-weight: 700; color: #1A1A1A; letter-spacing: -1px; text-transform: none; margin-bottom: 16px; }
-.highlight-sublabel { font-size: 11px; font-weight: 500; color: rgba(26,26,26,0.35); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; margin-top: 10px; }
-.highlight-intro { font-size: 14px; color: rgba(26,26,26,0.45); margin-bottom: 32px; max-width: 560px; line-height: 1.6; }
-.bs-pipeline { display: flex; align-items: stretch; gap: 1px; background: rgba(26,26,26,0.08); border: 1px solid rgba(26,26,26,0.08); margin-bottom: 24px; }
-.bs-component { flex: 1; padding: 28px 22px; background: #FAF7F2; }
-.bs-component-num { font-size: 11px; font-weight: 500; color: #2ECC8A; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-.bs-component-name { font-size: 14px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.2px; margin-bottom: 10px; }
-.bs-component-desc { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.6; }
-.bs-example { border: 1px solid rgba(26,26,26,0.08); }
-.bs-example-label { padding: 13px 24px; background: rgba(26,26,26,0.025); border-bottom: 1px solid rgba(26,26,26,0.08); font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
-.bs-example-flow { display: grid; grid-template-columns: 1fr 1fr 1fr; }
-.bs-conditions { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
-.bs-priority-col { padding: 24px; border-right: 1px solid rgba(26,26,26,0.08); }
-.bs-result { padding: 24px; }
-.bs-col-label { font-size: 10px; font-weight: 600; color: rgba(26,26,26,0.3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-.bs-condition-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-.bs-condition-trigger { font-size: 13px; color: rgba(26,26,26,0.6); }
-.bs-condition-sep { font-size: 15px; color: rgba(26,26,26,0.2); }
-.bs-condition-state { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: rgba(26,26,26,0.7); background: rgba(26,26,26,0.06); padding: 3px 9px; }
-.bs-priority-item { display: flex; align-items: center; gap: 10px; padding: 7px 10px; margin-bottom: 4px; font-size: 13px; font-weight: 500; color: rgba(26,26,26,0.4); }
-.bs-priority-item.winner { background: rgba(46,204,138,0.1); color: #1A1A1A; }
-.bs-priority-item.winner .bs-rank { background: #2ECC8A; color: #1A1A1A; }
-.bs-rank { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,26,26,0.07); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: rgba(26,26,26,0.4); flex-shrink: 0; }
-.bs-result-state { font-size: 32px; font-weight: 700; color: #2ECC8A; letter-spacing: -1.5px; margin-bottom: 12px; }
-.bs-result-note { font-size: 12px; color: rgba(26,26,26,0.5); line-height: 1.65; }
-
-/* ALL WORK */
-.all-work { padding: 56px 64px; border-top: 1px solid rgba(26,26,26,0.08); display: flex; align-items: center; justify-content: space-between; }
-.all-work a { font-size: 22px; font-weight: 700; color: #1A1A1A; text-decoration: none; letter-spacing: -0.5px; transition: color 0.2s; }
-.all-work a:hover { color: #2ECC8A; }
-.all-work-count { font-size: 13px; font-weight: 400; color: rgba(26,26,26,0.35); }
+.hcard { position: relative; width: 300px; border-radius: 14px; background: #FAF7F2; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; border: 7px solid var(--cc); box-shadow: 0 16px 34px rgba(26,26,26,0.16); transition: transform 0.2s ease, box-shadow 0.2s ease; text-align: left; font-family: inherit; padding: 0; text-decoration: none; color: inherit; }
+.hcard:hover { transform: translateY(-10px) scale(1.015); box-shadow: 0 24px 48px rgba(26,26,26,0.24); }
+.hcard-art { position: relative; height: 210px; background: linear-gradient(160deg, var(--g1) 0%, var(--g2) 100%); flex-shrink: 0; overflow: hidden; }
+.hcard-art.tex-diag::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.16) 0 2px, transparent 2px 22px); z-index: 1; }
+.hcard-art.tex-grid::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 22px), repeating-linear-gradient(90deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 22px); z-index: 1; }
+.hcard-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hcard-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to bottom, rgba(10,20,16,0) 0%, rgba(8,16,13,0.5) 100%); z-index: 1; }
+.hcard-date, .hcard-duration { position: absolute; top: 12px; height: 32px; padding: 0 11px; border-radius: 16px; background: #1A1A1A; border: 3px solid #FAF7F2; display: flex; align-items: center; justify-content: center; color: #FAF7F2; font-weight: 800; font-size: 10.5px; letter-spacing: 0.2px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,0.24); z-index: 2; }
+.hcard-date { left: 12px; }
+.hcard-duration { right: 12px; }
+.hcard-status { position: absolute; left: 10px; bottom: 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.6px; padding: 5px 10px; border-radius: 4px; color: #FAF7F2; text-transform: uppercase; white-space: nowrap; box-shadow: 0 3px 8px rgba(0,0,0,0.22); z-index: 2; }
+.hcard-body { padding: 18px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+.hcard-title { font-size: 23px; font-weight: 800; color: #1A1A1A; line-height: 1.08; }
+.hcard-subtitle { font-size: 10.5px; font-weight: 700; color: rgba(26,26,26,0.45); margin-top: 5px; }
+.hcard-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+.hcard-tag { border: 1px solid var(--cc); color: var(--tc); font-size: 7px; font-weight: 800; letter-spacing: 0.3px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 3px; }
+.hcard-desc { font-size: 12.5px; line-height: 1.55; color: rgba(26,26,26,0.65); margin-top: 10px; flex: 1; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -117,13 +88,10 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   .stats-strip { grid-template-columns: 1fr; }
   .stats-item { padding: 24px; border-right: none !important; border-bottom: 1px solid rgba(26,26,26,0.08); }
   .stats-item:last-child { border-bottom: none; }
-  .featured { padding: 0 24px 60px; }
-  .featured-card-top { grid-template-columns: 1fr; }
-  .bs-pipeline { flex-direction: column; }
-  .bs-example-flow { grid-template-columns: 1fr; }
-  .bs-conditions, .bs-priority-col { border-right: none; border-bottom: 1px solid rgba(26,26,26,0.08); }
-  .all-work { padding: 40px 24px; }
-  .all-work a { font-size: 18px; }
+  .deck { padding: 40px 24px 48px; }
+  .deck-group-label { font-size: 26px; margin-bottom: 20px; }
+  .card-grid { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+  .hcard { flex-shrink: 0; scroll-snap-align: start; width: 260px; }
 }
 </style>
 </head>
@@ -160,7 +128,7 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
       </div>
     </div>
     <div class="hero-body">
-      <div class="hero-bio">Final-year game designer at Ecole Intuit Lab. I work across systems, level, and combat design. Two internships deep, Ubisoft Level Design Challenge winner, with a conviction that the best games make understanding feel like power.</div>
+      <div class="hero-bio">Final-year game designer at Ecole Intuit Lab. I work across systems, level, and combat design. Two internships deep, Ubisoft Game Design Challenge 2026 winner, with a conviction that the best games make understanding feel like power.</div>
       <div class="hero-divider"></div>
     </div>
   </div>
@@ -180,100 +148,15 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
     </div>
   </div>
 
-  <div class="featured">
-    <div class="featured-label">Frontline Project</div>
-    <div class="featured-card">
-      <div class="featured-card-top">
-        <div>
-          <div class="featured-tags">Systems Design &nbsp;·&nbsp; Playable Prototype</div>
-          <div class="featured-title">Survive the Pale</div>
-          <div class="featured-desc">The player cannot fight. They can only observe, think, and manipulate. A top-down puzzle game built around ecosystem control, deterministic creature AI, and knowledge as the only persistent resource.</div>
-          <div class="featured-meta">May 2026 &nbsp;&nbsp;·&nbsp;&nbsp; 2 weeks</div>
-          <div class="featured-actions">
-            <a class="btn-primary" href="survivethepale.html#s-play">Play Now ↗</a>
-            <a class="btn-secondary" href="survivethepale.html">Project Page →</a>
-          </div>
-        </div>
-        <div class="featured-roles">
-          <div class="roles-label">My Role</div>
-          <div class="role-box">Game Designer</div>
-          <div class="role-box">Systems Designer</div>
-          <div class="role-box">Prototype Developer</div>
-        </div>
-        <div class="featured-image">
-          <img src="images/stp-characters.jpg" alt="Survive the Pale creature silhouettes">
-        </div>
-      </div>
-      <div class="project-highlight">
-        <div class="highlight-label">Project Highlight</div>
-        <div class="highlight-sublabel">Behavioural System Design</div>
-        <div class="highlight-intro">All creature behaviour is driven by a context-based state machine. The system is fully deterministic: same context, same output, every time. The player's power to manipulate the ecosystem depends entirely on this predictability.</div>
-
-        <div class="bs-pipeline">
-          <div class="bs-component">
-            <div class="bs-component-num">01</div>
-            <div class="bs-component-name">Detection Radius</div>
-            <div class="bs-component-desc">A circular physics body centred on the creature. Broadcasts the type of every entity inside it (player, creature, fruit, or corpse) to the State Decider.</div>
-          </div>
-          <div class="bs-component">
-            <div class="bs-component-num">02</div>
-            <div class="bs-component-name">State Decider</div>
-            <div class="bs-component-desc">The priority engine. When multiple conditions are active simultaneously, it evaluates all of them against the creature's priority list and returns the highest-ranked state.</div>
-          </div>
-          <div class="bs-component">
-            <div class="bs-component-num">03</div>
-            <div class="bs-component-name">State Manager</div>
-            <div class="bs-component-desc">Holds the current active state. Switches immediately when the Decider returns a different state. Activates the correct Behaviour Node and deactivates all others.</div>
-          </div>
-          <div class="bs-component">
-            <div class="bs-component-num">04</div>
-            <div class="bs-component-name">Behaviour Node</div>
-            <div class="bs-component-desc">One script node per state. Runs its logic loop until the State Manager deactivates it or the task completes, then notifies the Manager to re-evaluate.</div>
-          </div>
-        </div>
-
-        <div class="bs-example">
-          <div class="bs-example-label">Priority Resolution: T2 Herbivore detects food and creature simultaneously</div>
-          <div class="bs-example-flow">
-            <div class="bs-conditions">
-              <div class="bs-col-label">Active Conditions</div>
-              <div class="bs-condition-row">
-                <span class="bs-condition-trigger">Fruit detected</span>
-                <span class="bs-condition-sep">→</span>
-                <span class="bs-condition-state">Opportunity</span>
-              </div>
-              <div class="bs-condition-row">
-                <span class="bs-condition-trigger">Creature detected</span>
-                <span class="bs-condition-sep">→</span>
-                <span class="bs-condition-state">Flee</span>
-              </div>
-            </div>
-            <div class="bs-priority-col">
-              <div class="bs-col-label">Priority List</div>
-              <div class="bs-priority-item winner">
-                <div class="bs-rank">1</div> Flee
-              </div>
-              <div class="bs-priority-item">
-                <div class="bs-rank">2</div> Opportunity
-              </div>
-              <div class="bs-priority-item">
-                <div class="bs-rank">3</div> Neutral
-              </div>
-            </div>
-            <div class="bs-result">
-              <div class="bs-col-label">Result</div>
-              <div class="bs-result-state">Flee</div>
-              <div class="bs-result-note">Survival overrides hunger. Move into its detection radius while it's eating and it abandons the fruit entirely. A behaviour the player learns to exploit for misdirection.</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="deck">
+    <div class="deck-group">
+      <div class="deck-group-label">Projects</div>
+      <div class="card-grid" id="projectsGrid"></div>
     </div>
-  </div>
-
-  <div class="all-work">
-    <a href="projects.html">See all work ↗</a>
-    <span class="all-work-count">4 projects &nbsp;·&nbsp; 2026</span>
+    <div class="deck-group">
+      <div class="deck-group-label">Breakdowns</div>
+      <div class="card-grid" id="breakdownsGrid"></div>
+    </div>
   </div>
 </main>
 
@@ -281,6 +164,72 @@ body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #1A1A1A; 
   document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.toggle('open');
   });
+</script>
+
+<script>
+(function() {
+  var PROJ = { cc: '#2ECC8A', tc: '#1c8f5e', g1: '#33d694', g2: '#1c8f5e', tex: 'tex-diag' };
+  var BRK  = { cc: '#8C64DC', tc: '#6d47bd', g1: '#b092ea', g2: '#6d47bd', tex: 'tex-grid' };
+
+  var STATUS_BG = { active: '#173821', winner: '#F47A23', jam: '#3c63d4' };
+
+  var projects = [
+    { id: 'apotheosis', href: 'apotheosis.html', title: 'Apotheosis', subtitle: null, date: 'FEB 2026', duration: 'ONGOING', image: 'images/apotheosis-keyart.jpg', tags: ['Combat Design', 'Systems Design', 'Narrative Integration'], desc: 'A character-action game about discipline as power. Ongoing systems and combat design.', status: { type: 'active', text: 'Active' } },
+    { id: 'survivethepale', href: 'survivethepale.html', title: 'Survive the Pale', subtitle: null, date: 'MAY 2026', duration: '2 WK', image: 'images/stp-characters.jpg', tags: ['Systems Design', 'AI Behaviour', 'Puzzle Design'], desc: 'The player cannot fight. Only observe, think, and manipulate a deterministic ecosystem.', status: null },
+    { id: 'celeste', href: 'celeste.html', title: 'Celeste', subtitle: 'Ubisoft Game Design Challenge 2026', date: 'APR 2026', duration: '1 WK', image: 'images/celeste-pass-05.png', tags: ['Level Design', 'Iteration', 'Player Psychology'], desc: 'A level designed through five iteration passes. Placed first.', status: { type: 'winner', text: 'Winner' } },
+    { id: 'zoneout', href: 'zoneout.html', title: 'Zone-Out', subtitle: null, date: 'APR 2026', duration: '2 DAY', image: 'images/zo-colour-01.jpg', tags: ['Systems Design', 'Procedural Design', 'Difficulty Scaling'], desc: 'An arcade game built around escalating procedural difficulty.', status: null },
+    { id: 'dobara', href: 'dobara.html', title: 'Dobara', subtitle: null, date: 'BYOG 2025', duration: '3 DAY', image: 'images/dobara-keyart.jpg', imagePosition: '25% center', tags: ['Puzzle Design', 'Narrative Design'], desc: 'A suspect-interrogation puzzle built in three days for BYOG 2025.', status: { type: 'jam', text: 'Jam' } }
+  ];
+
+  var breakdowns = [
+    { id: 'ms2', href: 'ms2-breakdown.html', title: 'MS2 Breakdown', subtitle: 'Why has Mortal Shell 2 dropped Stamina?', date: 'AUG 2026', image: 'images/ms2-hero.jpg', tags: ['Game Analysis', 'Systems Breakdown'], desc: 'A systems-level teardown of the stamina removal, and what it signals about the sequel.' },
+    { id: 'control', href: 'control-breakdown.html', title: 'Control', subtitle: 'Full breakdown', date: 'FEB 2026', image: 'images/control-hero.jpg', imagePosition: '78% center', tags: ['Combat Systems', 'Resource Economy', 'Enemy Design'], desc: "A systems teardown of Remedy's resource loop and enemy economy." },
+    { id: 'capybara', href: 'capybara-breakdown.html', title: 'Capybara Go!', subtitle: 'Economy and Systems Study', date: 'AUG 2025', image: 'images/capybara-icon.png', imagePosition: 'center 15%', tags: ['Economy Design', 'Systems Analysis', 'Mobile'], desc: "A three-document study of the idle economy's currency sinks and retention loop." }
+  ];
+
+  var projectsGrid = document.getElementById('projectsGrid');
+  var breakdownsGrid = document.getElementById('breakdownsGrid');
+
+  function statusPill(status) {
+    if (!status) return '';
+    return '<div class="hcard-status" style="background:' + STATUS_BG[status.type] + '">' + status.text + '</div>';
+  }
+
+  function tagChips(tags, palette) {
+    return tags.map(function(t) {
+      return '<span class="hcard-tag" style="border-color:' + palette.cc + ';color:' + palette.tc + '">' + t + '</span>';
+    }).join('');
+  }
+
+  function cardHtml(item, palette) {
+    var sub = item.subtitle ? '<div class="hcard-subtitle">' + item.subtitle + '</div>' : '';
+    var duration = item.duration ? '<div class="hcard-duration">' + item.duration + '</div>' : '';
+    var art = item.image
+      ? '<img class="hcard-img" src="' + item.image + '" alt=""' + (item.imagePosition ? ' style="object-position:' + item.imagePosition + '"' : '') + '>'
+      : '';
+    var texClass = item.image ? '' : palette.tex;
+    return '<a class="hcard" href="' + item.href + '" style="--cc:' + palette.cc + ';--tc:' + palette.tc + ';--g1:' + palette.g1 + ';--g2:' + palette.g2 + '">' +
+      '<div class="hcard-art ' + texClass + '">' +
+        art +
+        '<div class="hcard-fade"></div>' +
+        '<div class="hcard-date">' + item.date + '</div>' + duration +
+        statusPill(item.status) +
+      '</div>' +
+      '<div class="hcard-body">' +
+        '<div class="hcard-title">' + item.title + '</div>' + sub +
+        '<div class="hcard-tags">' + tagChips(item.tags, palette) + '</div>' +
+        '<div class="hcard-desc">' + item.desc + '</div>' +
+      '</div>' +
+    '</a>';
+  }
+
+  function renderGrid(container, items, palette) {
+    container.innerHTML = items.map(function(item) { return cardHtml(item, palette); }).join('');
+  }
+
+  renderGrid(projectsGrid, projects, PROJ);
+  renderGrid(breakdownsGrid, breakdowns, BRK);
+})();
 </script>
 </body>
 </html>
